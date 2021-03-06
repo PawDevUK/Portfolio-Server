@@ -1,4 +1,4 @@
-const Visitor = require('../../models/visitors.model')
+const Visitor = require('./models/visitors.model')
 const email = require('./visitors_email')
 const sendEmail = email.sendEmail
 const router = require('express').Router()
