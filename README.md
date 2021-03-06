@@ -1,18 +1,17 @@
-### Backend
+# Server
 
 Visitors Route
-
-1. create mongodb collection with counter, date, time
+- send back to Client total visitors
+- <s>create mongodb collection with counter, date, time
    - schema
-2. add new entry to mongoDB
-3. get visitors data from mongodb with counter, date, time
-4. send back to Client total visitors
+- add new entry to mongoDB
+- get visitors data from mongodb with counter, date, time</s>
 
 #### To Do
 
-- create visitors collection in MongoDB
+- <s> create visitors collection in MongoDB
 - think about good project directory structure
-- create visitors counter
+- create visitors counter</s>
 - <s>get mongodb key and store it in .env</s>
 - <s>add mongoose</s>
 - <s>separate Routes </s>
