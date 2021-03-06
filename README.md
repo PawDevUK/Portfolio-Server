@@ -16,3 +16,9 @@ Visitors Route
 - <s>get mongodb key and store it in .env</s>
 - <s>add mongoose</s>
 - <s>separate Routes </s>
+
+###### Tictactoe
+
+- create main route
+- create schema for user
+- create users collection
