@@ -7,7 +7,15 @@ const usersSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-    }
+    },
+    status: {
+        type: String,
+        required: true,
+    },
+    playingWith: {
+        type: String,
+    },
+    board: Array
 }, {
     timestamps: true
 })
