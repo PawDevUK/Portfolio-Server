@@ -15,7 +15,7 @@ const usersSchema = new Schema({
     playingWith: {
         type: String,
     },
-    board: Array
+    game: Object
 }, {
     timestamps: true
 })
@@ -23,3 +23,18 @@ const usersSchema = new Schema({
 const users = mongoose.model('Users', usersSchema);
 
 module.exports = users
+
+// {
+//     "user": "Britney",
+//     "status": "Available",
+//     "playingWith": "---",
+//     "invitation":{
+//         "invitation":false,
+//         "invitationAccept":false,
+//         "move":false,
+//         "inGame":false,
+//         "palyWith":"",
+//         "playByXorO":"",
+//         "board": []
+//     }
+// }
