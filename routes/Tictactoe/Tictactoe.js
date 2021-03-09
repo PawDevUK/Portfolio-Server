@@ -1,16 +1,6 @@
-const router = require('express').Router()
 const Users = require('./models/users.model.js')
-
-function addID(arr) {
-    const arrWithId = []
-    for (let i = 0; i < arr.length; i++) {
-        arrWithId.push({
-            id: arr[i]._id,
-            ...arr[i]._doc,
-        })
-    }
-    return arrWithId
-}
+const addID = require('../../factory').addID
+const router = require('express').Router()
 
 router.route('/').get((req, res) => {
     res.send('Tictactoe')
