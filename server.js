@@ -22,6 +22,26 @@ app.use('/contactForm', ContactFormRoute)
 //socket.io
 const server = http.createServer(app)
 const io = socket(server)
+
+let interval
+
+io.on("connection", (socket) => {
+  console.log("New client connected!! ");
+  if (interval) {
+    clearInterval(interval)
+  }
+  interval = setInterval(() => getApiAndEmit(socket), 1000);
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnect");
+    clearInterval(interval);
+  })
+})
+
+const getApiAndEmit = socket => {
+  const response = "This is socket io response !!"
+  socket.emit("FromAPI", response)
+}
 //<- socket.io
 
 
