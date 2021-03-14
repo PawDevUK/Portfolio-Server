@@ -24,6 +24,7 @@
 
 #### Covid
 
+-   and condition to update store in case articles are from previous days
 -   <s> create store.json </s>
 -   <s> get news regarding pandemic </s>
 -   <s> store api data news in store.js </s>
