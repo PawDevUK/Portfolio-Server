@@ -4,9 +4,8 @@ const store = require('./store.json');
 const GetApiData = require('./api');
 const fs = require('fs');
 
-CheckStoreStatusAndSave(store, GetApiData);
-
 router.route('/').get((req, res) => {
+    CheckStoreStatusAndSave(store, GetApiData);
     res.send(store).status(200);
 });
 
