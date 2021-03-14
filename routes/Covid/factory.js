@@ -16,15 +16,8 @@ function CheckStoreStatus(store, FetchData) {
             return;
         })();
     } else {
-        console.log('data already in store.json');
+        console.log('data already in a store.json');
     }
 }
-function DisplayStoreStatus(store) {
-    if (!store.status) {
-        console.log('No data');
-    } else {
-        console.log(store.status);
-    }
-}
+
 module.exports = CheckStoreStatus;
-module.exports = DisplayStoreStatus;
