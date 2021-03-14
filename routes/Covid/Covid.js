@@ -6,7 +6,7 @@ const fs = require('fs');
 
 router.route('/').get((req, res) => {
     CheckStoreStatusAndSave(store, GetApiData);
-    res.send(store).status(200);
+    res.send(store.articles).status(200);
 });
 
 module.exports = router;
