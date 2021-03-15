@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function CheckStoreStatus(store, FetchData) {
+function CheckStoreStatusAndSave(store, FetchData) {
     const LocalStoreStatus = store.status;
     if (!LocalStoreStatus) {
         (async function CheckApiStatusIfOkSave() {
@@ -11,7 +11,7 @@ function CheckStoreStatus(store, FetchData) {
                         console.log(err);
                     });
                 })(data);
-            } else 'Not saved';
+            } else console.log('Not saved');
 
             return;
         })();
@@ -20,4 +20,4 @@ function CheckStoreStatus(store, FetchData) {
     }
 }
 
-module.exports = CheckStoreStatus;
+module.exports = CheckStoreStatusAndSave;
