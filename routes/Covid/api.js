@@ -1,6 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 
+//-----news
 const options = {
     method: 'GET',
     url: process.env.RAPID_NEWS_URL,
@@ -19,7 +20,7 @@ const options = {
     },
 };
 
-const GetData = axios
+const GetNewsData = axios
     .request(options)
     .then(function (response) {
         return response.data;
@@ -27,5 +28,24 @@ const GetData = axios
     .catch(function (error) {
         return error;
     });
+// <----- news
 
-module.exports = GetData;
+// ---- Global Data
+const GetGlobalData = axios.create({
+    baseURL: process.env.RAPID_GLOBAL_DATA_URL,
+    method: 'GET',
+    headers: {
+        'x-rapidapi-key': process.env.RAPID_GLOBAL_DATA_KEY,
+        'x-rapidapi-host': process.env.RAPID_GLOBAL_HOST_URL,
+        useQueryString: true,
+    },
+});
+const Global = async function (route) {
+    await GetGlobalData(`./${route}`)
+        .then((res) => console.log(JSON.stringify(res.data)))
+        .catch((err) => console.log(err));
+};
+Global('uk');
+// <--- Global Data
+module.exports = GetNewsData;
+module.exports = GetGlobalData;
