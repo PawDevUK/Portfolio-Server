@@ -21,33 +21,38 @@ const options = {
     },
 };
 
-const GetNewsData = axios
-    .request(options)
-    .then(function (response) {
-        return response.data;
-    })
-    .catch(function (error) {
-        return error;
-    });
+const GetNewsData = () => {
+    return axios
+        .request(options)
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            return error;
+        });
+};
 
 // <----- news
 
-// // ---- Global Data
-// const GetGlobalData = axios.create({
-//     baseURL: process.env.RAPID_GLOBAL_DATA_URL,
-//     method: 'GET',
-//     headers: {
-//         'x-rapidapi-key': process.env.RAPID_GLOBAL_DATA_KEY,
-//         'x-rapidapi-host': process.env.RAPID_GLOBAL_HOST_URL,
-//         useQueryString: true,
-//     },
-// });
-// const Global = async function (route) {
-//     await GetGlobalData(`./${route}`)
-//         .then((res) => res)
-//         .catch((err) => console.log(err));
-// };
+// ---- Global Data
+const GetData = axios.create({
+    baseURL: process.env.RAPID_GLOBAL_DATA_URL,
+    method: 'GET',
+    headers: {
+        'x-rapidapi-key': process.env.RAPID_GLOBAL_DATA_KEY,
+        'x-rapidapi-host': process.env.RAPID_GLOBAL_HOST_URL,
+        useQueryString: true,
+    },
+});
+const GetGlobalData = (route) => {
+    GetData(`./${route}`)
+        .then((res) => res)
+        .catch((err) => console.log(err));
+};
 
 // <--- Global Data
-module.exports = GetNewsData;
-// module.exports = GetGlobalData;
+
+// GetGlobalData('uk');
+
+exports.GetNewsData = GetNewsData;
+exports.GetGlobalData = GetGlobalData;
