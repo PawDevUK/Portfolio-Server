@@ -21,6 +21,5 @@ function addID(arr) {
   return arrWithId
 }
 
-
 exports.StoreData = StoreData
 exports.addID = addID
