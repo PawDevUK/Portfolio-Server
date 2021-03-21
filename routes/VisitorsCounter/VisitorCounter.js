@@ -1,11 +1,12 @@
 const Visitor = require('./models/visitors.model');
-const email = require('./visitors_email');
-const sendEmail = email.sendEmail;
 const router = require('express').Router();
+const email = require('./visitors_email');
 const mongoose = require('mongoose');
+const sendEmail = email.sendEmail;
 require('dotenv').config();
 
 const VISITORS_URI = process.env.VISITORS_URI;
+
 mongoose.connect(VISITORS_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
