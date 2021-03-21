@@ -7,7 +7,7 @@ function CheckStoreStatusAndSave(store, FetchData) {
             const data = await FetchData;
             if (data.status === 'ok') {
                 (async function SaveDataToLocalStore(GetData) {
-                    fs.writeFile('./routes/Covid/store.json', JSON.stringify(await GetData), (err) => {
+                    fs.writeFile('./routes/Covid/Store/news.json', JSON.stringify(await GetData), (err) => {
                         console.log(err);
                     });
                 })(data);
@@ -20,4 +20,4 @@ function CheckStoreStatusAndSave(store, FetchData) {
     }
 }
 
-module.exports = CheckStoreStatusAndSave;
+exports.CheckStoreStatusAndSave = CheckStoreStatusAndSave;
