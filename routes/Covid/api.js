@@ -44,11 +44,11 @@ const GetData = axios.create({
         useQueryString: true,
     },
 });
-// const GetGlobalData = (route) => {
-//     GetData(`${route}`)
-//         .then((res) => res)
-//         .catch((err) => console.log(err));
-// };
+const GetGlobalData = (route) => {
+    GetData(`${route}`)
+        .then((res) => res)
+        .catch((err) => console.log(err));
+};
 
 // <--- Global Data
 
