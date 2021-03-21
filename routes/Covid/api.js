@@ -45,7 +45,7 @@ const GetData = axios.create({
     },
 });
 const GetGlobalData = (route) => {
-    GetData(`./${route}`)
+    GetData(`${route}`)
         .then((res) => res)
         .catch((err) => console.log(err));
 };
