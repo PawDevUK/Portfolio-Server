@@ -1,17 +1,20 @@
-const CheckStoreStatusAndSave = require('./factory');
-const GetGlobalData = require('./api').GetGlobalData;
-const GetNewsData = require('./api').GetNewsData;
+const CheckStoreStatusAndSave = require('./factory').CheckStoreStatusAndSave;
+const GetGlobalData = require('./API/GlobalData');
+const GetNewsData = require('./API/GlobalNews');
 const router = require('express').Router();
-const store = require('./store.json');
-const fs = require('fs');
-
-GetGlobalData('uk');
+const store_news = require('./Store/news.json');
+const store_GB_data = require('./Store/news.json');
 
 router.route('/newsUK').get((req, res) => {
-    CheckStoreStatusAndSave(store, GetNewsData);
-    res.send(store.articles).status(200);
+    CheckStoreStatusAndSave(store_news, GetNewsData);
+    res.send(store_news.articles).status(200);
 });
-router.route('/stats').get((req, res) => {
+
+router.route('/GB').get((req, res) => {
+    (async () => {
+        const data = await GetGlobalData('GB');
+    })();
+
     res.send('stats').status(200);
 });
 
