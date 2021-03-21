@@ -1,13 +1,14 @@
 const fs = require('fs');
 
-function CheckStoreStatusAndSave(store, FetchData) {
+function CheckStoreStatusAndSave(store, FetchData, file) {
     const LocalStoreStatus = store.status;
     if (!LocalStoreStatus) {
         (async function CheckApiStatusIfOkSave() {
             const data = await FetchData;
+
             if (data.status === 'ok') {
                 (async function SaveDataToLocalStore(GetData) {
-                    fs.writeFile('./routes/Covid/Store/news.json', JSON.stringify(await GetData), (err) => {
+                    fs.writeFile(`./routes/Covid/Store/${file}.json`, JSON.stringify(await GetData), (err) => {
                         console.log(err);
                     });
                 })(data);
