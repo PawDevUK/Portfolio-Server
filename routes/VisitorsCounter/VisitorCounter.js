@@ -5,12 +5,12 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-// mongoose
+const VISITORS_URI = process.env.VISITORS_URI;
+mongoose.connect(VISITORS_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
-// const VISITORS_URI = process.env.VISITORS_URI
-// mongoose.connect(VISITORS_URI, {
-//     useNewUrlParser: true, useUnifiedTopology: true
-// })
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('MongoDB database connection established successfully!!');
