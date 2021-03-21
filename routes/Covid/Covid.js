@@ -1,8 +1,11 @@
 const CheckStoreStatusAndSave = require('./factory');
+const GetGlobalData = require('./api').GetGlobalData;
+const GetNewsData = require('./api').GetNewsData;
 const router = require('express').Router();
 const store = require('./store.json');
-const GetNewsData = require('./api');
 const fs = require('fs');
+
+GetGlobalData('uk');
 
 router.route('/newsUK').get((req, res) => {
     CheckStoreStatusAndSave(store, GetNewsData);
