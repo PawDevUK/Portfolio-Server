@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
 const mongodb = require('mongodb');
 
-VISITORS_URI = 'mongoURI';
+VISITORS_URI = null;
 
 const getVisitors = async (req, res) => {
     const method = req.method;
@@ -9,7 +8,6 @@ const getVisitors = async (req, res) => {
         const client = await mongodb.MongoClient.connect(VISITORS_URI);
         const visits = await client.db('Portfolio').collection('visitors').find().toArray();
         const { counter } = visits[visits.length - 1];
-        console.log(counter);
         res.send({ counter });
     }
     return;
