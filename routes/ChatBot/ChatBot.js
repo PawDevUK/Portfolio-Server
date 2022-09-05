@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
-require('dotenv').config();
+// require('dotenv').config();
 
 router.route('/').get((req, res) => {
     res.send('GET ChatBot');
