@@ -17,7 +17,7 @@ function CheckStoreStatusAndSave(store, FetchData, file) {
             return;
         })();
     } else {
-        console.log('data already in a store.json');
+        console.log('data already in the store.json');
     }
 }
 
