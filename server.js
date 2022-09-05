@@ -1,11 +1,11 @@
 const VisitorRoute = require('./routes/VisitorsCounter/VisitorCounter.js');
 const ContactFormRoute = require('./routes/ContactForm/ContactForm.js');
+const Register = require('./routes/RegisterLogin/Register.js')
 const Tictactoe = require('./routes/Tictactoe/Tictactoe.js');
 const ChatBot = require('./routes/ChatBot/ChatBot.js');
 const Covid = require('./routes/Covid/Covid.js');
 const express = require('express');
 const cors = require('cors');
-const Register = require('./routes/RegisterLogin/Register.js')
 
 require('dotenv').config();
 
@@ -24,10 +24,10 @@ app.get('/', (req, res) => {
 
 app.use('/covid', Covid);
 app.use('/chatBot', ChatBot);
-app.use('/visitor', VisitorRoute);
-app.use('/tictactoe', Tictactoe);
-app.use('/contactForm', ContactFormRoute);
 app.use('/register', Register)
+app.use('/tictactoe', Tictactoe);
+app.use('/visitor', VisitorRoute);
+app.use('/contactForm', ContactFormRoute);
 
 app.listen(Port, () => {
     console.log(`Example app listening at http://localhost:${Port}`);
