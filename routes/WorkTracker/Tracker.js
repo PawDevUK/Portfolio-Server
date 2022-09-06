@@ -75,8 +75,8 @@ function returnDate(...args){
             payload.push(i)
         }
     })
-
-    return payload
+    
+    return new Date(payload[1],payload[0])
 }
 // date format month/year
 function createMonth(date){
