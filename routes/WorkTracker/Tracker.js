@@ -50,11 +50,6 @@ const moment = require('moment')
 // let retirementPay = checkPercentageFrom(3394,141)
 
 
-function checkWeekDay(year,month,day){
-    let date = new Date(year,month,day)
-    let weekDay = date.toLocaleDateString('en-US', {
-        weekday: 'long',
-      })
 
 function extractDateFromString(str){
     let date=[];
