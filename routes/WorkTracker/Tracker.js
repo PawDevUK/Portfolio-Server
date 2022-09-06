@@ -67,8 +67,6 @@ function returnDate(...args){
     let payload = [];
 
     args.forEach((i)=>{
-        console.log('i',i);
-        console.log(typeof i);
         if(typeof i === 'string' && args.length === 1){
             payload = extractDateFromString(args[0])
         }else if (typeof i === 'string' && args.length >=2 ){
@@ -78,7 +76,6 @@ function returnDate(...args){
         }
     })
 
-    
     return payload
 }
 // date format month/year
