@@ -1,53 +1,54 @@
 const moment = require('moment')
 
-const rates = {
-    currency : 'GBP',
-    basic : 14.98,
-    nights :25,
-    weekends: 33,
-    overtime: 50
-}
+// const rates = {
+//     currency : 'GBP',
+//     basic : 14.98,
+//     nights :25,
+//     weekends: 33,
+//     overtime: 50
+// }
 
 
-function calcPercent(basic,extraRate){
-    let extra = 0 
-    extra = basic / 100 * extraRate
-    return basic + extra
-}
+// function calcPercent(basic,extraRate){
+//     let extra = 0 
+//     extra = basic / 100 * extraRate
+//     return basic + extra
+// }
 
-const evening = calcPercent(
-    rates.basic,
-    rates.evening
-    )
+// const evening = calcPercent(
+//     rates.basic,
+//     rates.evening
+//     )
 
-console.log('Evening rate £'+ evening)
-console.log('Evening rate £'+ evening)
+// console.log('Evening rate £'+ evening)
+// console.log('Evening rate £'+ evening)
 
 
-console.log(
-    {
-        currency : 'gbp',
-        basic : 14.98,
-        nights :calcPercent(rates.basic,rates.nights),
-        weekends: calcPercent(rates.basic,rates.weekends),
-        overtime: calcPercent(rates.basic,rates.overtime)
-    }
-)
+// console.log(
+//     {
+//         currency : 'gbp',
+//         basic : 14.98,
+//         nights :calcPercent(rates.basic,rates.nights),
+//         weekends: calcPercent(rates.basic,rates.weekends),
+//         overtime: calcPercent(rates.basic,rates.overtime)
+//     }
+// )
 
-function checkPercentageFrom(main,fraction){
-    let percent;
-    let stPerce;
+// function checkPercentageFrom(main,fraction){
+//     let percent;
+//     let stPerce;
 
-    let mainDivided = main/100
+//     let mainDivided = main/100
 
-    percent = fraction / mainDivided
+//     percent = fraction / mainDivided
 
-    stPerce = percent.toString().slice(0,4)
+//     stPerce = percent.toString().slice(0,4)
 
-    return `${fraction} is ${stPerce} of ${main}`
-}
+//     return `${fraction} is ${stPerce} of ${main}`
+// }
 
-let retirementPay = checkPercentageFrom(3394,141)
+// let retirementPay = checkPercentageFrom(3394,141)
+
 
 function checkWeekDay(year,month,day){
     let date = new Date(year,month,day)
