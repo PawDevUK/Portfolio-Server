@@ -109,6 +109,7 @@ function createMonth(...args){
         name:monthName,
         month:month+1,
         year,
+        numberOfDaysInCalMonth:days,
         OffDays,
         days:[]   
     };
