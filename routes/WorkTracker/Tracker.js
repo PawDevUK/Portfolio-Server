@@ -99,7 +99,7 @@ function getOffDays(arr){
 // date format month/year
 function createMonth(...args){
     const DateArg = returnDate(...args)
-    const month = moment(DateArg).month()+1
+    const month = moment(DateArg).month()
     const year = moment(DateArg).year()
     const monthName = getMonthName(month)
     const days = moment().daysInMonth(month)
@@ -107,7 +107,7 @@ function createMonth(...args){
 
     let calendar = { 
         name:monthName,
-        month,
+        month:month+1,
         year,
         OffDays,
         days:[]   
