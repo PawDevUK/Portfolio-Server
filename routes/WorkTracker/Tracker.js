@@ -113,7 +113,7 @@ function createMonth(OffDays,[...date]){
         OffWorkingDays,
         calendar:[]   
     };
-    const arr = [1,2,3,4,5,7,8,9,12,23];
+    
     for( let i = 1 ; i <= days; i++){
         calendar.calendar.push({
             day:i,
@@ -124,6 +124,7 @@ function createMonth(OffDays,[...date]){
     
     return calendar
 }
+const september = [3,6,7,13,14,20,21,27,28]
 
 const calendar = createMonth(september,[9,2022])
 console.log(calendar);
