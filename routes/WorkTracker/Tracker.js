@@ -92,6 +92,10 @@ function checkIN(arr,day){
     return IN
 }
 
+function getOffDays(arr){
+    return arr.length
+}
+
 // date format month/year
 function createMonth(...args){
     const DateArg = returnDate(...args)
@@ -99,11 +103,13 @@ function createMonth(...args){
     const year = moment(DateArg).year()
     const monthName = getMonthName(month)
     const days = moment().daysInMonth(month)
+    const OffDays = getOffDays(september)
+
     let calendar = { 
         name:monthName,
         month,
         year,
-        numberOfDays:days,
+        OffDays,
         days:[]   
     };
     const arr = [1,2,3,4,5,7,8,9,12,23];
