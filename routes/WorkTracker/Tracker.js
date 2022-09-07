@@ -110,7 +110,7 @@ function createMonth(OffDays,[...date]){
         month:month+1,
         year,
         numberOfDaysInCalMonth:days,
-        OffDays,
+        OffWorkingDays,
         calendar:[]   
     };
     const arr = [1,2,3,4,5,7,8,9,12,23];
