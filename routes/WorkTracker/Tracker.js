@@ -111,11 +111,11 @@ function createMonth(...args){
         year,
         numberOfDaysInCalMonth:days,
         OffDays,
-        days:[]   
+        calendar:[]   
     };
     const arr = [1,2,3,4,5,7,8,9,12,23];
     for( let i = 1 ; i <= days; i++){
-        calendar.days.push({
+        calendar.calendar.push({
             day:i,
             in:checkIN(september, i),
             weekDay:getNameOfWeekDay(DateArg,i),
