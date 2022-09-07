@@ -119,9 +119,4 @@ function createMonth(...args){
 }
 
 const calendar = createMonth(9,2022)
-
 console.log(calendar);
-
-console.log(moment().month(9).format('MMMM'));
-
-console.log(moment([2022,0]));
