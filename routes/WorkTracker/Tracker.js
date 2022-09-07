@@ -83,13 +83,16 @@ function getNameOfWeekDay(payload,i){
 }
 
 function checkIN(arr,day){
-    let IN = true;
-    arr.forEach((i)=>{
-        if(i===day){
-            IN = false
-        }
-    })
-    return IN
+    let IN = null
+    if(arr.length > 1){
+        IN = true;
+        arr.forEach((i)=>{
+            if(i===day){
+                IN = false
+            }
+        })
+    }
+   return IN
 }
 
 function getOffDays(arr){
