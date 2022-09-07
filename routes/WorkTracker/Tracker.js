@@ -83,10 +83,10 @@ function getNameOfWeekDay(payload,i){
 }
 
 function checkIN(arr,day){
-    let IN = false;
+    let IN = true;
     arr.forEach((i)=>{
         if(i===day){
-            IN = true
+            IN = false
         }
     })
     return IN
@@ -116,7 +116,7 @@ function createMonth(...args){
     for( let i = 1 ; i <= days; i++){
         calendar.days.push({
             day:i,
-            in:checkIN(arr, i),
+            in:checkIN(september, i),
             weekDay:getNameOfWeekDay(DateArg,i),
         })
     }
