@@ -1,14 +1,5 @@
 const moment = require('moment')
 
-// const rates = {
-//     currency : 'GBP',
-//     basic : 14.98,
-//     nights :25,
-//     weekends: 33,
-//     overtime: 50
-// }
-
-
 // function calcPercent(basic,extraRate){
 //     let extra = 0 
 //     extra = basic / 100 * extraRate
@@ -113,8 +104,14 @@ function createMonth(OffDays,[...date]){
         month:month+1,
         year,
         numberOfDaysInCalMonth:days,
-        OffWorkingDays,
-        calendar:[]   
+        rates:{
+                currency :'GBP',
+                basic:16.75,
+                nights:25,
+                weekends:33,
+                overtime:50
+            },
+        calendar:[]
     };
     
     for( let i = 1 ; i <= days; i++){
