@@ -106,6 +106,17 @@ function createMonth(rota){
         month:month+1,
         year,
         numberOfDaysInCalMonth:days,
+        OFF_Days,
+        IN_Days,
+        IN_weekDays:null,
+        IN_sat:null,
+        IN_sun:null,
+        pay_for_day:{
+            weekDay:null,
+            friday:null,
+            sat:null,
+            sun:null
+        },
         rates:{
                 currency :'GBP',
                 basic:16.75,
