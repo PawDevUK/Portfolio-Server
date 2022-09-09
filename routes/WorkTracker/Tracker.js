@@ -91,13 +91,15 @@ function getOffDays(arr){
 }
 
 // date format month/year
-function createMonth(OffDays,[...date]){
-    const DateArg = returnDate(...date)
-    const month = moment(DateArg).month()
-    const year = moment(DateArg).year()
-    const monthName = getMonthName(month)
-    const days = moment().daysInMonth(month)
-    const OffWorkingDays = getOffDays(OffDays)
+function createMonth(rota){
+    const {OffDays,date} = rota;
+    const DateArg = returnDate(...date);
+    const month = moment(DateArg).month();
+    const year = moment(DateArg).year();
+    const monthName = getMonthName(month);
+    const days = moment().daysInMonth(month);
+    const OFF_Days = getOffDays(OffDays);
+    const IN_Days = days - OFF_Days ;
 
     let calendar = { 
         name:monthName,
@@ -124,7 +126,11 @@ function createMonth(OffDays,[...date]){
     
     return calendar
 }
-const september = [3,6,7,13,14,20,21,27,28]
 
-const calendar = createMonth(september,[9,2022])
+const rota = {
+    date:[09,2022],
+    OffDays:[3,6,7,13,14,20,21,27,28]
+}
+
+const calendar = createMonth(rota)
 console.log(calendar);
