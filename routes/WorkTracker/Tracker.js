@@ -89,6 +89,19 @@ function checkIN(arr,day){
 function getOffDays(arr){
     return arr.length
 }
+function countDays(obj){
+    let counter = {
+        w:0,
+        sa:0,
+        su:0
+    }
+
+    obj.calendar.forEach((i)=>{
+
+    })
+
+    return counter
+}
 
 // date format month/year
 function createMonth(rota){
@@ -134,6 +147,11 @@ function createMonth(rota){
             weekDay:getNameOfWeekDay(DateArg,i),
         })
     }
+
+    const {w,sa,su} = countDays(calendar)
+    calendar.IN_weekDays = w
+    calendar.IN_sat = sa
+    calendar.IN_sun = su
     
     return calendar
 }
