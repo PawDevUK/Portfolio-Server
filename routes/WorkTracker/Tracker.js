@@ -1,12 +1,5 @@
 const moment = require('moment')
-
-function extractDateFromString(str){
-    let date=[];
-    date.push(parseInt(str.slice(0,2)))
-    date.push(parseInt(str.slice(3,str.length)))
-
-    return date
-}
+const extractDateFromString = require('./factory').extractDateFromString
 
 function returnDate(...args){
     let payload = [];

@@ -1,3 +1,11 @@
+function extractDateFromString(str){
+    let date=[];
+    date.push(parseInt(str.slice(0,2)))
+    date.push(parseInt(str.slice(3,str.length)))
+
+    return date
+}
+
 function checkPercentageFrom(main,fraction){
     let percent;
     let stPerce;
@@ -17,4 +25,6 @@ function calcPercent(basic,extraRate){
 }
 
 
-let retirementPay = checkPercentageFrom(3394,141)
+module.exports = {
+    extractDateFromString,
+}
