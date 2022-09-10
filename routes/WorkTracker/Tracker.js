@@ -117,6 +117,7 @@ function createMonth(rota){
         OFF_Days,
         IN_Days,
         IN_weekDays:null,
+        IN_fri:null,
         IN_sat:null,
         IN_sun:null,
         pay_for_day:{
@@ -152,8 +153,9 @@ function createMonth(rota){
         })
     }
 
-    const {w,sa,su} = countDays(calendar)
+    const {w,f,sa,su} = countDays(calendar)
     calendar.IN_weekDays = w
+    calendar.IN_fri = f
     calendar.IN_sat = sa
     calendar.IN_sun = su
     
