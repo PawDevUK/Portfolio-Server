@@ -10,6 +10,11 @@ function checkPercentageFrom(main,fraction){
 
     return `${fraction} is ${stPerce} of ${main}`
 }
+function calcPercent(basic,extraRate){
+    let extra = 0 
+    extra = basic / 100 * extraRate
+    return basic + extra
+}
 
 
 let retirementPay = checkPercentageFrom(3394,141)
