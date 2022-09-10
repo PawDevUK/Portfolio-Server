@@ -91,6 +91,24 @@ function calcEarnedForDay(day){
     return payload
 }
 
+
+function calcEarnedFor_Month(payload){
+    const pay = payload.pay_for_day
+    const weekDaysTotal = payload.IN_weekDays * pay.weekDay
+    const fridaysTotal = payload.IN_fri * pay.friday
+    const saturdayTotal = payload.IN_sat * pay.sat
+    const sundayTotal = payload.IN_sun * pay.sun
+    const Total = weekDaysTotal + fridaysTotal + saturdayTotal + sundayTotal
+
+    return {
+        weekDaysTotal,
+        fridaysTotal,
+        saturdayTotal,
+        sundayTotal,
+        Total
+    }
+}
+
 // date format month/year
 function createMonth(rota){
     const {OffDays,date} = rota;
@@ -135,6 +153,7 @@ function createMonth(rota){
                     rate:25.12
                 }
             },
+        basic_salary:{},
         calendar:[]
     };
     
@@ -151,7 +170,10 @@ function createMonth(rota){
     calendar.IN_fri = f
     calendar.IN_sat = sa
     calendar.IN_sun = su
+
+    calendar.basic_salary = calcEarnedFor_Month(calendar)
     
+    //returns calendar object with calculated values
     return calendar
 }
 
