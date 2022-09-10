@@ -131,12 +131,6 @@ function createMonth(rota){
         IN_fri:null,
         IN_sat:null,
         IN_sun:null,
-        pay_for_day:{
-            weekDay:calcEarnedForDay('weekday'),
-            friday:calcEarnedForDay('friday'),
-            sat:calcEarnedForDay('sat'),
-            sun:calcEarnedForDay('sun')
-        },
         rates:{
                 currency :'GBP',
                 basic:16.75,
@@ -152,6 +146,12 @@ function createMonth(rota){
                     percent:50,
                     rate:25.12
                 }
+            },
+        pay_for_day:{
+                weekDay:calcEarnedForDay('weekday'),
+                friday:calcEarnedForDay('friday'),
+                sat:calcEarnedForDay('sat'),
+                sun:calcEarnedForDay('sun')
             },
         basic_salary:{},
         calendar:[]
