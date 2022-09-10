@@ -1,47 +1,5 @@
 const moment = require('moment')
 
-function calcPercent(basic,extraRate){
-    let extra = 0 
-    extra = basic / 100 * extraRate
-    return basic + extra
-}
-
-// const evening = calcPercent(
-//     rates.basic,
-//     rates.evening
-//     )
-
-// console.log('Evening rate £'+ evening)
-// console.log('Evening rate £'+ evening)
-
-
-// console.log(
-//     {
-//         currency : 'gbp',
-//         basic : 14.98,
-//         nights :calcPercent(rates.basic,rates.nights),
-//         weekends: calcPercent(rates.basic,rates.weekends),
-//         overtime: calcPercent(rates.basic,rates.overtime)
-//     }
-// )
-
-// function checkPercentageFrom(main,fraction){
-//     let percent;
-//     let stPerce;
-
-//     let mainDivided = main/100
-
-//     percent = fraction / mainDivided
-
-//     stPerce = percent.toString().slice(0,4)
-
-//     return `${fraction} is ${stPerce} of ${main}`
-// }
-
-// let retirementPay = checkPercentageFrom(3394,141)
-
-
-
 function extractDateFromString(str){
     let date=[];
     date.push(parseInt(str.slice(0,2)))
