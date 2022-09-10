@@ -161,9 +161,18 @@ function createMonth(rota){
         rates:{
                 currency :'GBP',
                 basic:16.75,
-                nights:25,
-                weekends:33,
-                overtime:50
+                nights:{
+                    percent:25,
+                    rate:20.93
+                },
+                weekends:{
+                    percent:33,
+                    rate:22.27
+                },
+                overtime:{
+                    percent:50,
+                    rate:25.12
+                }
             },
         calendar:[]
     };
