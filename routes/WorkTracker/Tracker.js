@@ -50,12 +50,21 @@ function getOffDays(arr){
 function countDays(obj){
     let counter = {
         w:0,
+        f:0,
         sa:0,
         su:0
     }
-
+    const wd = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
     obj.calendar.forEach((i)=>{
-
+        if(i.in && (i.weekDay===wd[0] || i.weekDay===wd[1] || i.weekDay===wd[2] || i.weekDay===wd[3])){
+            counter.w++
+        }else if(i.weekDay===wd[4] && i.in){
+            counter.f++
+        }else if(i.weekDay===wd[5] && i.in){
+            counter.sa++
+        }else if(i.weekDay===wd[6] && i.in){
+            counter.su++
+        }
     })
 
     return counter
