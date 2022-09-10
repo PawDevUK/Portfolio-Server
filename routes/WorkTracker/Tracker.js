@@ -1,10 +1,10 @@
 const moment = require('moment')
 
-// function calcPercent(basic,extraRate){
-//     let extra = 0 
-//     extra = basic / 100 * extraRate
-//     return basic + extra
-// }
+function calcPercent(basic,extraRate){
+    let extra = 0 
+    extra = basic / 100 * extraRate
+    return basic + extra
+}
 
 // const evening = calcPercent(
 //     rates.basic,
