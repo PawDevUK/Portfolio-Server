@@ -7,6 +7,23 @@ function extractDateFromString(str){
 
     return date
 }
+function returnDate(date,extractDateFromString){
+    let payload = [];
+    date.forEach((i)=>{
+        if(typeof i === 'string' && date.length === 1){
+            payload = extractDateFromString(args[0])
+        }else if (typeof i === 'string' && date.length >=2 ){
+            payload.push(parseInt(i))
+        }else if (typeof i === 'number'){
+            payload.push(i)
+        }
+    })
+
+    return moment([payload[1],payload[0]-1])
+}
+function getMonthName(m){
+    return  moment().month(m).format('MMMM')
+}
 
 function checkPercentageFrom(main,fraction){
     let percent;
