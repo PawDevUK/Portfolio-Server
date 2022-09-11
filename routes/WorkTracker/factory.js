@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 function extractDateFromString(str){
     let date=[];
     date.push(parseInt(str.slice(0,2)))
