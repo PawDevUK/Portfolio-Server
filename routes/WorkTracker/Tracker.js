@@ -1,6 +1,7 @@
 const moment = require('moment')
 const extractDateFromString = require('./factory').extractDateFromString
 const returnDate = require('./factory').returnDate
+const getMonthName = require('./factory').getMonthName
 
 
 function getNameOfWeekDay(payload,i){
