@@ -7,6 +7,7 @@ function extractDateFromString(str){
 
     return date
 }
+
 function returnDate(date,extractDateFromString){
     let payload = [];
     date.forEach((i)=>{
@@ -21,9 +22,74 @@ function returnDate(date,extractDateFromString){
 
     return moment([payload[1],payload[0]-1])
 }
+
 function getMonthName(m){
     return  moment().month(m).format('MMMM')
 }
+
+function checkIN(arr,day){
+    let IN = null
+    if(arr.length > 1){
+        IN = true;
+        arr.forEach((i)=>{
+            if(i===day){
+                IN = false
+            }
+        })
+    }
+   return IN
+}
+
+function getOffDays(arr){
+    return arr.length
+}
+
+function countDays(obj){
+    let counter = {
+        w:0,
+        f:0,
+        sa:0,
+        su:0
+    }
+    const wd = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+    obj.calendar.forEach((i)=>{
+        if(i.in && (i.weekDay===wd[0] || i.weekDay===wd[1] || i.weekDay===wd[2] || i.weekDay===wd[3])){
+            counter.w++
+        }else if(i.weekDay===wd[4] && i.in){
+            counter.f++
+        }else if(i.weekDay===wd[5] && i.in){
+            counter.sa++
+        }else if(i.weekDay===wd[6] && i.in){
+            counter.su++
+        }
+    })
+
+    return counter
+}
+
+
+function calcEarnedFor_Month(payload){
+    const pay = payload.pay_for_day
+    const weekDaysTotal = payload.IN_weekDays * pay.weekDay
+    const fridaysTotal = payload.IN_fri * pay.friday
+    const saturdayTotal = payload.IN_sat * pay.sat
+    const sundayTotal = payload.IN_sun * pay.sun
+    const Total = weekDaysTotal + fridaysTotal + saturdayTotal + sundayTotal
+
+    return {
+        weekDaysTotal,
+        fridaysTotal,
+        saturdayTotal,
+        sundayTotal,
+        Total
+    }
+}
+
+function getNameOfWeekDay(payload,i){
+    const a =  moment(payload).date(i)
+    return moment(a).format('dddd')
+}
+
 
 function checkPercentageFrom(main,fraction){
     let percent;
@@ -37,15 +103,27 @@ function checkPercentageFrom(main,fraction){
 
     return `${fraction} is ${stPerce} of ${main}`
 }
+
 function calcPercent(basic,extraRate){
     let extra = 0 
     extra = basic / 100 * extraRate
     return basic + extra
 }
 
+function R_S(state){
+    return state.rates
+}
 
 module.exports = {
     extractDateFromString,
     returnDate,
-    getMonthName
+    getMonthName,
+    checkIN,
+    getOffDays,
+    countDays,
+    calcEarnedForDay,
+    calcEarnedFor_Month,
+    getNameOfWeekDay,
+    calcPercent,
+    R_S
 }
