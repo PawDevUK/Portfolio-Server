@@ -102,7 +102,9 @@ function countDays(obj){
 
     return counter
 }
-
+//** @function 
+/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
+*/
 function calcEarnedForDay(day){
     const days = {
         1:'weekday',
