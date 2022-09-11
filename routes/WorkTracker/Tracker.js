@@ -97,7 +97,7 @@ function calcEarnedFor_Month(payload){
 // date format month/year
 function createMonth(rota){
     const {OffDays,date} = rota;
-    const DateArg = returnDate(...date);
+    const DateArg = returnDate(date,extractDateFromString);
     const month = moment(DateArg).month();
     const year = moment(DateArg).year();
     const monthName = getMonthName(month);
