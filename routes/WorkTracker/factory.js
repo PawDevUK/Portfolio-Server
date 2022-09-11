@@ -46,4 +46,6 @@ function calcPercent(basic,extraRate){
 
 module.exports = {
     extractDateFromString,
+    returnDate,
+    getMonthName
 }
