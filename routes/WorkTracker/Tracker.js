@@ -1,54 +1,5 @@
 const moment = require('moment')
-
-function calcPercent(basic,extraRate){
-    let extra = 0 
-    extra = basic / 100 * extraRate
-    return basic + extra
-}
-
-// const evening = calcPercent(
-//     rates.basic,
-//     rates.evening
-//     )
-
-// console.log('Evening rate £'+ evening)
-// console.log('Evening rate £'+ evening)
-
-
-// console.log(
-//     {
-//         currency : 'gbp',
-//         basic : 14.98,
-//         nights :calcPercent(rates.basic,rates.nights),
-//         weekends: calcPercent(rates.basic,rates.weekends),
-//         overtime: calcPercent(rates.basic,rates.overtime)
-//     }
-// )
-
-// function checkPercentageFrom(main,fraction){
-//     let percent;
-//     let stPerce;
-
-//     let mainDivided = main/100
-
-//     percent = fraction / mainDivided
-
-//     stPerce = percent.toString().slice(0,4)
-
-//     return `${fraction} is ${stPerce} of ${main}`
-// }
-
-// let retirementPay = checkPercentageFrom(3394,141)
-
-
-
-function extractDateFromString(str){
-    let date=[];
-    date.push(parseInt(str.slice(0,2)))
-    date.push(parseInt(str.slice(3,str.length)))
-
-    return date
-}
+const extractDateFromString = require('./factory').extractDateFromString
 
 function returnDate(...args){
     let payload = [];
@@ -92,12 +43,21 @@ function getOffDays(arr){
 function countDays(obj){
     let counter = {
         w:0,
+        f:0,
         sa:0,
         su:0
     }
-
+    const wd = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
     obj.calendar.forEach((i)=>{
-
+        if(i.in && (i.weekDay===wd[0] || i.weekDay===wd[1] || i.weekDay===wd[2] || i.weekDay===wd[3])){
+            counter.w++
+        }else if(i.weekDay===wd[4] && i.in){
+            counter.f++
+        }else if(i.weekDay===wd[5] && i.in){
+            counter.sa++
+        }else if(i.weekDay===wd[6] && i.in){
+            counter.su++
+        }
     })
 
     return counter
@@ -133,6 +93,24 @@ function calcEarnedForDay(day){
     return payload
 }
 
+
+function calcEarnedFor_Month(payload){
+    const pay = payload.pay_for_day
+    const weekDaysTotal = payload.IN_weekDays * pay.weekDay
+    const fridaysTotal = payload.IN_fri * pay.friday
+    const saturdayTotal = payload.IN_sat * pay.sat
+    const sundayTotal = payload.IN_sun * pay.sun
+    const Total = weekDaysTotal + fridaysTotal + saturdayTotal + sundayTotal
+
+    return {
+        weekDaysTotal,
+        fridaysTotal,
+        saturdayTotal,
+        sundayTotal,
+        Total
+    }
+}
+
 // date format month/year
 function createMonth(rota){
     const {OffDays,date} = rota;
@@ -152,14 +130,9 @@ function createMonth(rota){
         OFF_Days,
         IN_Days,
         IN_weekDays:null,
+        IN_fri:null,
         IN_sat:null,
         IN_sun:null,
-        pay_for_day:{
-            weekDay:calcEarnedForDay('weekday'),
-            friday:calcEarnedForDay('friday'),
-            sat:calcEarnedForDay('sat'),
-            sun:calcEarnedForDay('sun')
-        },
         rates:{
                 currency :'GBP',
                 basic:16.75,
@@ -176,6 +149,13 @@ function createMonth(rota){
                     rate:25.12
                 }
             },
+        pay_for_day:{
+                weekDay:calcEarnedForDay('weekday'),
+                friday:calcEarnedForDay('friday'),
+                sat:calcEarnedForDay('sat'),
+                sun:calcEarnedForDay('sun')
+            },
+        basic_salary:{},
         calendar:[]
     };
     
@@ -187,11 +167,15 @@ function createMonth(rota){
         })
     }
 
-    const {w,sa,su} = countDays(calendar)
+    const {w,f,sa,su} = countDays(calendar)
     calendar.IN_weekDays = w
+    calendar.IN_fri = f
     calendar.IN_sat = sa
     calendar.IN_sun = su
+
+    calendar.basic_salary = calcEarnedFor_Month(calendar)
     
+    //returns calendar object with calculated values
     return calendar
 }
 
