@@ -38,23 +38,18 @@ function createMonth(rota){
                 basic:16.75,
                 nights:{
                     percent:25,
-                    rate:20.93
+                    rate:null
                 },
                 weekends:{
                     percent:33,
-                    rate:22.27
+                    rate:null
                 },
                 overtime:{
                     percent:50,
-                    rate:25.12
+                    rate:null
                 }
             },
-        pay_for_day:{
-                weekDay:calcEarnedForDay('weekday'),
-                friday:calcEarnedForDay('friday'),
-                sat:calcEarnedForDay('sat'),
-                sun:calcEarnedForDay('sun')
-            },
+        pay_for_day:{},
         basic_salary:{},
         calendar:[]
     };
@@ -73,6 +68,7 @@ function createMonth(rota){
     calendar.IN_sat = sa
     calendar.IN_sun = su
 
+    calendar.pay_for_day = calcEarnedForDay()
     calendar.basic_salary = calcEarnedFor_Month(calendar)
     
     //returns calendar object with calculated values

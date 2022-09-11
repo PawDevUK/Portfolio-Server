@@ -67,6 +67,40 @@ function countDays(obj){
     return counter
 }
 
+//** @function 
+/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
+*/
+function calcEarnedForDay(calc){
+
+    let payload = {}
+
+    function weekDay(){
+        const dayH = 5 * 16.75;
+        const nightH = 4.25 * 20.93;
+        return dayH + nightH
+    }
+    function friday(){
+        const dayH = 5 * 16.75;
+        const nightH = 2 * 20.93;
+        const weekendH = 2.25 * 22.27;
+        return dayH + nightH + weekendH 
+    }
+    function sat(){
+        return 9.25 * 22.27;
+    }
+    function sun(){
+        const weekendH = 7 * 22.27;
+        const nightH = 2.25 * 20.93;
+        return weekendH + nightH
+    }
+
+    payload['weekDay'] = weekDay()
+    payload['friday'] = friday()
+    payload['sat'] = sat()
+    payload['sun'] = sun()
+
+    return payload
+}
 
 function calcEarnedFor_Month(payload){
     const pay = payload.pay_for_day
