@@ -68,7 +68,7 @@ function createMonth(rota){
     calendar.IN_sat = sa
     calendar.IN_sun = su
 
-    calendar.pay_for_day = calcEarnedForDay()
+    calendar.pay_for_day = calcEarnedForDay(calendar.rates,calcPercent)
     calendar.basic_salary = calcEarnedFor_Month(calendar)
     
     //returns calendar object with calculated values

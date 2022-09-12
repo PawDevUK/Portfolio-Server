@@ -70,27 +70,32 @@ function countDays(obj){
 //** @function 
 /** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
 */
-function calcEarnedForDay(calc){
+function calcEarnedForDay(rates,calc){
+    const {
+        basic,
+        nights,
+        weekends
+    } = rates
 
-    let payload = {}
+    let payload = {};
 
     function weekDay(){
-        const dayH = 5 * 16.75;
-        const nightH = 4.25 * 20.93;
+        const dayH = 5 * basic;
+        const nightH = 4.25 * calc(basic,nights.percent);
         return dayH + nightH
     }
     function friday(){
-        const dayH = 5 * 16.75;
-        const nightH = 2 * 20.93;
-        const weekendH = 2.25 * 22.27;
+        const dayH = 5 * basic;
+        const nightH = 2 * calc(basic,nights.percent);
+        const weekendH = 2.25 * calc(basic,weekends.percent);
         return dayH + nightH + weekendH 
     }
     function sat(){
-        return 9.25 * 22.27;
+        return 9.25 * calc(basic,weekends.percent);
     }
     function sun(){
-        const weekendH = 7 * 22.27;
-        const nightH = 2.25 * 20.93;
+        const weekendH = 7 * calc(basic,weekends.percent);
+        const nightH = 2.25 * calc(basic,nights.percent)
         return weekendH + nightH
     }
 
