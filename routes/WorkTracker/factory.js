@@ -27,12 +27,19 @@ function getMonthName(m){
     return  moment().month(m).format('MMMM')
 }
 
-function checkIN(arr,day){
+function checkIN(arr,day,weekDay){
     let IN = null
-    if(arr.length > 1){
+    if(arr.length >= 5){
         IN = true;
         arr.forEach((i)=>{
             if(i===day){
+                IN = false
+            }
+        })
+    }else if(arr.length === 2){
+        IN = true;
+        arr.forEach((i)=>{
+            if(i===weekDay){
                 IN = false
             }
         })
