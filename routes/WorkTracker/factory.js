@@ -149,10 +149,6 @@ function calcPercent(basic,extraRate){
     return basic + extra
 }
 
-function R_S(state){
-    return state.rates
-}
-
 module.exports = {
     extractDateFromString,
     returnDate,
@@ -164,5 +160,4 @@ module.exports = {
     calcEarnedFor_Month,
     getNameOfWeekDay,
     calcPercent,
-    R_S
 }

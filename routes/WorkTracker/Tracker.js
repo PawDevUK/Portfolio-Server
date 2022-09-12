@@ -7,7 +7,6 @@ const calcPercent = require('./factory').calcPercent
 const returnDate = require('./factory').returnDate
 const getOffDays = require('./factory').getOffDays
 const countDays = require('./factory').countDays
-const R_S = require('./factory').R_S
 const checkIN = require('./factory').checkIN
 const moment = require('moment')
 
