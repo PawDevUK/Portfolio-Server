@@ -108,7 +108,7 @@ function calcEarnedForDay(rates,calc){
 }
 
 function calcEarnedFor_Month(payload){
-    const pay = payload.pay_for_day
+    const pay = payload.day_pay
     const weekDaysTotal = payload.IN_weekDays * pay.weekDay
     const fridaysTotal = payload.IN_fri * pay.friday
     const saturdayTotal = payload.IN_sat * pay.sat
