@@ -149,6 +149,20 @@ function calcPercent(basic,extraRate){
     return basic + extra
 }
 
+function createCalendarForYear(rota,createMonth){
+
+    // get rota for all year
+    // loop over year rota
+    // create each month 
+    // push created each calendar month to year array
+    
+    const year = []
+
+    rota
+
+    return year
+}
+
 module.exports = {
     extractDateFromString,
     returnDate,
