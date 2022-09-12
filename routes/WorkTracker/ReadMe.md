@@ -1,5 +1,7 @@
 # ToDo
 
+- [ ] Fix problem with returning [Object] from nested objects
+- [ ] Fix days counter. At the moment it counts array length and not off day for same, reaped off days.
 - [ ] Add 12 months rota
 - [ ] Remove long float numbers
 - [ ] Find pay day
