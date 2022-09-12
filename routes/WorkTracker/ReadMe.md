@@ -1,6 +1,8 @@
-### ToDo
-- [x] Add 12 months rota
+# ToDo
+
+- [ ] Add 12 months rota
 - [ ] Remove long float numbers
 - [ ] Find pay day
 - [ ] Find cut off days
-- [ ] Check pay for set same, reaped off days e.g Monday, Tuesday.
+- [x] Check pay for the same, reaped off days e.g Monday, Tuesday.
+- [x] Check pay for the same, reaped off days in all possible combinations
