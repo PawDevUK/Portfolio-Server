@@ -2,6 +2,7 @@ const extractDateFromString = require('./factory').extractDateFromString
 const calcEarnedFor_Month = require('./factory').calcEarnedFor_Month
 const calcEarnedForDay = require('./factory').calcEarnedForDay
 const getNameOfWeekDay = require('./factory').getNameOfWeekDay
+const getCombinations = require('./factory').getCombinations
 const getMonthName = require('./factory').getMonthName
 const calcPercent = require('./factory').calcPercent
 const returnDate = require('./factory').returnDate

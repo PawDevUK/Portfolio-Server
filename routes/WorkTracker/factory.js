@@ -169,6 +169,42 @@ function createCalendarForYear(rota,createMonth){
 
     return year
 }
+function getCombinations(createMonth){
+    let combination=[
+        ['Monday','Tuesday'],
+        ['Monday','Wednesday'],
+        ['Monday','Thursday'],
+        ['Monday','Fridays'],
+        ['Monday','Saturday'],
+        ['Monday','Sunday'],
+        ['Tuesday','Wednesday'],
+        ['Tuesday','Thursday'],
+        ['Tuesday','Friday'],
+        ['Tuesday','Saturday'],
+        ['Tuesday','Sunday'],
+        ['Wednesday','Thursday'],
+        ['Wednesday','Friday'],
+        ['Wednesday','Saturday'],
+        ['Wednesday','Sunday'],
+        ['Thursday','Friday'],
+        ['Thursday','Saturday'],
+        ['Thursday','Sunday'],
+        ['Friday','Saturday'],
+        ['Friday','Sunday'],
+        ['Saturday','Sunday'],
+]
+    let result
+
+    combination.forEach((i)=>{
+        const rota = {
+            date:[09,2022],
+            OffDays:i
+        }
+       result = createMonth(rota)
+    })
+    console.log(typeof result);
+    return result
+}
 
 module.exports = {
     extractDateFromString,
@@ -181,4 +217,5 @@ module.exports = {
     calcEarnedFor_Month,
     getNameOfWeekDay,
     calcPercent,
+    getCombinations
 }
