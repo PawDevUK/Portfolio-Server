@@ -1,3 +1,7 @@
+const fullYearRota = {
+    January: [],
+    September:[3, 6, 7, 13, 14, 20, 21, 27, 28]
+};
 const weekCombinations = [
     ['Monday','Tuesday'],
     ['Monday','Wednesday'],
@@ -21,3 +25,7 @@ const weekCombinations = [
     ['Friday','Sunday'],
     ['Saturday','Sunday'],
 ]
+
+module.exports = {
+    weekCombinations
+}
