@@ -1,4 +1,5 @@
 const weekCombinations = require('./store').weekCombinations;
+const moment = require('moment');
 const fs = require('fs');
 
 function extractDateFromString(str){
