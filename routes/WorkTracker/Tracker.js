@@ -1,15 +1,4 @@
-const extractDateFromString = require('./factory').extractDateFromString
-const calcEarnedFor_Month = require('./factory').calcEarnedFor_Month
-const calcEarnedForDay = require('./factory').calcEarnedForDay
-const getNameOfWeekDay = require('./factory').getNameOfWeekDay
-const getCombinations = require('./factory').getCombinations
-const getMonthName = require('./factory').getMonthName
-const calcPercent = require('./factory').calcPercent
-const returnDate = require('./factory').returnDate
-const getOffDays = require('./factory').getOffDays
-const countDays = require('./factory').countDays
-const checkIN = require('./factory').checkIN
-const moment = require('moment')
+const writeToResults = require('./factory').writeToResults;
 
 // date format month/year
 function createMonth(rota){
@@ -81,5 +70,5 @@ const rota = {
     OffDays:[3,6,7,13,14,20,21,27,28]
 }
 
-const calendar = createMonth(rota)
+writeToResults(calendar)
 console.log(calendar);

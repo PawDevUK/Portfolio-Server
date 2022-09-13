@@ -205,6 +205,19 @@ function getCombinations(createMonth){
     console.log(typeof result);
     return result
 }
+//** @function 
+/** @name writeToResults
+/function to make full combination of days off more clear to read by writing it to 'result.js'
+*/
+function writeToResults(payload){
+    const res = JSON.stringify(payload)
+    fs.writeFile('./results.js', res, err => {
+            if (err) {
+            console.error(err);
+                }
+        }
+    )
+}
 
 module.exports = {
     extractDateFromString,
@@ -217,5 +230,5 @@ module.exports = {
     calcEarnedFor_Month,
     getNameOfWeekDay,
     calcPercent,
-    getCombinations
+    writeToResults
 }
