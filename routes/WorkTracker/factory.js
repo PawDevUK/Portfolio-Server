@@ -3,7 +3,7 @@ const moment = require('moment');
 const fs = require('fs');
 
 function extractDateFromString(str){
-    let date=[];
+    let date = [];
     date.push(parseInt(str.slice(0,2)))
     date.push(parseInt(str.slice(3,str.length)))
 
@@ -26,7 +26,7 @@ function returnDate(date,extractDateFromString){
 }
 
 function getMonthName(m){
-    return  moment().month(m).format('MMMM')
+    return  moment().month(m).format('MMMM');
 }
 
 function checkIN(arr,day,weekDay){
