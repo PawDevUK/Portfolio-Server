@@ -1,4 +1,5 @@
-const moment = require('moment')
+const weekCombinations = require('./store').weekCombinations;
+const fs = require('fs');
 
 function extractDateFromString(str){
     let date=[];
@@ -208,5 +209,6 @@ module.exports = {
     calcEarnedFor_Month,
     getNameOfWeekDay,
     calcPercent,
+    getCombinations,
     writeToResults
 }
