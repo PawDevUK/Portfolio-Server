@@ -23,66 +23,74 @@ function createMonth(rota){
     const monthName = getMonthName(month);
     const days = moment().daysInMonth(month);
     const OFF_Days = getOffDays(OffDays);
-    const IN_Days = days - OFF_Days ;
+    const IN_Days = days - OFF_Days;
 
-    let calendar = { 
-        name:monthName,
-        month:month+1,
+    let calendar = {
+        name: monthName,
+        fixedWorkingDays:null,
+        month: month + 1,
         year,
-        numberOfDaysInCalMonth:days,
+        numberOfDaysInCalMonth: days,
         OFF_Days,
         IN_Days,
-        IN_weekDays:null,
-        IN_fri:null,
-        IN_sat:null,
-        IN_sun:null,
-        rates:{
-                currency :'GBP',
-                basic:16.75,
-                nights:{
-                    percent:25,
-                    rate:null
-                },
-                weekends:{
-                    percent:33,
-                    rate:null
-                },
-                overtime:{
-                    percent:50,
-                    rate:null
-                }
+        IN_weekDays: null,
+        IN_fri: null,
+        IN_sat: null,
+        IN_sun: null,
+        rates: {
+            currency: 'GBP',
+            basic: 16.75,
+            nights: {
+                percent: 25,
+                rate: null,
             },
-        day_pay:{},
-        basic_salary:{},
-        calendar:[]
+            weekends: {
+                percent: 33,
+                rate: null,
+            },
+            overtime: {
+                percent: 50,
+                rate: null,
+            },
+        },
+        day_pay: {},
+        basic_salary: {},
+        calendar: [],
     };
-    
-    for( let i = 1 ; i <= days; i++){
-        let weekDay = getNameOfWeekDay(DateArg,i)
+
+    for (let i = 1; i <= days; i++) {
+        let weekDay = getNameOfWeekDay(DateArg, i);
         calendar.calendar.push({
-            day:i,
-            in:checkIN(OffDays, i, weekDay),
+            day: i,
+            in: checkIN(OffDays, i, weekDay),
             weekDay,
-        })
+        });
     }
 
-    const {w,f,sa,su} = countDays(calendar)
-    calendar.IN_weekDays = w
-    calendar.IN_fri = f
-    calendar.IN_sat = sa
-    calendar.IN_sun = su
+    const { w, f, sa, su } = countDays(calendar);
+    calendar.IN_weekDays = w;
+    calendar.IN_fri = f;
+    calendar.IN_sat = sa;
+    calendar.IN_sun = su;
 
-    calendar.day_pay = calcEarnedForDay(calendar.rates,calcPercent)
-    calendar.basic_salary = calcEarnedFor_Month(calendar)
-    
+    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent);
+    calendar.basic_salary = calcEarnedFor_Month(calendar);
+
     //returns calendar object with calculated values
-    return calendar
+    return calendar;
 }
 
 const rota = {
-    date:[09,2022],
-    OffDays:[3,6,7,13,14,20,21,27,28]
-}
+    date: [09, 2022],
+    OffDays: [3, 6, 7, 13, 14, 20, 21, 27, 28],
+};
+const rota2 = {
+    date: [09, 2022],
+    OffDays: ['Monday', 'Tuesday'],
+};
 
+
+// const calendar = createMonth(rota2);
+const calendar = getCombinations(weekCombinations, createMonth);
 writeToResults(calendar)
 console.log(calendar);
