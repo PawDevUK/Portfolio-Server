@@ -127,19 +127,18 @@ function calcEarnedForDay(rates,calc){
 
 function calcEarnedFor_Month(payload){
     let pay = payload.day_pay
-    console.log(payload);
-    const weekDaysTotal = payload.IN_weekDays * pay.weekDay
-    const fridaysTotal = payload.IN_fri * pay.friday
-    const saturdayTotal = payload.IN_sat * pay.sat
-    const sundayTotal = payload.IN_sun * pay.sun
-    const Total = weekDaysTotal + fridaysTotal + saturdayTotal + sundayTotal
+    const weekDaysTotal = payload.IN_weekDays * pay.weekDay;
+    const fridaysTotal = payload.IN_fri * pay.friday;
+    const saturdayTotal = payload.IN_sat * pay.sat;
+    const sundayTotal = payload.IN_sun * pay.sun;
+    const Total = fridaysTotal + sundayTotal + weekDaysTotal + saturdayTotal;
 
-    pay = payload.day_pay.noReduced
-    const NR_weekDaysTotal = payload.IN_weekDays * pay.weekDay
-    const NR_fridaysTotal = payload.IN_fri * pay.friday
-    const NR_saturdayTotal = payload.IN_sat * pay.sat
-    const NR_sundayTotal = payload.IN_sun * pay.sun
-    const NR_Total = NR_weekDaysTotal + NR_fridaysTotal + NR_saturdayTotal + NR_sundayTotal
+    pay = payload.day_pay.noReduced;
+    const NR_weekDaysTotal = payload.IN_weekDays * pay.weekDay;
+    const NR_fridaysTotal = payload.IN_fri * pay.friday;
+    const NR_saturdayTotal = payload.IN_sat * pay.sat;
+    const NR_sundayTotal = payload.IN_sun * pay.sun;
+    const NR_Total = NR_weekDaysTotal + NR_fridaysTotal + NR_saturdayTotal + NR_sundayTotal;
 
     return {
         weekDaysTotal,
