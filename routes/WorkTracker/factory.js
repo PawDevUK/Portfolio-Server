@@ -191,7 +191,7 @@ function getCombinations(weekCombinations, createMonth){
 */
 function writeToResults(payload){
     const res = JSON.stringify(payload)
-    fs.writeFile('./results.js', res, err => {
+    fs.writeFile('./results.json', res, err => {
             if (err) {
             console.error(err);
                 }
