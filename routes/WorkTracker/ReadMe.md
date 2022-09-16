@@ -4,6 +4,7 @@
 - [ ] Add 12 months rota
 - [ ] Find pay day
 - [ ] Find cut off days
+- [ ] Add couple of test for functions in the factory directory
 - [x] Fix the problem with returning [Object] from nested objects
 - [x] Remove long float numbers
 - [x] Check pay for the same, reaped off days e.g Monday, Tuesday.
