@@ -1,0 +1,73 @@
+{
+    "name": "September",
+    "fixedWorkingDays": null,
+    "month": 9,
+    "year": 2022,
+    "numberOfDaysInCalMonth": 30,
+    "OFF_Days": 2,
+    "IN_Days": 28,
+    "IN_weekDays": 9,
+    "IN_fri": 5,
+    "IN_sat": 4,
+    "IN_sun": 4,
+    "rates": {
+        "currency": "GBP",
+        "basic": 16.75,
+        "nights": { "percent": 25, "rate": null },
+        "weekends": { "percent": 33, "rate": null },
+        "overtime": { "percent": 50, "rate": null }
+    },
+    "day_pay": {
+        "weekDay": 172.73,
+        "friday": 175.75,
+        "sat": 206.07,
+        "sun": 203.05,
+        "noReduced": { "weekDay": 172.734375, "friday": 175.749375, "sat": 206.066875, "sun": 203.051875 }
+    },
+    "basic_salary": {
+        "weekDaysTotal": 1554.57,
+        "fridaysTotal": 878.75,
+        "saturdayTotal": 824.28,
+        "sundayTotal": 812.2,
+        "Total": 4069.7999999999993,
+        "noReduced": {
+            "NR_weekDaysTotal": 1554.609375,
+            "NR_fridaysTotal": 878.7468749999999,
+            "NR_saturdayTotal": 824.2675,
+            "NR_sundayTotal": 812.2075,
+            "NR_Total": 4069.8312499999997
+        }
+    },
+    "calendar": [
+        { "day": 1, "in": true, "weekDay": "Thursday" },
+        { "day": 2, "in": true, "weekDay": "Friday" },
+        { "day": 3, "in": true, "weekDay": "Saturday" },
+        { "day": 4, "in": true, "weekDay": "Sunday" },
+        { "day": 5, "in": false, "weekDay": "Monday" },
+        { "day": 6, "in": false, "weekDay": "Tuesday" },
+        { "day": 7, "in": true, "weekDay": "Wednesday" },
+        { "day": 8, "in": true, "weekDay": "Thursday" },
+        { "day": 9, "in": true, "weekDay": "Friday" },
+        { "day": 10, "in": true, "weekDay": "Saturday" },
+        { "day": 11, "in": true, "weekDay": "Sunday" },
+        { "day": 12, "in": false, "weekDay": "Monday" },
+        { "day": 13, "in": false, "weekDay": "Tuesday" },
+        { "day": 14, "in": true, "weekDay": "Wednesday" },
+        { "day": 15, "in": true, "weekDay": "Thursday" },
+        { "day": 16, "in": true, "weekDay": "Friday" },
+        { "day": 17, "in": true, "weekDay": "Saturday" },
+        { "day": 18, "in": true, "weekDay": "Sunday" },
+        { "day": 19, "in": false, "weekDay": "Monday" },
+        { "day": 20, "in": false, "weekDay": "Tuesday" },
+        { "day": 21, "in": true, "weekDay": "Wednesday" },
+        { "day": 22, "in": true, "weekDay": "Thursday" },
+        { "day": 23, "in": true, "weekDay": "Friday" },
+        { "day": 24, "in": true, "weekDay": "Saturday" },
+        { "day": 25, "in": true, "weekDay": "Sunday" },
+        { "day": 26, "in": false, "weekDay": "Monday" },
+        { "day": 27, "in": false, "weekDay": "Tuesday" },
+        { "day": 28, "in": true, "weekDay": "Wednesday" },
+        { "day": 29, "in": true, "weekDay": "Thursday" },
+        { "day": 30, "in": true, "weekDay": "Friday" }
+    ]
+}
