@@ -49,11 +49,16 @@ function checkIN(arr,day,weekDay){
    return IN
 }
 
-function getOffDays(calendar){
-    let num=0;
+function getIn_OffDays(calendar){
+    let num = {
+        in:0,
+        off:0
+    };
     calendar.calendar.forEach((obj)=>{
         if(!obj.in){
-            num++
+            num.off++
+        }else if(obj.in){
+            num.in ++
         }
     })
     return num
@@ -219,7 +224,7 @@ module.exports = {
     returnDate,
     getMonthName,
     checkIN,
-    getOffDays,
+    getIn_OffDays,
     countDays,
     calcEarnedForDay,
     calcEarnedFor_Month,

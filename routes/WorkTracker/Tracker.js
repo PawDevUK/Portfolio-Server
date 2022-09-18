@@ -4,15 +4,15 @@ const calcEarnedForDay = require('./factory').calcEarnedForDay;
 const getNameOfWeekDay = require('./factory').getNameOfWeekDay;
 const getCombinations = require('./factory').getCombinations;
 const writeToResults = require('./factory').writeToResults;
+const getIn_OffDays = require('./factory').getIn_OffDays;
 const getMonthName = require('./factory').getMonthName;
 const calcPercent = require('./factory').calcPercent;
 const returnDate = require('./factory').returnDate;
-const getOffDays = require('./factory').getOffDays;
 const countDays = require('./factory').countDays;
 const checkIN = require('./factory').checkIN;
 const moment = require('moment');
 
-const weekCombinations = require('./store').weekCombinations
+const weekCombinations = require('./store').weekCombinations;
 
 // date format month/year
 function createMonth(rota){
@@ -63,10 +63,10 @@ function createMonth(rota){
             in: checkIN(OffDays, i, weekDay),
             weekDay,
         });
-    }
-
-    calendar.OFF_Days = getOffDays(calendar)
-    calendar.IN_Days = days - calendar.OFF_Days
+    };
+    const d = getIn_OffDays(calendar);
+    calendar.OFF_Days = d.off;
+    calendar.IN_Days = d.in;
 
     const { w, f, sa, su } = countDays(calendar);
     calendar.IN_weekDays = w;
