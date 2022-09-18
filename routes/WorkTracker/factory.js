@@ -49,8 +49,14 @@ function checkIN(arr,day,weekDay){
    return IN
 }
 
-function getOffDays(arr){
-    return arr.length
+function getOffDays(calendar){
+    let num=0;
+    calendar.calendar.forEach((obj)=>{
+        if(!obj.in){
+            num++
+        }
+    })
+    return num
 }
 
 function countDays(obj){
