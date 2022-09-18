@@ -59,11 +59,16 @@ function createMonth(rota){
     for (let i = 1; i <= days; i++) {
         let weekDay = getNameOfWeekDay(DateArg, i);
         calendar.calendar.push({
-            day: i,
-            in: checkIN(OffDays, i, weekDay),
             weekDay,
+            day: i,
+            start:null,
+            finish:null,
+            in: checkIN(OffDays, i, weekDay),
+            payDay:false,
+            cutOffDay:false,
         });
     };
+
     const d = getIn_OffDays(calendar);
     calendar.OFF_Days = d.off;
     calendar.IN_Days = d.in;
