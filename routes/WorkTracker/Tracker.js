@@ -22,8 +22,6 @@ function createMonth(rota){
     const year = moment(DateArg).year();
     const monthName = getMonthName(month);
     const days = moment().daysInMonth(month);
-    const OFF_Days = getOffDays(OffDays);
-    const IN_Days = days - OFF_Days;
 
     let calendar = {
         name: monthName,
@@ -31,8 +29,8 @@ function createMonth(rota){
         month: month + 1,
         year,
         numberOfDaysInCalMonth: days,
-        OFF_Days,
-        IN_Days,
+        OFF_Days:null,
+        IN_Days:null,
         IN_weekDays: null,
         IN_fri: null,
         IN_sat: null,
@@ -67,6 +65,9 @@ function createMonth(rota){
         });
     }
 
+    calendar.OFF_Days = getOffDays(calendar)
+    calendar.IN_Days = days - calendar.OFF_Days
+
     const { w, f, sa, su } = countDays(calendar);
     calendar.IN_weekDays = w;
     calendar.IN_fri = f;
@@ -90,7 +91,7 @@ const rota2 = {
 };
 
 
-// const calendar = createMonth(rota2);
-const calendar = getCombinations(weekCombinations, createMonth);
+const calendar = createMonth(rota2);
+// const calendar = getCombinations(weekCombinations, createMonth);
 writeToResults(calendar)
 console.log(calendar);
