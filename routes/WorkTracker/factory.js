@@ -205,6 +205,17 @@ function getCombinations(weekCombinations, createMonth){
 
     return result
 }
+function findPayDay(payDay){
+    // find dates every 4 weeks
+    // find dates every 4 weeks from the specific date
+    // create list of dates for all year
+    // all year is array with 12 dates. 
+    // What format of the date ??? Format should be compatible with calendar made by createMonth()
+    let arr = []
+
+
+    return arr
+}
 //** @function 
 /** @name writeToResults
 /function to make full combination of days off more clear to read by writing it to 'result.js'
