@@ -214,8 +214,6 @@ function createYearCalendar(rota, getMonthNumber, createMonth){
     return yearCalendar
 };
 
-    return year
-}
 function getCombinations(weekCombinations, createMonth){
     
     let result = []
@@ -291,6 +289,7 @@ module.exports = {
     getCombinations,
     writeToResults,
     findPayDays,
+    findCutOfDays,
     getMonthNumber,
     createYearCalendar
 }
