@@ -13,6 +13,7 @@ const findPayDays = require('./factory').findPayDays;
 const countDays = require('./factory').countDays;
 const checkIN = require('./factory').checkIN;
 const moment = require('moment');
+const { fullYearRota } = require('./store');
 
 const weekCombinations = require('./store').weekCombinations;
 
