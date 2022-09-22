@@ -181,16 +181,38 @@ function calcPercent(basic,extraRate){
     return basic + extra
 }
 
-function createCalendarForYear(rota,createMonth){
+function createYearCalendar(rota, getMonthNumber, createMonth){
+    let yearCalendar = [ ]
+    const year22 = 2022;
+    const year23 = 2023;
+    let date = [year22];
+    let OffDays = [];
+    for( const prop in rota){
+        let monthN = getMonthNumber(prop)
 
-    // get rota for all year
-    // loop over year rota
-    // create each month 
-    // push created each calendar month to year array
-    
-    const year = []
+        if(monthN <= 3 ){
+            date.pop();
+            date.push(year23);
+        }
 
-    rota
+        if(date.length === 1){
+            date.unshift(monthN)
+        }else if(date.length === 2){
+            date.shift()
+            date.unshift(getMonthNumber(prop))
+        }
+        OffDays = rota[prop]
+
+        yearCalendar.push(
+            createMonth({
+                date,
+                OffDays
+            })
+        )
+        }
+
+    return yearCalendar
+};
 
     return year
 }
@@ -270,4 +292,5 @@ module.exports = {
     writeToResults,
     findPayDays,
     getMonthNumber,
+    createYearCalendar
 }
