@@ -8,6 +8,7 @@ const getIn_OffDays = require('./factory').getIn_OffDays;
 const getMonthName = require('./factory').getMonthName;
 const calcPercent = require('./factory').calcPercent;
 const returnDate = require('./factory').returnDate;
+const findPayDay = require('./factory').findPayDay;
 const countDays = require('./factory').countDays;
 const checkIN = require('./factory').checkIN;
 const moment = require('moment');
@@ -96,7 +97,11 @@ const rota2 = {
 };
 
 
-const calendar = createMonth(rota2);
+// const calendar = createMonth(rota2);
 // const calendar = getCombinations(weekCombinations, createMonth);
-writeToResults(calendar)
-console.log(calendar);
+// writeToResults(calendar)
+// console.log(calendar);
+const payDays = findPayDay()
+
+console.log(payDays);
+
