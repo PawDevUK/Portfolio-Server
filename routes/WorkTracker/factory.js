@@ -204,18 +204,32 @@ function getCombinations(weekCombinations, createMonth){
     })
 
     return result
-}
+};
+
 function findPayDay(payDay){
-    // find dates every 4 weeks
-    // find dates every 4 weeks from the specific date
+
+    const date = '2022-01-01'
+
+    function month(date){
+        return date.moment(date, "YYYY-MM-DD").add(4,'w')
+    } 
+
+    // find dates every 4 weeks, starting January
+    // find dates every 4 weeks from the specified date not necessarily in Jan
     // create list of dates for all year
     // all year is array with 12 dates. 
     // What format of the date ??? Format should be compatible with calendar made by createMonth()
+    // Does findPayDay can use comparison with calendar object e.g day NO
+    // findPayDay should use moment to calculate 4 weeks intervals and return arr with 12 dates.
     let arr = []
 
-
+    for(let i = 0; i <= 11;i++){
+            arr.push(moment(arr[i], "YYYY-MM-DD").add(4,'w'))
+        }
+    arr.push(moment(arr[i-1], "YYYY-MM-DD").add(4,'w'))
     return arr
-}
+
+    }
 //** @function 
 /** @name writeToResults
 /function to make full combination of days off more clear to read by writing it to 'result.js'
@@ -242,5 +256,6 @@ module.exports = {
     getNameOfWeekDay,
     calcPercent,
     getCombinations,
-    writeToResults
+    writeToResults,
+    findPayDay
 }
