@@ -225,15 +225,19 @@ function findPayDays(payDay){
         return 'No Date Specified';
     }
 };
+
+function findCutOfDays(payDays){
     let arr = []
 
-    for(let i = 0; i <= 11;i++){
-            arr.push(moment(arr[i], "YYYY-MM-DD").add(4,'w'))
-        }
-    arr.push(moment(arr[i-1], "YYYY-MM-DD").add(4,'w'))
-    return arr
+    payDays.forEach((element,i)=>{
+        arr.push({
+            payDay:element,
+            cutOffDay:moment(element,'YYYY-MM-DD').subtract(8,'d')
+        });
+    })
 
-    }
+    return arr
+}
 //** @function 
 /** @name writeToResults
 /function to make full combination of days off more clear to read by writing it to 'result.js'
@@ -262,4 +266,5 @@ module.exports = {
     getCombinations,
     writeToResults,
     findPayDays,
+    findCutOfDays
 }

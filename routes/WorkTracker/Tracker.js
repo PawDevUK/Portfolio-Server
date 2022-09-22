@@ -5,6 +5,7 @@ const getNameOfWeekDay = require('./factory').getNameOfWeekDay;
 const getCombinations = require('./factory').getCombinations;
 const writeToResults = require('./factory').writeToResults;
 const getIn_OffDays = require('./factory').getIn_OffDays;
+const findCutOfDays = require('./factory').findCutOfDays
 const getMonthName = require('./factory').getMonthName;
 const calcPercent = require('./factory').calcPercent;
 const returnDate = require('./factory').returnDate;
@@ -101,7 +102,6 @@ const rota2 = {
 // const calendar = getCombinations(weekCombinations, createMonth);
 // writeToResults(calendar)
 // console.log(calendar);
-const payDays = findPayDay()
+const payDays = findCutOfDays(findPayDays('2022-01-07'))
 
 console.log(payDays);
-
