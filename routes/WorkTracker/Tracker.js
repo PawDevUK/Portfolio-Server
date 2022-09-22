@@ -101,10 +101,7 @@ const rota2 = {
 };
 
 
-// const calendar = createMonth(rota2);
-// const calendar = getCombinations(weekCombinations, createMonth);
-// writeToResults(calendar)
-// console.log(calendar);
-const payDays = findCutOfDays(findPayDays('2022-01-07'))
+const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth)
 
-console.log(payDays);
+// const payDays = findCutOfDays(findPayDays('2022-01-07'))
+writeToResults(yearRota)
