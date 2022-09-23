@@ -97,7 +97,7 @@ function countDays(obj){
 //** @function 
 /** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
 */
-function calcEarnedForDay(rates,calc){
+function calcEarnedForDay(rates,calc,reduceFloat){
     const {
         basic,
         nights,
