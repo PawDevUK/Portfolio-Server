@@ -31,7 +31,7 @@ function createMonth(rota){
 
     let calendar = {
         name: monthName,
-        fixedWorkingDays:null,
+        fixedWorkingDays:null, // it is used only if working rota has same days in the week e.g 'Wednesday','Saturday'
         month: month + 1,
         year,
         numberOfDaysInCalMonth: days,
