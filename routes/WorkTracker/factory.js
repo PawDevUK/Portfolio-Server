@@ -129,12 +129,6 @@ function calcEarnedForDay(rates,calc){
     payload['friday'] = reduceFloat(friday())
     payload['sat'] = reduceFloat(sat())
     payload['sun'] = reduceFloat(sun())
-    payload['noReduced'] = {
-        weekDay: weekDay(),
-        friday: friday(),
-        sat:sat(),
-        sun:sun()
-    }
 
     return payload
 }
