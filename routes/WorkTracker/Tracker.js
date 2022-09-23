@@ -11,6 +11,7 @@ const findCutOfDays = require('./factory').findCutOfDays;
 const getMonthName = require('./factory').getMonthName;
 const findPayDays = require('./factory').findPayDays;
 const calcPercent = require('./factory').calcPercent;
+const reduceFloat = require('./factory').reduceFloat;
 const returnDate = require('./factory').returnDate;
 const countDays = require('./factory').countDays;
 const checkIN = require('./factory').checkIN;
