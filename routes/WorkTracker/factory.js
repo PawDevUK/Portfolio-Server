@@ -28,6 +28,7 @@ function returnDate(date,extractDateFromString){
 function getMonthName(m){
     return  moment().month(m).format('MMMM');
 }
+
 function getMonthNumber(name){
     return moment().month(name).format("M");
 }
