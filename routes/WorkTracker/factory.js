@@ -32,6 +32,10 @@ function getMonthNumber(name){
     return moment().month(name).format("M");
 }
 
+function reduceFloat(payload){
+    return parseFloat(payload.toFixed(2))
+}
+
 function checkIN(arr,day,weekDay){
     let IN = null
     if(arr.length >= 5){
@@ -101,10 +105,7 @@ function calcEarnedForDay(rates,calc){
     } = rates
 
     let payload = {};
-    function reduceFloat(payload){
-        return parseFloat(payload.toFixed(2))
-    }
-
+    
     function weekDay(){
         const dayH = 5 * basic;
         const nightH = 4.25 * calc(basic,nights.percent);
@@ -285,5 +286,6 @@ module.exports = {
     findPayDays,
     findCutOfDays,
     getMonthNumber,
-    createYearCalendar
+    createYearCalendar,
+    reduceFloat
 }
