@@ -134,13 +134,14 @@ function calcEarnedForDay(rates,calc){
     return payload
 }
 
-function calcEarnedFor_Month(payload){
+function calcEarnedFor_Month(payload, reduceFloat){
     let pay = payload.day_pay
-    const weekDaysTotal = payload.IN_weekDays * pay.weekDay;
-    const fridaysTotal = payload.IN_fri * pay.friday;
-    const saturdayTotal = payload.IN_sat * pay.sat;
-    const sundayTotal = payload.IN_sun * pay.sun;
-    const Total = fridaysTotal + sundayTotal + weekDaysTotal + saturdayTotal;
+    
+    const weekDaysTotal = reduceFloat(payload.IN_weekDays * pay.weekDay);
+    const fridaysTotal = reduceFloat(payload.IN_fri * pay.friday);
+    const saturdayTotal = reduceFloat(payload.IN_sat * pay.sat);
+    const sundayTotal = reduceFloat(payload.IN_sun * pay.sun);
+    const Total = reduceFloat(fridaysTotal + sundayTotal + weekDaysTotal + saturdayTotal);
 
     return {
         weekDaysTotal,
