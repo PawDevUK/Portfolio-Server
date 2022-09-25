@@ -3,6 +3,7 @@
 - [ ] Add pay day to calendar
 - [ ] Add cut off day to calendar
 - [ ] Add couple of test for functions in the factory directory.
+- [x] Add calculation for additional/extra pay
 - [x] Create full year calendar rota
 - [x] Find pay day
 - [x] Find cut off days
