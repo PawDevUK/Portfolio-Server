@@ -174,7 +174,7 @@ function checkPercentageFrom(main,fraction){
 
 function calcPercent(basic,extraRate){
     let extra = 0 
-    extra = basic / 100 * extraRate
+    extra = (basic / 100) * extraRate
     return basic + extra
 }
 
