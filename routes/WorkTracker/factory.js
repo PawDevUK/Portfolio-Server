@@ -29,6 +29,14 @@ function getMonthName(m){
     return  moment().month(m).format('MMMM');
 }
 
+function getMonthNumber(name){
+    return moment().month(name).format("M");
+}
+
+function reduceFloat(payload){
+    return parseFloat(payload.toFixed(2))
+}
+
 function checkIN(arr,day,weekDay){
     let IN = null
     if(arr.length >= 5){
@@ -90,7 +98,7 @@ function countDays(obj){
 //** @function 
 /** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
 */
-function calcEarnedForDay(rates,calc){
+function calcEarnedForDay(rates,calc,reduceFloat){
     const {
         basic,
         nights,
@@ -98,10 +106,7 @@ function calcEarnedForDay(rates,calc){
     } = rates
 
     let payload = {};
-    function reduceFloat(payload){
-        return parseFloat(payload.toFixed(2))
-    }
-
+    
     function weekDay(){
         const dayH = 5 * basic;
         const nightH = 4.25 * calc(basic,nights.percent);
@@ -126,23 +131,18 @@ function calcEarnedForDay(rates,calc){
     payload['friday'] = reduceFloat(friday())
     payload['sat'] = reduceFloat(sat())
     payload['sun'] = reduceFloat(sun())
-    payload['noReduced'] = {
-        weekDay: weekDay(),
-        friday: friday(),
-        sat:sat(),
-        sun:sun()
-    }
 
     return payload
 }
 
-function calcEarnedFor_Month(payload){
+function calcEarnedFor_Month(payload, reduceFloat){
     let pay = payload.day_pay
-    const weekDaysTotal = payload.IN_weekDays * pay.weekDay;
-    const fridaysTotal = payload.IN_fri * pay.friday;
-    const saturdayTotal = payload.IN_sat * pay.sat;
-    const sundayTotal = payload.IN_sun * pay.sun;
-    const Total = fridaysTotal + sundayTotal + weekDaysTotal + saturdayTotal;
+    
+    const weekDaysTotal = reduceFloat(payload.IN_weekDays * pay.weekDay);
+    const fridaysTotal = reduceFloat(payload.IN_fri * pay.friday);
+    const saturdayTotal = reduceFloat(payload.IN_sat * pay.sat);
+    const sundayTotal = reduceFloat(payload.IN_sun * pay.sun);
+    const Total = reduceFloat(fridaysTotal + sundayTotal + weekDaysTotal + saturdayTotal);
 
     return {
         weekDaysTotal,
@@ -178,19 +178,39 @@ function calcPercent(basic,extraRate){
     return basic + extra
 }
 
-function createCalendarForYear(rota,createMonth){
+function createYearCalendar(rota, getMonthNumber, createMonth){
+    let yearCalendar = [ ]
+    const year22 = 2022;
+    const year23 = 2023;
+    let date = [year22];
+    let OffDays = [];
+    for( const prop in rota){
+        let monthN = getMonthNumber(prop)
 
-    // get rota for all year
-    // loop over year rota
-    // create each month 
-    // push created each calendar month to year array
-    
-    const year = []
+        if(monthN <= 3 ){
+            date.pop();
+            date.push(year23);
+        }
 
-    rota
+        if(date.length === 1){
+            date.unshift(monthN)
+        }else if(date.length === 2){
+            date.shift()
+            date.unshift(getMonthNumber(prop))
+        }
+        OffDays = rota[prop]
 
-    return year
-}
+        yearCalendar.push(
+            createMonth({
+                date,
+                OffDays
+            })
+        )
+        }
+
+    return yearCalendar
+};
+
 function getCombinations(weekCombinations, createMonth){
     
     let result = []
@@ -204,15 +224,37 @@ function getCombinations(weekCombinations, createMonth){
     })
 
     return result
-}
-function findPayDay(payDay){
-    // find dates every 4 weeks
-    // find dates every 4 weeks from the specific date
+};
+
+function findPayDays(payDay){
+    // find dates every 4 weeks, starting January 
+    // find dates every 4 weeks from the specified date not necessarily in Jan
     // create list of dates for all year
     // all year is array with 12 dates. 
     // What format of the date ??? Format should be compatible with calendar made by createMonth()
+    // Does findPayDays can use comparison with calendar object e.g day NO
+    // findPayDays should use moment to calculate 4 weeks intervals and return arr with 12 dates.  
+    if(payDay){
+        let arr = [];
+        arr.push(payDay);
+        for(let i = 0; i <= 11;i++){
+            arr.push(moment(arr[i], "YYYY-MM-DD").add(4,'w'));
+        };
+        return arr;
+    }else{
+        return 'No Date Specified';
+    }
+};
+
+function findCutOfDays(payDays){
     let arr = []
 
+    payDays.forEach((element,i)=>{
+        arr.push({
+            payDay:element,
+            cutOffDay:moment(element,'YYYY-MM-DD').subtract(8,'d')
+        });
+    })
 
     return arr
 }
@@ -242,5 +284,10 @@ module.exports = {
     getNameOfWeekDay,
     calcPercent,
     getCombinations,
-    writeToResults
+    writeToResults,
+    findPayDays,
+    findCutOfDays,
+    getMonthNumber,
+    createYearCalendar,
+    reduceFloat
 }

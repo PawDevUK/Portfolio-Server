@@ -11,8 +11,8 @@ const fullYearRota = {
     January: [1,7,8,14,15,21,24,25,31],
     February:[1,7,8,14,15,19,25,26,27],
     March:[5,6,12,18,19,25,26,],
-
 };
+
 const weekCombinations = [
     ['Monday','Tuesday'],
     ['Monday','Wednesday'],

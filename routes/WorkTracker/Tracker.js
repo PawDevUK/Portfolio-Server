@@ -1,16 +1,22 @@
 const extractDateFromString = require('./factory').extractDateFromString;
 const calcEarnedFor_Month = require('./factory').calcEarnedFor_Month;
+const createYearCalendar = require('./factory').createYearCalendar
 const calcEarnedForDay = require('./factory').calcEarnedForDay;
 const getNameOfWeekDay = require('./factory').getNameOfWeekDay;
 const getCombinations = require('./factory').getCombinations;
 const writeToResults = require('./factory').writeToResults;
+const getMonthNumber = require('./factory').getMonthNumber;
 const getIn_OffDays = require('./factory').getIn_OffDays;
+const findCutOfDays = require('./factory').findCutOfDays;
 const getMonthName = require('./factory').getMonthName;
+const findPayDays = require('./factory').findPayDays;
 const calcPercent = require('./factory').calcPercent;
+const reduceFloat = require('./factory').reduceFloat;
 const returnDate = require('./factory').returnDate;
 const countDays = require('./factory').countDays;
 const checkIN = require('./factory').checkIN;
 const moment = require('moment');
+const { fullYearRota } = require('./store');
 
 const weekCombinations = require('./store').weekCombinations;
 
@@ -25,7 +31,7 @@ function createMonth(rota){
 
     let calendar = {
         name: monthName,
-        fixedWorkingDays:null,
+        fixedWorkingDays:null, // it is used only if working rota has same days in the week e.g 'Wednesday','Saturday'
         month: month + 1,
         year,
         numberOfDaysInCalMonth: days,
@@ -79,8 +85,8 @@ function createMonth(rota){
     calendar.IN_sat = sa;
     calendar.IN_sun = su;
 
-    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent);
-    calendar.basic_salary = calcEarnedFor_Month(calendar);
+    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent, reduceFloat);
+    calendar.basic_salary = calcEarnedFor_Month(calendar, reduceFloat);
 
     //returns calendar object with calculated values
     return calendar;
@@ -96,7 +102,7 @@ const rota2 = {
 };
 
 
-const calendar = createMonth(rota2);
-// const calendar = getCombinations(weekCombinations, createMonth);
-writeToResults(calendar)
-console.log(calendar);
+const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth)
+
+// const payDays = findCutOfDays(findPayDays('2022-01-07'))
+writeToResults(yearRota)
