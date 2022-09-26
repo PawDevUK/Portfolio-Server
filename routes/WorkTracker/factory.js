@@ -249,12 +249,12 @@ function findPayDays(payDay){
 function findCutOfDays(payDays){
     let arr = [];
 
-    payDays.forEach((element,i)=>{
-        arr.push({
+    if (payDays?.length >= 1) {
             payDay:element,
             cutOffDay:moment(element,'YYYY-MM-DD').subtract(8,'d')
         });
         return arr;
+    }
 
     return arr
 }
