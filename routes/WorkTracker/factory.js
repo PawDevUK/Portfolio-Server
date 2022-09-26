@@ -233,7 +233,8 @@ function findPayDays(payDay){
     // all year is array with 12 dates. 
     // What format of the date ??? Format should be compatible with calendar made by createMonth()
     // Does findPayDays can use comparison with calendar object e.g day NO
-    // findPayDays should use moment to calculate 4 weeks intervals and return arr with 12 dates.  
+    // findPayDays should use moment to calculate 4 weeks intervals and return array with 12 dates.
+
     if(payDay){
         let arr = [];
         arr.push(payDay);
