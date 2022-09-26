@@ -237,7 +237,7 @@ function findPayDays(payDay){
 
     if(payDay){
         let arr = [];
-        arr.push(payDay);
+        arr.push(moment(payDay,"YYYY-MM-DD"));
         for(let i = 0; i <= 11;i++){
             arr.push(moment(arr[i], "YYYY-MM-DD").add(4,'w'));
         };
