@@ -251,10 +251,7 @@ function findCutOfDays(payDays){
 
     if (payDays?.length >= 1) {
         payDays.forEach((element, i) => {
-            arr.push({
-                payDay: element,
-                cutOffDay: moment(element, 'YYYY-MM-DD').subtract(8, 'd'),
-            });
+            arr.push( moment(element, 'YYYY-MM-DD').subtract(8, 'd'));
         });
         return arr;
     }
