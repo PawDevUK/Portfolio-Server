@@ -242,9 +242,8 @@ function findPayDays(payDay){
             arr.push(moment(arr[i], "YYYY-MM-DD").add(4,'w'));
         };
         return arr;
-    }else{
-        return 'No Date Specified';
     }
+    throw 'No Date Specified';
 };
 
 function findCutOfDays(payDays){
