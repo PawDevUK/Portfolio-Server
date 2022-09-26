@@ -258,6 +258,8 @@ function findCutOfDays(payDays){
         });
         return arr;
     }
+    throw 'No Pay Dates selected to generate cut off dates!!!'
+}
 
     return arr
 }
