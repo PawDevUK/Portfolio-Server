@@ -247,14 +247,14 @@ function findPayDays(payDay){
 };
 
 function findCutOfDays(payDays){
-    let arr = []
+    let arr = [];
 
     payDays.forEach((element,i)=>{
         arr.push({
             payDay:element,
             cutOffDay:moment(element,'YYYY-MM-DD').subtract(8,'d')
         });
-    })
+        return arr;
 
     return arr
 }
