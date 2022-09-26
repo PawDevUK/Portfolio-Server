@@ -28,6 +28,10 @@ function createMonth(rota){
     const year = moment(DateArg).year();
     const monthName = getMonthName(month);
     const days = moment().daysInMonth(month);
+    const FirstPayDay = '';
+    const payDays = findPayDays(FirstPayDay);
+    const cutOffD = findCutOfDays(payDays);
+
 
     let calendar = {
         name: monthName,
