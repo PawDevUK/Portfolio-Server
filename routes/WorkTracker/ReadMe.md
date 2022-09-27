@@ -1,12 +1,12 @@
 # ToDo
 
-- [ ] Add pay day to calendar.
-- [ ] Add cut off day to calendar.
 - [ ] Add couple of test for functions in the factory directory.
 - [ ] Create functionality to change start time.
 - [ ] Create functionality to calculate different start time.
 - [ ] Create functionality to calculate overtimes.
 - [ ] 
+- [x] Add pay day to calendar.
+- [x] Add cut off day to calendar.
 - [x] Add calculation for additional/extra pay
 - [x] Create full year calendar rota
 - [x] Find pay day
