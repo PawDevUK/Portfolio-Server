@@ -10,6 +10,7 @@ const getIn_OffDays = require('./factory').getIn_OffDays;
 const findCutOfDays = require('./factory').findCutOfDays;
 const getMonthName = require('./factory').getMonthName;
 const findPayDays = require('./factory').findPayDays;
+const addPDandCOD = require('./factory').addPDandCOD
 const calcPercent = require('./factory').calcPercent;
 const reduceFloat = require('./factory').reduceFloat;
 const returnDate = require('./factory').returnDate;
@@ -74,8 +75,8 @@ function createMonth(rota){
             start:null,
             finish:null,
             in: checkIN(OffDays, i, weekDay),
-            payDay:false,
-            cutOffDay:false,
+            payDay:addPDandCOD(payDays, DateArg, i),
+            cutOffDay:addPDandCOD(cutOffD, DateArg, i),
         });
     };
 
