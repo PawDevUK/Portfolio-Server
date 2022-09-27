@@ -17,19 +17,21 @@ const returnDate = require('./factory').returnDate;
 const countDays = require('./factory').countDays;
 const checkIN = require('./factory').checkIN;
 const moment = require('moment');
+
 const { fullYearRota } = require('./store');
 
 const weekCombinations = require('./store').weekCombinations;
 
 // date format month/year
 function createMonth(rota){
+
     const {OffDays,date} = rota;
     const DateArg = returnDate(date,extractDateFromString);
     const month = moment(DateArg).month();
     const year = moment(DateArg).year();
     const monthName = getMonthName(month);
     const days = moment().daysInMonth(month);
-    const FirstPayDay = '';
+
     const payDays = findPayDays(FirstPayDay);
     const cutOffD = findCutOfDays(payDays);
 

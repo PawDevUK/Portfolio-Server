@@ -154,7 +154,7 @@ function calcEarnedFor_Month(payload, reduceFloat){
 }
 
 function getNameOfWeekDay(payload,i){
-    const a =  moment(payload).date(i)
+    const a = moment(payload).date(i)
     return moment(a).format('dddd')
 }
 
