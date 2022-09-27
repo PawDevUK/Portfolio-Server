@@ -75,8 +75,8 @@ function createMonth(rota){
         calendar.calendar.push({
             weekDay,
             day: i,
-            start:null,
-            finish:null,
+            start:'17:00',
+            finish:'02:15',
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
             cutOffDay:addPDandCOD(cutOffD, DateArg, i),
