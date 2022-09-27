@@ -32,6 +32,7 @@ function createMonth(rota){
     const monthName = getMonthName(month);
     const days = moment().daysInMonth(month);
 
+    const FirstPayDay = '2022-04-29';
     const payDays = findPayDays(FirstPayDay);
     const cutOffD = findCutOfDays(payDays);
 
