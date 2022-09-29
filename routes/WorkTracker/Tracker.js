@@ -23,8 +23,9 @@ const { fullYearRota } = require('./store');
 const weekCombinations = require('./store').weekCombinations;
 
 // date format month/year
-function createMonth(rota){
+function createMonth(rota, start_Time){
 
+    const startTime = start_Time ? start_Time : '17:00'
     const {OffDays,date} = rota;
     const DateArg = returnDate(date,extractDateFromString);
     const month = moment(DateArg).month();
@@ -75,7 +76,7 @@ function createMonth(rota){
         calendar.calendar.push({
             weekDay,
             day: i,
-            start:'17:00',
+            start: startTime,
             finish:'02:15',
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
