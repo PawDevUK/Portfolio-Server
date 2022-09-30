@@ -1,5 +1,7 @@
 # ToDo
 
+- [ ] Check if monday earnings calculation is correct.
+- [ ] fix issue with startTime default value.
 - [ ] Add pay day to calendar.
 - [ ] Add cut off day to calendar.
 - [ ] Add couple of test for functions in the factory directory.
