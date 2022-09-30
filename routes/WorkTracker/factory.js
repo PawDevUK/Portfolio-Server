@@ -98,7 +98,21 @@ function countDays(obj){
 //** @function 
 /** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
 */
-function calcEarnedForDay(rates,calc,reduceFloat){
+function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
+
+    // calculate from start to plus 9.25h
+    // create break points for different rates 
+    //  week day monday-friday 06:00 - 22:00 
+
+    //  week night monday 00:00 - 06:00
+    //  week night tuesday-thursday 22:00 - 06:00
+    //  week night friday 22:00 - 00:00
+
+    //  weekend night sat 00:00 - 06:00
+    //  weekend day sat-sun 06:00 - 22:00
+    //  weekend night sat 22:00 - 06:00
+    //  weekend night sun 22:00 - 00:00
+
     const {
         basic,
         nights,
