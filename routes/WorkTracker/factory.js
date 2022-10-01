@@ -292,6 +292,10 @@ function addPDandCOD(payDays, date, day) {
     return Element;
 };
 
+function addId(){
+    return uuidv4()
+};
+
 //** @function 
 /** @name writeToResults
 /function to make full combination of days off more clear to read by writing it to 'result.js'
@@ -325,4 +329,5 @@ module.exports = {
     createYearCalendar,
     reduceFloat,
     addPDandCOD,
+    addId,
 }
