@@ -1,26 +1,32 @@
-const extractDateFromString = require('./factory').extractDateFromString;
-const calcEarnedFor_Month = require('./factory').calcEarnedFor_Month;
-const createYearCalendar = require('./factory').createYearCalendar
-const calcEarnedForDay = require('./factory').calcEarnedForDay;
-const getNameOfWeekDay = require('./factory').getNameOfWeekDay;
+const { 
+    checkIN,
+    addId,
+    getFullDate,
+    getFinishBasic,
+    extractDateFromString,
+    getNameOfWeekDay,
+    getIn_OffDays,
+    findCutOfDays,
+    findPayDays,
+    addPDandCOD,
+    createYearCalendar
+} = require('./factory'); // initializing calendar obj
+
+const { 
+    calcEarnedFor_Month,
+    calcEarnedForDay,
+    calcPercent 
+} = require('./factory'); // calculate earnings
+
 const getCombinations = require('./factory').getCombinations;
 const writeToResults = require('./factory').writeToResults;
-const getMonthNumber = require('./factory').getMonthNumber;
-const getIn_OffDays = require('./factory').getIn_OffDays;
-const findCutOfDays = require('./factory').findCutOfDays;
 const getMonthName = require('./factory').getMonthName;
-const findPayDays = require('./factory').findPayDays;
-const addPDandCOD = require('./factory').addPDandCOD
-const calcPercent = require('./factory').calcPercent;
 const reduceFloat = require('./factory').reduceFloat;
 const returnDate = require('./factory').returnDate;
 const countDays = require('./factory').countDays;
-const checkIN = require('./factory').checkIN;
-const moment = require('moment');
 
-const { fullYearRota } = require('./store');
+const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store');
 
-const weekCombinations = require('./store').weekCombinations;
 
 // date format month/year
 function createMonth(rota, start_Time){
