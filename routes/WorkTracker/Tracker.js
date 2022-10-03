@@ -33,10 +33,10 @@ function createMonth(rota, base_rate, start_Time){
 
     const {OffDays,date} = rota;
     const DateArg = returnDate(date,extractDateFromString);
-    const month = moment(DateArg).month();
-    const year = moment(DateArg).year();
+    const month = DateArg.month();
+    const year = DateArg.year();
     const monthName = getMonthName(month);
-    const days = moment().daysInMonth(month);
+    const days = DateArg.daysInMonth();
 
     const FirstPayDay = '2022-04-29';
     const payDays = findPayDays(FirstPayDay);
