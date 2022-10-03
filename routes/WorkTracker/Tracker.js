@@ -107,7 +107,7 @@ function createMonth(rota, base_rate, start_Time){
     calendar.IN_sat = sa;
     calendar.IN_sun = su;
 
-    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent, reduceFloat);
+    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent, reduceFloat, start_Time); // startTime is true as ternary operator on line 28 assign value.
     calendar.basic_salary = calcEarnedFor_Month(calendar, reduceFloat);
 
     const rates = calendar.rates
