@@ -93,6 +93,7 @@ function createMonth(rota, base_rate, start_Time){
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
             cutOffDay:addPDandCOD(cutOffD, DateArg, i),
+            id:addId(),
         });
     };
 
