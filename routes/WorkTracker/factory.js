@@ -346,4 +346,6 @@ module.exports = {
     reduceFloat,
     addPDandCOD,
     addId,
+    getFullDate,
+    getFinishBasic,
 }
