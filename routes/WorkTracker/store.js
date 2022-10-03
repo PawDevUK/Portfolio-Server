@@ -1,3 +1,6 @@
+const baseOldRate = 14.98
+const baseNewRate = 16.75
+
 const fullYearRota = {
     April: [null],
     May: [1,4,10,11,15,21,22,23,29,30],
