@@ -114,11 +114,7 @@ function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
     //  weekend night sat 22:00 - 06:00
     //  weekend night sun 22:00 - 00:00
 
-    const {
-        basic,
-        nights,
-        weekends
-    } = rates
+    const { basic, nights, weekends } = rates;
 
     let payload = {};
     
