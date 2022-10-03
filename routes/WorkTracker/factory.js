@@ -125,29 +125,29 @@ function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
     function weekDay(){
         const dayH = 5 * basic;
         const nightH = 4.25 * calc(basic,nights.percent);
-        return dayH + nightH
+        return dayH + nightH;
     }
     function friday(){
         const dayH = 5 * basic;
         const nightH = 2 * calc(basic,nights.percent);
         const weekendH = 2.25 * calc(basic,weekends.percent);
-        return dayH + nightH + weekendH 
+        return dayH + nightH + weekendH;
     }
     function sat(){
         return 9.25 * calc(basic,weekends.percent);
     }
     function sun(){
         const weekendH = 7 * calc(basic,weekends.percent);
-        const nightH = 2.25 * calc(basic,nights.percent)
-        return weekendH + nightH
+        const nightH = 2.25 * calc(basic,nights.percent); // week night from 00:00
+        return weekendH + nightH;
     }
 
-    payload['weekDay'] = reduceFloat(weekDay())
-    payload['friday'] = reduceFloat(friday())
-    payload['sat'] = reduceFloat(sat())
-    payload['sun'] = reduceFloat(sun())
+    payload['weekDay'] = reduceFloat(weekDay());
+    payload['friday'] = reduceFloat(friday());
+    payload['sat'] = reduceFloat(sat());
+    payload['sun'] = reduceFloat(sun());
 
-    return payload
+    return payload;
 }
 
 function calcEarnedFor_Month(payload, reduceFloat){
