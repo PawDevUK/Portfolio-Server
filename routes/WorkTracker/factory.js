@@ -169,6 +169,26 @@ function getNameOfWeekDay(payload,i){
     return moment(a).format('dddd')
 }
 
+function getFullDate(payload,i,time){
+    let dateTime = '';
+    let Year = payload.year();
+    let Month = payload.month();
+    let Day = i;
+    if(time){
+        let H = time.substring(0,2);
+        let M = time.substring(3,5);
+        dateTime = moment.utc([Year,Month,Day,H,M])
+        console.log(dateTime);
+    }else if(!time){
+        dateTime = moment([Year,Month,Day])
+    }
+    return dateTime
+}
+
+function getFinishBasic(start_Time){
+    return moment(start_Time).add(9,'hours').add(15,'minutes')
+}
+
 
 function checkPercentageFrom(main,fraction){
     let percent;
