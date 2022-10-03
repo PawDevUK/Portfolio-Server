@@ -84,6 +84,12 @@ function createMonth(rota, base_rate, start_Time){
             day: i,
             start: date,
             finishBasic:getFinishBasic(date),
+            finishOvertime:null,
+            earned:{
+                basic:null,
+                overtime:null,
+                total:null
+            },
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
             cutOffDay:addPDandCOD(cutOffD, DateArg, i),
