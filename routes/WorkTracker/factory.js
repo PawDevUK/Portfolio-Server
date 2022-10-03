@@ -102,8 +102,8 @@ function countDays(obj){
 function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
 
     // calculate from start to plus 9.25h
-    // create break points for different rates 
-    //  week day monday-friday 06:00 - 22:00 
+    // create break points for different rates
+    //  week day monday-friday 06:00 - 22:00
 
     //  week night monday 00:00 - 06:00
     //  week night tuesday-thursday 22:00 - 06:00
