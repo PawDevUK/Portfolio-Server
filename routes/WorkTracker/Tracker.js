@@ -31,7 +31,6 @@ const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./
 // date format month/year
 function createMonth(rota, base_rate, start_Time){
 
-    const startTime = start_Time ? start_Time : '17:00'
     const {OffDays,date} = rota;
     const DateArg = returnDate(date,extractDateFromString);
     const month = moment(DateArg).month();
