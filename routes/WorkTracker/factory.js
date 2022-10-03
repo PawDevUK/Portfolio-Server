@@ -119,13 +119,13 @@ function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
     let payload = {};
     
     function weekDay(){
-        const dayH = 5 * basic;
-        const nightH = 4.25 * calc(basic,nights.percent);
+        const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
+        const nightH = 4.25 * calc(basic,nights.percent); // from 22:00 till finish 02:15 is 4h 15min
         return dayH + nightH;
     }
     function friday(){
-        const dayH = 5 * basic;
-        const nightH = 2 * calc(basic,nights.percent);
+        const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
+        const nightH = 2 * calc(basic,nights.percent); 
         const weekendH = 2.25 * calc(basic,weekends.percent);
         return dayH + nightH + weekendH;
     }
