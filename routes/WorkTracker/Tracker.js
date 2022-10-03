@@ -29,7 +29,7 @@ const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./
 
 
 // date format month/year
-function createMonth(rota, start_Time){
+function createMonth(rota, base_rate, start_Time){
 
     const startTime = start_Time ? start_Time : '17:00'
     const {OffDays,date} = rota;
@@ -58,7 +58,7 @@ function createMonth(rota, start_Time){
         IN_sun: null,
         rates: {
             currency: 'GBP',
-            basic: 16.75,
+            basic: base_rate,
             nights: {
                 percent: 25,
                 rate: null,
