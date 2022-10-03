@@ -83,6 +83,7 @@ function createMonth(rota, base_rate, start_Time){
             weekDay,
             day: i,
             start: date,
+            finishBasic:getFinishBasic(date),
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
             cutOffDay:addPDandCOD(cutOffD, DateArg, i),
