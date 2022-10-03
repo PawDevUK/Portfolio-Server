@@ -9,21 +9,21 @@ const {
     findCutOfDays,
     findPayDays,
     addPDandCOD,
-    createYearCalendar
+    getMonthName,
+    returnDate,
+    createYearCalendar,
+    getCombinations
 } = require('./factory'); // initializing calendar obj
 
 const { 
     calcEarnedFor_Month,
     calcEarnedForDay,
-    calcPercent 
+    calcPercent,
+    countDays,
+    reduceFloat
 } = require('./factory'); // calculate earnings
 
-const getCombinations = require('./factory').getCombinations;
-const writeToResults = require('./factory').writeToResults;
-const getMonthName = require('./factory').getMonthName;
-const reduceFloat = require('./factory').reduceFloat;
-const returnDate = require('./factory').returnDate;
-const countDays = require('./factory').countDays;
+const {writeToResults} = require('./factory'); // development
 
 const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store');
 
