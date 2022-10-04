@@ -189,7 +189,7 @@ function getNameOfWeekDay(payload,i){
 }
 
 function getFinishBasic(start_Time){
-    return moment(start_Time).add(9,'hours').add(15,'minutes')
+    return moment(start_Time).add(9,'hours').add(15,'minutes').format('HH:mm').toString()
 }
 
 
