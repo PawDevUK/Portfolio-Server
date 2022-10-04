@@ -119,7 +119,7 @@ function createMonth(rota, base_rate, start_Time){
 }
 
 const rota = {
-    date: [09, 2022],
+    date: [04,09,2022,22],
     OffDays: [3, 6, 7, 13, 14, 20, 21, 27, 28],
 };
 const rota2 = {
@@ -128,7 +128,9 @@ const rota2 = {
 };
 
 
-const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth)
+// const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth)
 
+// const month1 = createMonth(rota, baseOldRate, '17:00')
+const month = createMonth(rota, baseNewRate, '17:00')
 // const payDays = findCutOfDays(findPayDays('2022-01-07'))
-writeToResults(yearRota)
+writeToResults(month)
