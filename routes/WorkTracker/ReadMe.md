@@ -11,6 +11,7 @@
 - [ ] Add functionality to calculate dynamic start for Sunday.
 - [ ] Create functionality to calculate different start time.
 - [ ] Create functionality to calculate overtimes.
+- [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
 - [x] Add functionality to returnDate date argument to pass in the array days or days,hours or days,hours,minutes.
 - [x] Merge returnDate and getFullDate.
 - [x] Fix issue with startTime default value.
