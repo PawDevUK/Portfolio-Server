@@ -5,8 +5,10 @@ const fs = require('fs');
 
 function extractDateFromString(str){
     let date = [];
-    date.push(parseInt(str.slice(0,2)))
-    date.push(parseInt(str.slice(3,str.length)))
+
+    str.split('/').forEach((i)=>{
+        date.push(parseInt(i))
+    })
 
     return date
 }
