@@ -20,7 +20,7 @@ function returnDate(dateArg, extractDateFromString, day, startTime){
     if(Array.isArray(dateArg)){
         dateArg.forEach((i)=>{
             if(typeof i === 'string' && dateArg.length === 1){
-                payload = extractDateFromString(args[0])
+                payload = extractDateFromString(dateArg[0])
             }else if (typeof i === 'string' && dateArg.length >=2 ){
                 payload.push(parseInt(i))
             }else if (typeof i === 'number'){
