@@ -1,7 +1,7 @@
 const {calcPercent, extractDateFromString} = require('../../../routes/WorkTracker/factory.js');
 
 describe(
-    "Test for the method to extract integer from the string. Order of the returned integers doesn't at the moment.", ()=>{
+    "Test for the method to extract integer from the string. Order of the returned integers doesn't matter at the moment.", ()=>{
 
         test('Should return array with numbers', () => {
             expect(extractDateFromString('12/2022')).toEqual([12, 2022]);
