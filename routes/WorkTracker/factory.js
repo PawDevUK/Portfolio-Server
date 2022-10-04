@@ -183,6 +183,22 @@ function calcEarnedFor_Month(payload, reduceFloat){
     }
 }
 
+function calcEarnedFor_Month_Be_Twin_PD(cal, payDays) {
+    let calendar = [];
+
+    calendar = cal.map((element, i) => {
+
+        return {
+            month:null,
+            from:null,
+            to:null,
+            earned:null,
+        }
+    });
+
+    return calendar;
+}
+
 function getNameOfWeekDay(payload,i){
     const a = moment(payload).date(i)
     return moment(a).format('dddd')
