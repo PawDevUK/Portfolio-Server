@@ -1,10 +1,18 @@
 # ToDo
 
-- [ ] Merge returnDate and getFullDate.
-- [ ] Add couple of test for functions in the factory directory.
+- [ ] Add test for function extractDateFromString.
+- [ ] Add test for function returnDate.
+- [ ] Add functionality to calculate dynamic start for Monday.
+- [ ] Add functionality to calculate dynamic start for Tuesday.
+- [ ] Add functionality to calculate dynamic start for Wednesday.
+- [ ] Add functionality to calculate dynamic start for Thursday.
+- [ ] Add functionality to calculate dynamic start for Friday.
+- [ ] Add functionality to calculate dynamic start for Saturday.
+- [ ] Add functionality to calculate dynamic start for Sunday.
 - [ ] Create functionality to calculate different start time.
 - [ ] Create functionality to calculate overtimes.
-- [ ] 
+- [x] Add functionality to returnDate date argument to pass in the array days or days,hours or days,hours,minutes.
+- [x] Merge returnDate and getFullDate.
 - [x] Fix issue with startTime default value.
 - [x] Check if monday earnings calculation is correct for fixed 17:00.
 - [x] Create functionally to calculate finish basic based on start time.
