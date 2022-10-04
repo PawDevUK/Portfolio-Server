@@ -1,7 +1,6 @@
 const { 
     checkIN,
     addId,
-    getFullDate,
     getFinishBasic,
     extractDateFromString,
     getNameOfWeekDay,
@@ -78,7 +77,7 @@ function createMonth(rota, base_rate, start_Time){
 
     for (let i = 1; i <= days; i++) {
         let weekDay = getNameOfWeekDay(DateArg, i);
-        let  date = getFullDate(DateArg,i,start_Time);
+        let  date = returnDate(DateArg, extractDateFromString, i, start_Time);
         calendar.calendar.push({
             weekDay,
             day: i,

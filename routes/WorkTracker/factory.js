@@ -11,19 +11,38 @@ function extractDateFromString(str){
     return date
 }
 
-function returnDate(date,extractDateFromString){
+function returnDate(dateArg, extractDateFromString, day, startTime){
     let payload = [];
-    date.forEach((i)=>{
-        if(typeof i === 'string' && date.length === 1){
-            payload = extractDateFromString(args[0])
-        }else if (typeof i === 'string' && date.length >=2 ){
-            payload.push(parseInt(i))
-        }else if (typeof i === 'number'){
-            payload.push(i)
-        }
-    })
+    let dateElement = '';
 
-    return moment([payload[1],payload[0]-1])
+    if(Array.isArray(dateArg)){
+        dateArg.forEach((i)=>{
+            if(typeof i === 'string' && dateArg.length === 1){
+                payload = extractDateFromString(args[0])
+            }else if (typeof i === 'string' && dateArg.length >=2 ){
+                payload.push(parseInt(i))
+            }else if (typeof i === 'number'){
+                payload.push(i)
+            }
+        })
+        if(payload.length===2){
+            dateElement = moment([payload[1], payload[0]-1]);
+        }else if(payload.length === 3){
+            dateElement = moment([payload[2], payload[1]-1,payload[0]])
+        }else if(payload.length === 4){
+            dateElement = moment([payload[2], payload[1]-1,payload[0],payload[3]])
+        }else if(payload.length === 5){
+            dateElement = moment([payload[2], payload[1]-1,payload[0],payload[3],payload[4]])
+        }
+    }
+    
+    if (!Array.isArray(dateArg) && startTime && day) {
+            let H = startTime.substring(0, 2);
+            let M = startTime.substring(3, 5);
+            dateElement = moment(dateArg).date(day).hour(H).minute(M)
+    }
+
+    return dateElement
 }
 
 function getMonthName(m){
@@ -167,22 +186,6 @@ function calcEarnedFor_Month(payload, reduceFloat){
 function getNameOfWeekDay(payload,i){
     const a = moment(payload).date(i)
     return moment(a).format('dddd')
-}
-
-function getFullDate(payload,i,time){
-    let dateTime = '';
-    let Year = payload.year();
-    let Month = payload.month();
-    let Day = i;
-    if(time){
-        let H = time.substring(0,2);
-        let M = time.substring(3,5);
-        dateTime = moment.utc([Year,Month,Day,H,M])
-        console.log(dateTime);
-    }else if(!time){
-        dateTime = moment([Year,Month,Day])
-    }
-    return dateTime
 }
 
 function getFinishBasic(start_Time){
@@ -346,6 +349,5 @@ module.exports = {
     reduceFloat,
     addPDandCOD,
     addId,
-    getFullDate,
     getFinishBasic,
 }
