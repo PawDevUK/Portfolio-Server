@@ -119,7 +119,7 @@ function createMonth(rota, base_rate, start_Time){
 }
 
 const rota = {
-    date: [04,09,2022,22],
+    date: ['09/2022'],
     OffDays: [3, 6, 7, 13, 14, 20, 21, 27, 28],
 };
 const rota2 = {
