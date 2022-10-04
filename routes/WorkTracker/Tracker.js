@@ -1,36 +1,42 @@
-const extractDateFromString = require('./factory').extractDateFromString;
-const calcEarnedFor_Month = require('./factory').calcEarnedFor_Month;
-const createYearCalendar = require('./factory').createYearCalendar
-const calcEarnedForDay = require('./factory').calcEarnedForDay;
-const getNameOfWeekDay = require('./factory').getNameOfWeekDay;
-const getCombinations = require('./factory').getCombinations;
-const writeToResults = require('./factory').writeToResults;
-const getMonthNumber = require('./factory').getMonthNumber;
-const getIn_OffDays = require('./factory').getIn_OffDays;
-const findCutOfDays = require('./factory').findCutOfDays;
-const getMonthName = require('./factory').getMonthName;
-const findPayDays = require('./factory').findPayDays;
-const addPDandCOD = require('./factory').addPDandCOD
-const calcPercent = require('./factory').calcPercent;
-const reduceFloat = require('./factory').reduceFloat;
-const returnDate = require('./factory').returnDate;
-const countDays = require('./factory').countDays;
-const checkIN = require('./factory').checkIN;
-const moment = require('moment');
+const { 
+    checkIN,
+    addId,
+    getFullDate,
+    getFinishBasic,
+    extractDateFromString,
+    getNameOfWeekDay,
+    getIn_OffDays,
+    findCutOfDays,
+    findPayDays,
+    addPDandCOD,
+    getMonthName,
+    returnDate,
+    createYearCalendar,
+    getCombinations
+} = require('./factory'); // initializing calendar obj
 
-const { fullYearRota } = require('./store');
+const { 
+    calcEarnedFor_Month,
+    calcEarnedForDay,
+    calcPercent,
+    countDays,
+    reduceFloat
+} = require('./factory'); // calculate earnings
 
-const weekCombinations = require('./store').weekCombinations;
+const {writeToResults} = require('./factory'); // development
+
+const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store');
+
 
 // date format month/year
-function createMonth(rota){
+function createMonth(rota, base_rate, start_Time){
 
     const {OffDays,date} = rota;
     const DateArg = returnDate(date,extractDateFromString);
-    const month = moment(DateArg).month();
-    const year = moment(DateArg).year();
+    const month = DateArg.month();
+    const year = DateArg.year();
     const monthName = getMonthName(month);
-    const days = moment().daysInMonth(month);
+    const days = DateArg.daysInMonth();
 
     const FirstPayDay = '2022-04-29';
     const payDays = findPayDays(FirstPayDay);
@@ -51,7 +57,7 @@ function createMonth(rota){
         IN_sun: null,
         rates: {
             currency: 'GBP',
-            basic: 16.75,
+            basic: base_rate,
             nights: {
                 percent: 25,
                 rate: null,
@@ -72,14 +78,22 @@ function createMonth(rota){
 
     for (let i = 1; i <= days; i++) {
         let weekDay = getNameOfWeekDay(DateArg, i);
+        let  date = getFullDate(DateArg,i,start_Time);
         calendar.calendar.push({
             weekDay,
             day: i,
-            start:'17:00',
-            finish:'02:15',
+            start: date,
+            finishBasic:getFinishBasic(date),
+            finishOvertime:null,
+            earned:{
+                basic:null,
+                overtime:null,
+                total:null
+            },
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
             cutOffDay:addPDandCOD(cutOffD, DateArg, i),
+            id:addId(),
         });
     };
 
@@ -93,7 +107,7 @@ function createMonth(rota){
     calendar.IN_sat = sa;
     calendar.IN_sun = su;
 
-    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent, reduceFloat);
+    calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent, reduceFloat, start_Time); // startTime is true as ternary operator on line 28 assign value.
     calendar.basic_salary = calcEarnedFor_Month(calendar, reduceFloat);
 
     const rates = calendar.rates

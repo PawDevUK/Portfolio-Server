@@ -1,4 +1,5 @@
 const weekCombinations = require('./store').weekCombinations;
+const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 const fs = require('fs');
 
@@ -96,43 +97,53 @@ function countDays(obj){
 }
 
 //** @function 
-/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 05:00
+/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 02:15
 */
-function calcEarnedForDay(rates,calc,reduceFloat){
-    const {
-        basic,
-        nights,
-        weekends
-    } = rates
+function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
+
+    // calculate from start to plus 9.25h
+    // create break points for different rates
+    //  week day monday-friday 06:00 - 22:00
+
+    //  week night monday 00:00 - 06:00
+    //  week night tuesday-thursday 22:00 - 06:00
+    //  week night friday 22:00 - 00:00
+
+    //  weekend night sat 00:00 - 06:00
+    //  weekend day sat-sun 06:00 - 22:00
+    //  weekend night sat 22:00 - 06:00
+    //  weekend night sun 22:00 - 00:00
+
+    const { basic, nights, weekends } = rates;
 
     let payload = {};
     
     function weekDay(){
         const dayH = 5 * basic;
         const nightH = 4.25 * calc(basic,nights.percent);
-        return dayH + nightH
+        return dayH + nightH;
     }
     function friday(){
         const dayH = 5 * basic;
         const nightH = 2 * calc(basic,nights.percent);
         const weekendH = 2.25 * calc(basic,weekends.percent);
-        return dayH + nightH + weekendH 
+        return dayH + nightH + weekendH;
     }
     function sat(){
         return 9.25 * calc(basic,weekends.percent);
     }
     function sun(){
         const weekendH = 7 * calc(basic,weekends.percent);
-        const nightH = 2.25 * calc(basic,nights.percent)
-        return weekendH + nightH
+        const nightH = 2.25 * calc(basic,nights.percent); // week night from 00:00
+        return weekendH + nightH;
     }
 
-    payload['weekDay'] = reduceFloat(weekDay())
-    payload['friday'] = reduceFloat(friday())
-    payload['sat'] = reduceFloat(sat())
-    payload['sun'] = reduceFloat(sun())
+    payload['weekDay'] = reduceFloat(weekDay());
+    payload['friday'] = reduceFloat(friday());
+    payload['sat'] = reduceFloat(sat());
+    payload['sun'] = reduceFloat(sun());
 
-    return payload
+    return payload;
 }
 
 function calcEarnedFor_Month(payload, reduceFloat){
@@ -172,6 +183,26 @@ function calcEarnedFor_Month_Be_Twin_PD(cal, payDays) {
 function getNameOfWeekDay(payload,i){
     const a = moment(payload).date(i)
     return moment(a).format('dddd')
+}
+
+function getFullDate(payload,i,time){
+    let dateTime = '';
+    let Year = payload.year();
+    let Month = payload.month();
+    let Day = i;
+    if(time){
+        let H = time.substring(0,2);
+        let M = time.substring(3,5);
+        dateTime = moment.utc([Year,Month,Day,H,M])
+        console.log(dateTime);
+    }else if(!time){
+        dateTime = moment([Year,Month,Day])
+    }
+    return dateTime
+}
+
+function getFinishBasic(start_Time){
+    return moment(start_Time).add(9,'hours').add(15,'minutes')
 }
 
 
@@ -293,6 +324,10 @@ function addPDandCOD(payDays, date, day) {
     return Element;
 };
 
+function addId(){
+    return uuidv4()
+};
+
 //** @function 
 /** @name writeToResults
 /function to make full combination of days off more clear to read by writing it to 'result.js'
@@ -326,4 +361,7 @@ module.exports = {
     createYearCalendar,
     reduceFloat,
     addPDandCOD,
+    addId,
+    getFullDate,
+    getFinishBasic,
 }

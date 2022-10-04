@@ -1,10 +1,15 @@
 # ToDo
 
+- [ ] Check if monday earnings calculation is correct for fixed 17:00.
+- [ ] Fix issue with startTime default value.
+- [ ] Merge returnDate and getFullDate.
 - [ ] Add couple of test for functions in the factory directory.
-- [ ] Create functionality to change start time.
 - [ ] Create functionality to calculate different start time.
 - [ ] Create functionality to calculate overtimes.
 - [ ] 
+- [x] Create functionally to calculate finish basic based on start time.
+- [x] Create functionality to change start time.
+- [x] Fix issue with wrong number of days of the month.
 - [x] Add pay day to calendar.
 - [x] Add cut off day to calendar.
 - [x] Add calculation for additional/extra pay
