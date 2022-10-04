@@ -81,7 +81,7 @@ function createMonth(rota, base_rate, start_Time){
         calendar.calendar.push({
             weekDay,
             day: i,
-            start: date,
+            start: date.format('HH:mm').toString(),
             finishBasic:getFinishBasic(date),
             finishOvertime:null,
             earned:{
