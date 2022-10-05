@@ -24,6 +24,33 @@ describe(
     }
 );
 
+describe(
+    "It should return moment object with correct date accordingly to argument.",()=>{
+        
+        test('Should return moment object with correct month and year', ()=>{
+            expect(returnDate([01,2022],extractDateFromString)).toEqual(moment([2022,01-1]))
+        });
+        test('Should return moment object with correct month and year', ()=>{
+            expect(returnDate([02,2022],extractDateFromString)).toEqual(moment([2022,2-1]))
+        });
+        test('Should return moment object with correct day month and year', ()=>{
+            expect(returnDate([01,02,2022],extractDateFromString)).toEqual(moment([2022,2-1,01]))
+        });
+        test('Should return moment object with correct day, month, year, hour and minute', ()=>{
+            expect(returnDate([01,02,2022,22,00],extractDateFromString)).toEqual(moment([2022,2-1,01,22,00]))
+        });
+        test('Should return moment object with correct month and year', ()=>{
+            expect(returnDate(['09/2022'],extractDateFromString)).toEqual(moment([2022,09-1]))
+        });
+        test('Should return moment object with correct day month and year', ()=>{
+            expect(returnDate(['01/09/2022'],extractDateFromString)).toEqual(moment([2022,09-1,01]))
+        });
+        test('Should return moment object with correct day month and year', ()=>{
+            expect(returnDate(['1/09/2022'],extractDateFromString)).toEqual(moment([2022,09-1,1]))
+        });
+    })
+        
+
 test('Should return 1.5', () => {
     expect(calcPercent(1, 50)).toBe(1.5);
 });
