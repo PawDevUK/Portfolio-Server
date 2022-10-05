@@ -1,5 +1,5 @@
 const {calcPercent, extractDateFromString} = require('../../../routes/WorkTracker/factory.js');
-
+const moment =require('moment')
 describe(
     "Test for the method to extract integer from the string. Order of the returned integers doesn't matter at the moment.", ()=>{
 
