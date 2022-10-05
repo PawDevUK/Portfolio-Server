@@ -1,5 +1,7 @@
 # ToDo
 
+- [ ] Crete functionality in the returnDate to receive date as a string NOT in the array.
+- [ ] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
 - [ ] Add test to function returnDate.
 - [ ] Add functionality to calculate dynamic start for Monday.
 - [ ] Add functionality to calculate dynamic start for Tuesday.
@@ -13,6 +15,7 @@
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Add test to function extractDateFromString.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Add test to function returnDate.
 - [x] Add test to function extractDateFromString.
 - [x] Add functionality to returnDate date argument to pass in the array days or days,hours or days,hours,minutes.
 - [x] Merge returnDate and getFullDate.
