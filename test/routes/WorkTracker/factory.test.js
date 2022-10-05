@@ -48,6 +48,9 @@ describe(
         test('Should return moment object with correct day month and year', ()=>{
             expect(returnDate(['1/09/2022'],extractDateFromString)).toEqual(moment([2022,09-1,1]))
         });
+        test('Should return moment object with correct day, month, year, hour and minute', ()=>{
+            expect(returnDate(["01/02/2022 22:00"],extractDateFromString)).toEqual(moment([2022,2-1,01,22,00]))
+        });
     })
         
 
