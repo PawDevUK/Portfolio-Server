@@ -126,6 +126,10 @@ function calcEarnedForDay(rates,calc,reduceFloat,start_Time){
     // create break points for different rates
     //  week day monday-friday 06:00 - 22:00
 
+    const dayRateStart = moment().hour(06).minute(00);
+    const NighRateStart = moment().hour(22).minute(00);
+    const WeekendRateStart = moment().hour(00).minute(00);
+
     //  week night monday 00:00 - 06:00
     //  week night tuesday-thursday 22:00 - 06:00
     //  week night friday 22:00 - 00:00
