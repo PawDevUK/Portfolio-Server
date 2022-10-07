@@ -1,5 +1,6 @@
 # ToDo
 
+- [ ] IMPORTANT !!!! Check functions for potential problem with mutation of moment object as it is mutable and every use of moment methods changes initial object !!!!
 - [ ] Crete functionality in the returnDate to receive date as a string NOT in the array.
 - [ ] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
 - [ ] Add test to function returnDate.
