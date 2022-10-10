@@ -13,6 +13,7 @@
 - [ ] Add functionality to calculate dynamic start for Sunday.
 - [ ] Create functionality to calculate different start time.
 - [ ] Create functionality to calculate overtimes.
+- [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Add test to function extractDateFromString.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
