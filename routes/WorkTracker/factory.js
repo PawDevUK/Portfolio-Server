@@ -18,30 +18,35 @@ function returnDate(dateArg, extractDateFromString, day, startTime){
     let dateElement = '';
 
     if(Array.isArray(dateArg)){
-        dateArg.forEach((i)=>{
-            if(typeof i === 'string' && dateArg.length === 1){
-                payload = extractDateFromString(dateArg[0])
-            }else if (typeof i === 'string' && dateArg.length >=2 ){
-                payload.push(parseInt(i))
-            }else if (typeof i === 'number'){
-                payload.push(i)
-            }
-        })
-        if(payload.length===2){
-            dateElement = moment([payload[1], payload[0]-1]);
-        }else if(payload.length === 3){
-            dateElement = moment([payload[2], payload[1]-1,payload[0]])
-        }else if(payload.length === 4){
-            dateElement = moment([payload[2], payload[1]-1,payload[0],payload[3]])
-        }else if(payload.length === 5){
-            dateElement = moment([payload[2], payload[1]-1,payload[0],payload[3],payload[4]])
+            dateArg.forEach((i)=>{
+                if(typeof i === 'string' && dateArg.length === 1){
+                    payload = extractDateFromString(dateArg[0])
+                }else if (typeof i === 'string' && dateArg.length >=2 ){
+                    payload.push(parseInt(i))
+                }else if (typeof i === 'number'){
+                    payload.push(i)
+                }
+            })
         }
+    
+    if( !moment.isMoment(dateArg) && typeof dateArg === 'string'){
+        payload = extractDateFromString(dateArg)
     }
     
-    if (!Array.isArray(dateArg) && startTime && day) {
+    if (moment.isMoment(dateArg) && startTime && day) {
             let H = startTime.substring(0, 2);
             let M = startTime.substring(3, 5);
             dateElement = moment(dateArg).date(day).hour(H).minute(M)
+    }
+    
+    if(payload.length===2){
+        dateElement = moment([payload[1], payload[0]-1]);
+    }else if(payload.length === 3){
+        dateElement = moment([payload[2], payload[1]-1,payload[0]])
+    }else if(payload.length === 4){
+        dateElement = moment([payload[2], payload[1]-1,payload[0],payload[3]])
+    }else if(payload.length === 5){
+        dateElement = moment([payload[2], payload[1]-1,payload[0],payload[3],payload[4]])
     }
 
     return dateElement
