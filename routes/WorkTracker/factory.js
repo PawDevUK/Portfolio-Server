@@ -6,7 +6,7 @@ const fs = require('fs');
 function extractDateFromString(str){
     let date = [];
 
-    str.split('/').forEach((i)=>{
+    str.split(/[/" ":]/).forEach((i)=>{
         date.push(parseInt(i))
     })
 
