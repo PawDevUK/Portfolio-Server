@@ -59,6 +59,24 @@ describe(
             expect(returnDate("01/02/2022 22:35",extractDateFromString)).toEqual(moment([2022,2-1,01,22,35]))
         });
     })
+describe(
+    "It should return object with calculated earnings for different start times and days of the week.",()=>{
+        
+        test('It should return object with night rate minutes and day rate minutes.', ()=>{
+            let startTime = moment([2022,09,10,04,00])
+            expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                   "dayHours": 7.25,
+                   "nightHours": 2,
+                })
+        });
+        test('It should return object with night rate minutes and day rate minutes.', ()=>{
+            let startTime = moment([2022,09,10,01,00])
+            expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                   "dayHours": 4.25,
+                   "nightHours": 5,
+                })
+        });
+    })
         
 
 test('Should return 1.5', () => {
