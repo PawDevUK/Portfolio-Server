@@ -1,9 +1,5 @@
 # ToDo
 
-- [ ] IMPORTANT !!!! Check functions for potential problem with mutation of moment object as it is mutable and every use of moment methods changes initial object !!!!
-- [ ] Crete functionality in the returnDate to receive date as a string NOT in the array.
-- [ ] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
-- [ ] Add test to function returnDate.
 - [ ] Add functionality to calculate dynamic start for Monday.
 - [ ] Add functionality to calculate dynamic start for Tuesday.
 - [ ] Add functionality to calculate dynamic start for Wednesday.
@@ -14,11 +10,16 @@
 - [ ] Create functionality to calculate different start time.
 - [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
+- [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Crete functionality in the returnDate to receive date as a string NOT in the array.
 - [ ] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Add test to function extractDateFromString.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Add test to function returnDate.
+- [x] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
+- [x] Crete functionality in the returnDate to take argument date as a string and the array with the string.
+- [x] IMPORTANT !!!! Check functions for potential problem with mutation of moment object as it is mutable and every use of moment methods changes initial object !!!!
 - [x] Add test to function returnDate.
 - [x] Add test to function extractDateFromString.
 - [x] Add functionality to returnDate date argument to pass in the array days or days,hours or days,hours,minutes.
