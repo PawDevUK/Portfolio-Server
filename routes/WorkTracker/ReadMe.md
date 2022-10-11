@@ -1,8 +1,5 @@
 # ToDo
 
-- [ ] Add functionality to calculate dynamic start for Tuesday.
-- [ ] Add functionality to calculate dynamic start for Wednesday.
-- [ ] Add functionality to calculate dynamic start for Thursday.
 - [ ] Add functionality to calculate dynamic start for Friday.
 - [ ] Add functionality to calculate dynamic start for Saturday.
 - [ ] Add functionality to calculate dynamic start for Sunday.
@@ -15,6 +12,9 @@
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Add test to function extractDateFromString.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Add functionality to calculate dynamic start for Tuesday.
+- [x] Add functionality to calculate dynamic start for Wednesday.
+- [x] Add functionality to calculate dynamic start for Thursday.
 - [x] Add test to function calcEarnedForDay to check changes.
 - [x] Add functionality to calculate dynamic start for Monday.
 - [x] Add test to function returnDate.
