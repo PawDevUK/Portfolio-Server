@@ -62,20 +62,73 @@ describe(
 describe(
     "It should return object with calculated earnings for different start times and days of the week.",()=>{
         
-        test('It should return object with night rate minutes and day rate minutes.', ()=>{
-            let startTime = moment([2022,09,10,04,00])
-            expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
-                   "dayHours": 7.25,
-                   "nightHours": 2,
-                })
-        });
-        test('It should return object with night rate minutes and day rate minutes.', ()=>{
-            let startTime = moment([2022,09,10,01,00])
-            expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
-                   "dayHours": 4.25,
-                   "nightHours": 5,
-                })
-        });
+        describe(
+            "Monday",()=>{
+                test('It should return object with night rate time and day rate time in hours.', ()=>{
+                    let startTime = moment([2022,09,10,04,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 7.25,
+                        "nightHours": 2,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with night rate time in hours and day rate time in hours.', ()=>{
+                    let startTime = moment([2022,09,10,01,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 4.25,
+                        "nightHours": 5,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with only day rate times in hours.', ()=>{
+                    let startTime = moment([2022,09,10,07,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 9.25,
+                        "nightHours": null,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with only day rate times in hours.', ()=>{
+                    let startTime = moment([2022,09,10,06,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 9.25,
+                        "nightHours": null,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with only day rate times in hours.', ()=>{
+                    let startTime = moment([2022,09,10,12,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 9.25,
+                        "nightHours": null,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with day rate and night rate times in hours.', ()=>{
+                    let startTime = moment([2022,09,10,15,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 7,
+                        "nightHours":2.25,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with day rate and night rate times in hours.', ()=>{
+                    let startTime = moment([2022,09,10,22,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 1.25,
+                        "nightHours":8,
+                        "overtime":null
+                        })
+                });
+                test('It should return object with day rate and night rate times in hours.', ()=>{
+                    let startTime = moment([2022,09,10,21,00])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": 1.25,
+                        "nightHours":8,
+                        "overtime":null
+                        })
+                });
+        }),
     })
         
 
