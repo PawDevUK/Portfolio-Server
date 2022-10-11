@@ -138,7 +138,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,11,06,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -146,7 +146,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,11,09,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -154,7 +154,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,11,12,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -196,7 +196,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,12,06,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -204,7 +204,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,12,09,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -212,7 +212,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,12,12,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -246,7 +246,7 @@ describe(
             });
         })
         describe('Thursday',()=>{
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,13,00,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 3.25,
@@ -254,7 +254,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,13,06,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -262,7 +262,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,13,09,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
@@ -270,7 +270,7 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
+            test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,13,12,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
