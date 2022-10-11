@@ -149,6 +149,10 @@ function calcEarnedForDay(
         return moment(start_Time).from(finish_Time)
     }
 
+    function getDifference(a,b){
+        return a.diff(b,'minutes') / 60
+    }
+
     const startTime = moment(start_Time);
     let finishBasicTime = getFinishBasic(start_Time);
     let finishTime = '';
