@@ -129,6 +129,24 @@ describe(
                         })
                 });
         }),
+        describe('Weekday ---- > Tuesday, Wednesday, Thursday',()=>{
+            test('It should return object with day rate and night rate times in hours.', ()=>{
+                let startTime = moment([2022,09,11,00,00])
+                expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                    "dayHours": 3.25,
+                    "nightHours":6,
+                    "overtime":null
+                    })
+            });
+            test('It should return object with day rate and night rate times in hours.', ()=>{
+                let startTime = moment([2022,09,11,06,00])
+                expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                    "dayHours": 9.25,
+                    "nightHours":null,
+                    "overtime":null
+                    })
+            });
+        })
     })
         
 
