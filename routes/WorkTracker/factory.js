@@ -224,12 +224,40 @@ function calcEarnedForDay(
     }
     
 
-    // function friday(start_Time){
-    //     const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
-    //     const nightH = 2 * calc(basic,nights.percent); 
-    //     const weekendH = 2.25 * calc(basic,weekends.percent);
-    //     return dayH + nightH + weekendH;
-    // }
+    function friday(start_Time){
+        
+        // const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
+        // const nightH = 2 * calc(basic,nights.percent); 
+        // const weekendH = 2.25 * calc(basic,weekends.percent);
+        // return dayH + nightH + weekendH;
+
+        const times = {
+            nightHours:null,
+            dayHours:null,
+            overtime:null
+        }
+
+        if ( start_Time.isSameOrAfter(returnTime(start_Time,00,00)) && start_Time.isBefore(dayRateTime) ){
+            times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
+            times.dayHours = finishBasicTime.diff(dayRateTime,'minutes') / 60;
+            console.log('----> 1');
+        }
+        else if (start_Time.isSameOrAfter(dayRateTime) && finishBasicTime.isBefore(nightRateTime)){
+            times.dayHours = finishBasicTime.diff(start_Time,'minutes') / 60;
+            console.log('----> 2');
+        }
+        else if (start_Time.isAfter(dayRateTime) && finishBasicTime.isSameOrAfter(nightRateTime) && finishBasicTime.isSameOrBefore(moment(weekendRateTime).add(1,'day'))){
+            times.dayHours = getDifference(nightRateTime,start_Time);
+            times.nightHours = getDifference(finishBasicTime,nightRateTime);
+            console.log('----> 3');
+        }else if ( start_Time.isAfter(dayRateTime) && finishBasicTime.isSameOrAfter(moment(weekendRateTime.add(1,'day')))){
+            console.log('----> 4');
+        }else if ( start_Time.isSameOrAfter(nightRateTime) && finishBasicTime.isSameOrAfter(moment(dayRateTime).add(1,'day'))){
+            console.log('----> 5');
+        }
+
+        return times
+    }
     // function sat(start_Time){
     //     return 9.25 * calc(basic,weekends.percent);
     // }
@@ -242,9 +270,10 @@ function calcEarnedForDay(
     if( moment(startTime).format('dddd')==='Monday' ||  moment(startTime).format('dddd')==='Tuesday' || moment(startTime).format('dddd')==='Wednesday' || moment(startTime).format('dddd')==='Thursday'){
       payload = weekDay(startTime);
     }
-    // else if(moment(startTime).format('dddd')==='Friday'){
-    //   payload = friday(startTime);
-    // }else if(moment(startTime).format('dddd')==='Saturday'){
+    else if(moment(startTime).format('dddd')==='Friday'){
+      payload = friday(startTime);
+    }
+    //else if(moment(startTime).format('dddd')==='Saturday'){
     //   payload = saturday(startTime);
     // }else if(moment(startTime).format('dddd')==='Saturday'){
     //   payload = sunday(startTime);
