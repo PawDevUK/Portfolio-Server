@@ -187,13 +187,13 @@ function calcEarnedForDay(
 
     let payload = {};
 
-    function monday(start_Time){
+    function weekDay(start_Time){
         const times = {
             nightHours:null,
             dayHours:null,
             overtime:null
         }
-        if ( start_Time.isSameOrAfter(weekendRateTime) && start_Time.isBefore(dayRateTime) ){
+        if ( start_Time.isSameOrAfter(returnTime(start_Time,00,00)) && start_Time.isBefore(dayRateTime) ){
             times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
             times.dayHours = finishBasicTime.diff(dayRateTime,'minutes') / 60;
         }
@@ -219,24 +219,7 @@ function calcEarnedForDay(
         return times
     }
     
-    function weekDay(start_Time){
-        const times = {
-            nightHours:null,
-            dayHours:null,
-            overtime:null
-        }
-        if(start_Time.isSameOrAfter(returnTime(start_Time,00,00)) && start_Time.isBefore(dayRateTime) && finishBasicTime.isAfter(dayRateTime)){
-            console.log('---- > 1');
-        }if(start_Time.isSameOrAfter(dayRateTime) && finishBasicTime.isSameOrBefore(nightRateTime)){
-            console.log('---- > 2');
-        }if(start_Time.isAfter(dayRateTime) && finishBasicTime.isAfter(nightRateTime)){
-            console.log('---- > 3');
-        }
-        // const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
-        // const nightH = 4.25 * calc(basic,nights.percent); // from 22:00 till finish 02:15 is 4h 15min
-        // return dayH + nightH;
-        return times
-    }
+
     // function friday(start_Time){
     //     const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
     //     const nightH = 2 * calc(basic,nights.percent); 
@@ -252,10 +235,7 @@ function calcEarnedForDay(
     //     return weekendH + nightH;
     // }
 
-    if(moment(startTime).format('dddd')==='Monday'){
-      payload = monday(startTime);
-    }
-    else if(moment(startTime).format('dddd')==='Tuesday' || moment(startTime).format('dddd')==='Wednesday' || moment(startTime).format('dddd')==='Thursday'){
+    if( moment(startTime).format('dddd')==='Monday' ||  moment(startTime).format('dddd')==='Tuesday' || moment(startTime).format('dddd')==='Wednesday' || moment(startTime).format('dddd')==='Thursday'){
       payload = weekDay(startTime);
     }
     // else if(moment(startTime).format('dddd')==='Friday'){
