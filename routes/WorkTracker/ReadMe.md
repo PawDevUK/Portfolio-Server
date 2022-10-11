@@ -7,11 +7,11 @@
 - [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
-- [ ] Crete functionality in the returnDate to receive date as a string NOT in the array.
-- [ ] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
-- [ ] Add test to function extractDateFromString.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Crete functionality in the returnDate to receive date as a string NOT in the array.
+- [x] Add test to function extractDateFromString.
+- [x] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
 - [x] Add functionality to calculate dynamic start for Tuesday.
 - [x] Add functionality to calculate dynamic start for Wednesday.
 - [x] Add functionality to calculate dynamic start for Thursday.
