@@ -244,7 +244,9 @@ function calcEarnedForDay(
             times.dayHours = getDifference(nightRateTime,start_Time);
             times.nightHours = getDifference(finishBasicTime,nightRateTime);
             console.log('----> 3');
-        }else if ( start_Time.isAfter(dayRateTime) && finishBasicTime.isSameOrAfter(moment(weekendRateTime.add(1,'day')))){
+        }else if ( start_Time.isAfter(dayRateTime) && finishBasicTime.isAfter(moment(weekendRateTime.add(1,'day')))){
+            times.dayHours = getDifference(nightRateTime,start_Time);
+            times.nightHours = getDifference(moment(weekendRateTime.add(1,'day')),start_Time) - times.dayHours;
             console.log('----> 4');
         }else if ( start_Time.isSameOrAfter(nightRateTime) && finishBasicTime.isSameOrAfter(moment(dayRateTime).add(1,'day'))){
             console.log('----> 5');
