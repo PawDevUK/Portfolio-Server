@@ -69,6 +69,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 7.25,
                         "nightHours": 2,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -77,6 +78,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 4.25,
                         "nightHours": 5,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -85,6 +87,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 9.25,
                         "nightHours": null,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -93,6 +96,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 9.25,
                         "nightHours": null,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -101,6 +105,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 9.25,
                         "nightHours": null,
+                        "weekendHours": null,
                         "overtime":null
                         })
                 });
@@ -109,6 +114,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 7,
                         "nightHours":2.25,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -117,6 +123,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 1.25,
                         "nightHours":8,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -125,6 +132,7 @@ describe(
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": 1.25,
                         "nightHours":8,
+                        "weekendHours":null,
                         "overtime":null
                         })
                 });
@@ -135,6 +143,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 3.25,
                     "nightHours":6,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -143,6 +152,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -151,6 +161,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -159,6 +170,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -167,6 +179,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 7,
                     "nightHours":2.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -175,6 +188,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 1.25,
                     "nightHours":8,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -183,6 +197,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 2,
                     "nightHours":7.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -193,6 +208,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 3.25,
                     "nightHours":6,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -201,6 +217,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -209,6 +226,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -217,6 +235,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -225,6 +244,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 7,
                     "nightHours":2.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -233,6 +253,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 1.25,
                     "nightHours":8,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -241,6 +262,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 2,
                     "nightHours":7.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -251,6 +273,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 3.25,
                     "nightHours":6,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -259,6 +282,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -267,6 +291,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -275,6 +300,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -283,6 +309,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 7,
                     "nightHours":2.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -291,6 +318,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 1.25,
                     "nightHours":8,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -299,6 +327,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 2,
                     "nightHours":7.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -309,6 +338,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 3.25,
                     "nightHours":6,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -317,6 +347,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -325,6 +356,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -333,6 +365,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 9.25,
                     "nightHours":null,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -341,6 +374,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 8,
                     "nightHours":1.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -349,6 +383,7 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 7,
                     "nightHours":2.25,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
@@ -357,20 +392,28 @@ describe(
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                     "dayHours": 1.25,
                     "nightHours":8,
+                    "weekendHours":null,
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
-                let startTime = moment([2022,09,14,22,45])
-                expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
-                    "dayHours": 2,
-                    "nightHours":7.25,
-                    "overtime":null
-                    })
-            });
+
+            (()=>{
+                let day = 2;
+                let night = 7.25;
+               return test(`It should return object with day rate time ${day} and night rate times ${night} in hours.`, ()=>{
+                    let startTime = moment([2022,09,14,22,45])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":null,
+                        "overtime":null
+                        })
+                });
+            })()
+            
         })
     })
-        
+
 
 test('Should return 1.5', () => {
     expect(calcPercent(1, 50)).toBe(1.5);
