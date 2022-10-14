@@ -252,7 +252,6 @@ function calcEarnedForDay(
             console.log('----> 5');
         }
 
-        return times
     }
     // function sat(start_Time){
     //     return 9.25 * calc(basic,weekends.percent);
@@ -264,10 +263,10 @@ function calcEarnedForDay(
     // }
 
     if( moment(startTime).format('dddd')==='Monday' ||  moment(startTime).format('dddd')==='Tuesday' || moment(startTime).format('dddd')==='Wednesday' || moment(startTime).format('dddd')==='Thursday'){
-      payload = weekDay(startTime);
+        weekDay(startTime);
     }
     else if(moment(startTime).format('dddd')==='Friday'){
-      payload = friday(startTime);
+        friday(startTime);
     }
     //else if(moment(startTime).format('dddd')==='Saturday'){
     //   payload = saturday(startTime);
