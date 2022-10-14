@@ -189,14 +189,15 @@ function calcEarnedForDay(
 
     // const { basic, nights, weekends } = rates;
 
-    let payload = {};
+    const times = {
+        nightHours:null,
+        dayHours:null,
+        weekendHours:null,
+        overtime:null
+    }
 
     function weekDay(start_Time){
-        const times = {
-            nightHours:null,
-            dayHours:null,
-            overtime:null
-        }
+        
         if ( start_Time.isSameOrAfter(returnTime(start_Time,00,00)) && start_Time.isBefore(dayRateTime) ){
             times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
             times.dayHours = finishBasicTime.diff(dayRateTime,'minutes') / 60;
@@ -220,7 +221,6 @@ function calcEarnedForDay(
             times.dayHours = finishBasicTime.diff(moment(dayRateTime).add(1,'day'),'minutes') / 60;
         }
 
-        return times
     }
     
 
@@ -230,12 +230,6 @@ function calcEarnedForDay(
         // const nightH = 2 * calc(basic,nights.percent); 
         // const weekendH = 2.25 * calc(basic,weekends.percent);
         // return dayH + nightH + weekendH;
-
-        const times = {
-            nightHours:null,
-            dayHours:null,
-            overtime:null
-        }
 
         if ( start_Time.isSameOrAfter(returnTime(start_Time,00,00)) && start_Time.isBefore(dayRateTime) ){
             times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
@@ -284,7 +278,7 @@ function calcEarnedForDay(
     // payload['sat'] = reduceFloat(sat());
     // payload['sun'] = reduceFloat(sun());
 
-    return payload;
+    return times;
 }
 
 function calcEarnedFor_Month(payload, reduceFloat){
