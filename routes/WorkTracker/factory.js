@@ -171,13 +171,6 @@ function calcEarnedForDay(
     const nightRateTime = returnTime(startTime,22,00);
     const weekendRateTime = returnTime(startTime,00,00);
 
-    console.log({
-        dayRateTime,
-        nightRateTime,
-        weekendRateTime,
-        finishBasicTime,
-    });
-
     //  week night monday 00:00 - 06:00
     //  week night tuesday-thursday 22:00 - 06:00
     //  week night friday 22:00 - 00:00
@@ -223,38 +216,25 @@ function calcEarnedForDay(
 
     }
     
-
     function friday(start_Time){
-        
-        // const dayH = 5 * basic; //from 17:00 till 22:00 is 5h 
-        // const nightH = 2 * calc(basic,nights.percent); 
-        // const weekendH = 2.25 * calc(basic,weekends.percent);
-        // return dayH + nightH + weekendH;
-
         if ( start_Time.isSameOrAfter(returnTime(start_Time,00,00)) && start_Time.isBefore(dayRateTime) ){
             times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
             times.dayHours = finishBasicTime.diff(dayRateTime,'minutes') / 60;
-            console.log('----> 1');
         }
         else if (start_Time.isSameOrAfter(dayRateTime) && finishBasicTime.isBefore(nightRateTime)){
             times.dayHours = finishBasicTime.diff(start_Time,'minutes') / 60;
-            console.log('----> 2');
         }
         else if (start_Time.isAfter(dayRateTime) && finishBasicTime.isSameOrAfter(nightRateTime) && finishBasicTime.isSameOrBefore(moment(weekendRateTime).add(1,'day'))){
             times.dayHours = getDifference(nightRateTime,start_Time);
             times.nightHours = getDifference(finishBasicTime,nightRateTime);
-            console.log('----> 3');
         }else if ( start_Time.isAfter(dayRateTime) && start_Time.isBefore(nightRateTime) && finishBasicTime.isAfter(moment(weekendRateTime).add(1,'day'))){
             times.dayHours = getDifference(nightRateTime,start_Time);
             times.nightHours = getDifference(moment(weekendRateTime).add(1,'day'),start_Time) - times.dayHours;
             times.weekendHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
-            console.log('----> 4');
         }else if ( start_Time.isSameOrAfter(nightRateTime) && finishBasicTime.isAfter(moment(dayRateTime).add(1,'day'))){
             times.nightHours = getDifference(moment(weekendRateTime).add(1,'day'),start_Time);
             times.weekendHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
-            console.log('----> 5');
         }
-
     }
     function saturday(start_Time){
         if(start_Time.isAfter(weekendRateTime) && start_Time.isBefore(moment(weekendRateTime).add(1,'day'))){
