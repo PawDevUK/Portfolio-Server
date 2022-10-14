@@ -283,7 +283,7 @@ function calcEarnedForDay(
     }
     else if(moment(startTime).format('dddd')==='Saturday'){
         saturday(startTime);
-    }else if(moment(startTime).format('dddd')==='Saturday'){
+    }else if(moment(startTime).format('dddd')==='Sunday'){
         sunday(startTime);
     }
 
