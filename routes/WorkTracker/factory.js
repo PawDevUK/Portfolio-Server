@@ -257,26 +257,21 @@ function calcEarnedForDay(
 
     }
     function saturday(start_Time){
-        if(start_Time.isAfter(weekendRateTime) && start_Time.isBefore(moment(weekendRateTime).add(1,'day')) && finishBasicTime.isAfter(returnTime(start_Time,00,00).add(1,'day'))){
-            times.weekendHours = getDifference(finishBasicTime,start_Time)
+        if(start_Time.isAfter(weekendRateTime) && start_Time.isBefore(moment(weekendRateTime).add(1,'day'))){
+            times.weekendHours = getDifference(finishBasicTime, start_Time)
         }
-        // return 9.25 * calc(basic,weekends.percent);
     }
     function sunday(start_Time){
-        if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isBeforeOrSame(moment(weekendRateTime).add(1,'day'))){
+        if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isSameOrBefore(moment(weekendRateTime).add(1,'day'))){
             times.weekendHours = getDifference(finishBasicTime,start_Time)
         }else if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isAfter(moment(weekendRateTime).add(1,'day'))){
-            times.weekendHours = getDifference(weekendRateTime, start_Time);
+            times.weekendHours = getDifference(moment(weekendRateTime).add(1,'day'), start_Time);
             times.nightHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
         }else if( start_Time.isBefore(moment(weekendRateTime).add(1,'day')) && finishBasicTime.isAfter(moment(dayRateTime).add(1,'day'))){
             times.weekendHours = getDifference(weekendRateTime, start_Time);
             times.nightHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day')) /// need to be finished !!!
             times.dayHours = getDifference(moment(finishBasicTime).add(1,'day'),moment(dayRateTime).add(1,'day'))
         }
-
-        // const weekendH = 7 * calc(basic,weekends.percent);
-        // const nightH = 2.25 * calc(basic,nights.percent); // week night from 00:00
-        // return weekendH + nightH;
     }
 
 
