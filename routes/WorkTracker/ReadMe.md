@@ -2,6 +2,7 @@
 
 - [ ] Remove all console logs from and development helpers from calcEarnedForDay.
 - [ ] Create functionality to calculate earnings from hours generated with different start times.
+- [ ] Add test to check all week, 7 days and 24h for every day in the week.
 - [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
