@@ -3,7 +3,7 @@
 - [ ] Add functionality to calculate dynamic start for Friday.
 - [ ] Add functionality to calculate dynamic start for Saturday.
 - [ ] Add functionality to calculate dynamic start for Sunday.
-- [ ] Create functionality to calculate different start time.
+- [ ] Create functionality to calculate earnings for different start time.
 - [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
