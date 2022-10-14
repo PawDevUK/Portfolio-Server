@@ -137,7 +137,8 @@ describe(
                         })
                 });
         }),
-        describe('Tuesday',()=>{
+        describe(
+            'Tuesday',()=>{
             test('It should return object with day rate and night rate times in hours.', ()=>{
                 let startTime = moment([2022,09,11,00,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
@@ -202,7 +203,8 @@ describe(
                     })
             });
         })
-        describe('Wednesday',()=>{
+        describe(
+            'Wednesday',()=>{
             test('It should return object with day rate and night rate times in hours.', ()=>{
                 let startTime = moment([2022,09,12,00,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
@@ -267,7 +269,8 @@ describe(
                     })
             });
         })
-        describe('Thursday',()=>{
+        describe(
+            'Thursday',()=>{
             test('It should return object with day rate times in hours.', ()=>{
                 let startTime = moment([2022,09,13,00,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
@@ -332,7 +335,8 @@ describe(
                     })
             });
         })
-        describe('Friday',()=>{
+        describe(
+            'Friday',()=>{
             test('It should return object with day rate and night rate times in hours.', ()=>{
                 let startTime = moment([2022,09,14,00,00])
                 expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
