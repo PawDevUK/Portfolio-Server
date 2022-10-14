@@ -1,14 +1,15 @@
 # ToDo
 
-- [ ] Add functionality to calculate dynamic start for Friday.
 - [ ] Add functionality to calculate dynamic start for Saturday.
 - [ ] Add functionality to calculate dynamic start for Sunday.
+- [ ] Remove all console logs from and development helpers from calcEarnedForDay.
 - [ ] Create functionality to calculate earnings for different start time.
 - [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Add functionality to calculate dynamic start for Friday.
 - [x] Crete functionality in the returnDate to receive date as a string NOT in the array.
 - [x] Add test to function extractDateFromString.
 - [x] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
