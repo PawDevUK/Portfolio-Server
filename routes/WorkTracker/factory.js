@@ -256,14 +256,29 @@ function calcEarnedForDay(
         }
 
     }
-    // function sat(start_Time){
-    //     return 9.25 * calc(basic,weekends.percent);
-    // }
-    // function sun(start_Time){
-    //     const weekendH = 7 * calc(basic,weekends.percent);
-    //     const nightH = 2.25 * calc(basic,nights.percent); // week night from 00:00
-    //     return weekendH + nightH;
-    // }
+    function saturday(start_Time){
+        if(start_Time.isAfter(weekendRateTime) && start_Time.isBefore(moment(weekendRateTime).add(1,'day')) && finishBasicTime.isAfter(returnTime(start_Time,00,00).add(1,'day'))){
+            times.weekendHours = getDifference(finishBasicTime,start_Time)
+        }
+        // return 9.25 * calc(basic,weekends.percent);
+    }
+    function sunday(start_Time){
+        if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isBeforeOrSame(moment(weekendRateTime).add(1,'day'))){
+            times.weekendHours = getDifference(finishBasicTime,start_Time)
+        }else if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isAfter(moment(weekendRateTime).add(1,'day'))){
+            times.weekendHours = getDifference(weekendRateTime, start_Time);
+            times.nightHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
+        }else if( start_Time.isBefore(moment(weekendRateTime).add(1,'day')) && finishBasicTime.isAfter(moment(dayRateTime).add(1,'day'))){
+            times.weekendHours = getDifference(weekendRateTime, start_Time);
+            times.nightHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day')) /// need to be finished !!!
+            times.dayHours = getDifference(moment(finishBasicTime).add(1,'day'),moment(dayRateTime).add(1,'day'))
+        }
+
+        // const weekendH = 7 * calc(basic,weekends.percent);
+        // const nightH = 2.25 * calc(basic,nights.percent); // week night from 00:00
+        // return weekendH + nightH;
+    }
+
 
     if( moment(startTime).format('dddd')==='Monday' ||  moment(startTime).format('dddd')==='Tuesday' || moment(startTime).format('dddd')==='Wednesday' || moment(startTime).format('dddd')==='Thursday'){
         weekDay(startTime);
@@ -271,11 +286,11 @@ function calcEarnedForDay(
     else if(moment(startTime).format('dddd')==='Friday'){
         friday(startTime);
     }
-    //else if(moment(startTime).format('dddd')==='Saturday'){
-    //   payload = saturday(startTime);
-    // }else if(moment(startTime).format('dddd')==='Saturday'){
-    //   payload = sunday(startTime);
-    // }
+    else if(moment(startTime).format('dddd')==='Saturday'){
+        saturday(startTime);
+    }else if(moment(startTime).format('dddd')==='Saturday'){
+        sunday(startTime);
+    }
 
     // payload['weekDay'] = reduceFloat(weekDay());
     // payload['friday'] = reduceFloat(friday());
