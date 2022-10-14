@@ -1,23 +1,23 @@
 # ToDo
 
-- [ ] Add functionality to calculate dynamic start for Saturday.
-- [ ] Add functionality to calculate dynamic start for Sunday.
 - [ ] Remove all console logs from and development helpers from calcEarnedForDay.
-- [ ] Create functionality to calculate earnings for different start time.
+- [ ] Create functionality to calculate earnings from hours generated with different start times.
 - [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
-- [x] Add functionality to calculate dynamic start for Friday.
 - [x] Crete functionality in the returnDate to receive date as a string NOT in the array.
 - [x] Add test to function extractDateFromString.
 - [x] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
-- [x] Add functionality to calculate dynamic start for Tuesday.
-- [x] Add functionality to calculate dynamic start for Wednesday.
-- [x] Add functionality to calculate dynamic start for Thursday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Monday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Tuesday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Wednesday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Thursday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Friday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Saturday.
+- [x] Add functionality to calculate day,evening,weekend hours for different starts for Sunday.
 - [x] Add test to function calcEarnedForDay to check changes.
-- [x] Add functionality to calculate dynamic start for Monday.
 - [x] Add test to function returnDate.
 - [x] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
 - [x] Crete functionality in the returnDate to take argument date as a string and the array with the string.
