@@ -378,35 +378,19 @@ describe(
                     "overtime":null
                     })
             });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
-                let startTime = moment([2022,09,14,15,00])
-                expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
-                    "dayHours": 7,
-                    "nightHours":2.25,
-                    "weekendHours":null,
-                    "overtime":null
-                    })
-            });
-            test('It should return object with day rate and night rate times in hours.', ()=>{
-                let startTime = moment([2022,09,14,21,45])
-                expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
-                    "dayHours": 1.25,
-                    "nightHours":8,
-                    "weekendHours":null,
-                    "overtime":null
-                    })
-            });
 
             (()=>{
-                let day = 2;
-                let night = 7.25;
-               return test(`It should return object with day rate time ${day} and night rate times ${night} in hours.`, ()=>{
+                let day = null;
+                let night = 1.25;
+                let weekend = 8;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night},weekend rate times ${weekend} in hours.`, ()=>{
                     let startTime = moment([2022,09,14,22,45])
                     expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
                         "dayHours": day,
                         "nightHours":night,
-                        "weekendHours":null,
-                        "overtime":null
+                        "weekendHours":weekend,
+                        "overtime":overtime,
                         })
                 });
             })()
