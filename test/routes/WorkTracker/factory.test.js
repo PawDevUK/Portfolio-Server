@@ -447,6 +447,130 @@ describe(
                         })
                 });
             })();
+        });
+        describe( 'Saturday', ()=>{
+            (()=>{
+                let day = null;
+                let night = null;
+                let weekend = 9.25;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,15,00,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+            (()=>{
+                let day = null;
+                let night = null;
+                let weekend = 9.25;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,15,12,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+            (()=>{
+                let day = null;
+                let night = null;
+                let weekend = 9.25;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,15,15,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+            (()=>{
+                let day = null;
+                let night = null;
+                let weekend = 9.25;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,15,22,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+        })
+        describe( 'Sunday', ()=>{
+            (()=>{
+                let day = null;
+                let night = null;
+                let weekend = 9.25;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,16,00,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+            (()=>{
+                let day = null;
+                let night = null;
+                let weekend = 9.25;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,16,12,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+            (()=>{
+                let day = null;
+                let night = 0.75;
+                let weekend = 8.50;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,16,15,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
+            (()=>{
+                let day = null;
+                let night = 7.75;
+                let weekend = 1.50;
+                let overtime = null;
+               return test(`It should return object with day rate time ${day}, night rate times ${night}, weekend rate times ${weekend} in hours.`, ()=>{
+                    let startTime = moment([2022,09,16,22,30])
+                    expect(calcEarnedForDay(getFinishBasic,startTime )).toEqual({
+                        "dayHours": day,
+                        "nightHours":night,
+                        "weekendHours":weekend,
+                        "overtime":overtime,
+                        })
+                });
+            })();
         })
     })
 
