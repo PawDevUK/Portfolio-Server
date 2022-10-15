@@ -253,17 +253,34 @@ function getHoursFromStart( getFinishBasic, start_Time ){
 /** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 02:15
 */
 function calcEarnedForDay(
-    // rates,
-    // calc,
-    // reduceFloat,
+    rates,
+    getHoursFromStart,
+    getFinishBasic,
+    calc,
+    reduceFloat,
+    start_Time
     ){
+        let payload = {
+            times: {
+                nightHours:null,
+                dayHours:null,
+                weekendHours:null,
+                overtime:null,
+            },
+            earned: {
+                nightHours: null,
+                dayHours: null,
+                weekendHours: null,
+                overtime: null,
+                Total: null,
+            },
+        };
 
-    // const { basic, nights, weekends } = rates;
+    const { basic, nights, weekends } = rates;
+    payload.times = getHoursFromStart( getFinishBasic , start_Time)
+    payload.earned = null
 
-    // payload['weekDay'] = reduceFloat(weekDay());
-    // payload['friday'] = reduceFloat(friday());
-    // payload['sat'] = reduceFloat(sat());
-    // payload['sun'] = reduceFloat(sun());
+    return payload
 
 }
 
