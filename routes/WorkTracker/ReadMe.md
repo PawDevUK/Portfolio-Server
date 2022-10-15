@@ -1,6 +1,7 @@
 # ToDo
 
 - [ ] Remove all console logs from and development helpers from calcEarnedForDay.
+- [ ] Extract functionality to calculate hours from start time. This functionality at the moment is in the  calcEarnedForDay. Reason is that if calcEarnedForDay return earnings not times what is at the moment all test for this function will fail. 
 - [ ] Create functionality to calculate earnings from hours generated with different start times.
 - [ ] Add test to check all week, 7 days and 24h for every day in the week.
 - [ ] Create functionality to calculate overtimes.
