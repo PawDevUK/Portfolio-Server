@@ -122,22 +122,23 @@ function countDays(obj){
     return counter
 }
 
-//** @function 
-/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 02:15
-*/
-function calcEarnedForDay(
-    // rates,
-    // calc,
-    // reduceFloat,
-    getFinishBasic,
-    start_Time,
-    finish_Time
-    ){
+function getOvertime(finish_Time){
+    let finishTime = '';
+    let overtimeTotal = '';
+    if(finish_Time){
+        finishTime = moment(finish_Time);
+        overtimeTotal = checkDurationTime(startTime, finish_Time) - returnTime(startTime,9,15) /// initial 
+    }
+}
+
+function getHoursFromStart( getFinishBasic, start_Time ){
 
     // moment methods used in this function:
     //  - a.from(b)
     //  - [before].isBefore([after]) true
+    //  - [before].isSameOrBefore([after]) true
     //  - [after].isAfter([before])  true
+    //  - [after].isSameOrAfter([before])  true
     //  - a.diff(b,'minutes')
 
 
@@ -145,7 +146,7 @@ function calcEarnedForDay(
         return moment(date).hour(h).minute(m);
     }
     
-    function checkDurationTime(start_Time,finish_Time){
+    function checkDurationTime(start_Time, finish_Time){
         return moment(start_Time).from(finish_Time)
     }
 
@@ -155,32 +156,10 @@ function calcEarnedForDay(
 
     const startTime = moment(start_Time);
     let finishBasicTime = getFinishBasic(start_Time);
-    let finishTime = '';
-    let overtimeTotal = '';
-    if(finish_Time){
-        finishTime = moment(finish_Time);
-        overtimeTotal = checkDurationTime(startTime, finish_Time) - returnTime(startTime,9,15) /// initial 
-    }
-    
-    
-    // calculate from start to plus 9.25h
-    // create break points for different rates
-    //  week day monday-friday 06:00 - 22:00
 
     const dayRateTime = returnTime(startTime,06,00);
     const nightRateTime = returnTime(startTime,22,00);
     const weekendRateTime = returnTime(startTime,00,00);
-
-    //  week night monday 00:00 - 06:00
-    //  week night tuesday-thursday 22:00 - 06:00
-    //  week night friday 22:00 - 00:00
-
-    //  weekend night sat 00:00 - 06:00
-    //  weekend day sat-sun 06:00 - 22:00
-    //  weekend night sat 22:00 - 06:00
-    //  weekend night sun 22:00 - 00:00
-
-    // const { basic, nights, weekends } = rates;
 
     const times = {
         nightHours:null,
@@ -267,12 +246,25 @@ function calcEarnedForDay(
         sunday(startTime);
     }
 
+    return times
+}
+
+//** @function 
+/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 02:15
+*/
+function calcEarnedForDay(
+    // rates,
+    // calc,
+    // reduceFloat,
+    ){
+
+    // const { basic, nights, weekends } = rates;
+
     // payload['weekDay'] = reduceFloat(weekDay());
     // payload['friday'] = reduceFloat(friday());
     // payload['sat'] = reduceFloat(sat());
     // payload['sun'] = reduceFloat(sun());
 
-    return times;
 }
 
 function calcEarnedFor_Month(payload, reduceFloat){
@@ -463,4 +455,5 @@ module.exports = {
     addPDandCOD,
     addId,
     getFinishBasic,
+    getHoursFromStart,
 }
