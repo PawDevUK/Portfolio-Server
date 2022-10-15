@@ -14,7 +14,8 @@ const {
     getCombinations
 } = require('./factory'); // initializing calendar obj
 
-const { 
+const {
+    getHoursFromStart,
     calcEarnedFor_Month,
     calcEarnedForDay,
     calcPercent,
