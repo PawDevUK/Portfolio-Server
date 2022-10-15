@@ -1,7 +1,6 @@
 # ToDo
 
 - [ ] Remove all console logs from and development helpers from calcEarnedForDay.
-- [ ] Extract functionality to calculate hours from start time. This functionality at the moment is in the  calcEarnedForDay. Reason is that if calcEarnedForDay return earnings not times what is at the moment all test for this function will fail. 
 - [ ] Create functionality to calculate earnings from hours generated with different start times.
 - [ ] Add test to check all week, 7 days and 24h for every day in the week.
 - [ ] Create functionality to calculate overtimes.
@@ -9,6 +8,7 @@
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Extract functionality to calculate hours from start time. This functionality at the moment is in the  calcEarnedForDay. Reason is that if calcEarnedForDay return earnings not times what is at the moment all test for this function will fail. 
 - [x] Crete functionality in the returnDate to receive date as a string NOT in the array.
 - [x] Add test to function extractDateFromString.
 - [x] Fix issue in the returnDate which is failing to return correct date with time in case of string "01/02/2022 22:00".
