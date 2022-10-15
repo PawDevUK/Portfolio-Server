@@ -79,14 +79,21 @@ function createMonth(rota, base_rate, start_Time){
     for (let i = 1; i <= days; i++) {
         let weekDay = getNameOfWeekDay(DateArg, i);
         let  date = returnDate(DateArg, extractDateFromString, i, start_Time);
+        let timesEarned = calcEarnedForDay( 
+            rates,
+            getHoursFromStart,
+            getFinishBasic,
+            calc,
+            reduceFloat,
+            date )
         calendar.calendar.push({
             weekDay,
             day: i,
             start: date.format('HH:mm'),
             finishBasic:getFinishBasic(date).format('HH:mm'),
             finishOvertime:null,
-            hours: getHoursFromStart( getFinishBasic, date),
-            // earnedFromHours: calcEarnedForDay(rates,hours),
+            hours: timesEarned.times,
+            earnedFromHours: timesEarned.earned,
             in: checkIN(OffDays, i, weekDay),
             payDay:addPDandCOD(payDays, DateArg, i),
             cutOffDay:addPDandCOD(cutOffD, DateArg, i),
