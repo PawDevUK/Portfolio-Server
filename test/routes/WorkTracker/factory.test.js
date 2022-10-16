@@ -1,4 +1,4 @@
-const {calcPercent, extractDateFromString, returnDate, getHoursFromStart, getFinishBasic} = require('../../../routes/WorkTracker/factory.js');
+const {calcPercent, extractDateFromString, returnDate, getHoursFromStart, getFinishBasic, calcEarnedForDay, reduceFloat} = require('../../../routes/WorkTracker/factory.js');
 const moment =require('moment')
 
 describe(
@@ -574,6 +574,80 @@ describe(
         })
     })
 
+describe('Test for function calcEarnedForDay. It should return object with hours and earnings calculated from the hours.', ()=>{
+    const rates = {
+        currency: 'GBP',
+        basic: 16.75,
+        nights: {
+            percent: 25,
+            rate: null,
+        },
+        weekends: {
+            percent: 33,
+            rate: null,
+        },
+        overtime: {
+            percent: 50,
+            rate: null,
+        },
+    };
+    (()=>{
+        let key = 'times'
+        let startTime = moment([2022,09,16,22,30])
+        return test(`It should have key '${key}'`, ()=>{
+            expect(calcEarnedForDay(
+                rates,
+                getHoursFromStart,
+                getFinishBasic,
+                calcPercent,
+                startTime)).toHaveProperty('times')
+        })
+    })();
+
+    (()=>{
+        let key = 'earned'
+        let startTime = moment([2022,09,16,22,30])
+        return test(`It should have key '${key}'`, ()=>{
+            expect(calcEarnedForDay(
+                rates,
+                getHoursFromStart,
+                getFinishBasic,
+                calcPercent,
+                startTime)).toHaveProperty('times')
+        })
+    })()
+})
+
+describe('Checks if function reduces float from the number and also value in the object.', ()=>{
+    test('Returns integer from float', ()=>{
+        expect(reduceFloat(2.112121212)).toBe(2.11)
+    })
+    test('Returns object with key and values integers from floats', ()=>{
+        expect(reduceFloat({
+            first:2.2222232,
+            second:2.2223232,
+            third:2.222232323
+        })).toEqual({
+            first:2.22,
+            second:2.22,
+            third:2.22
+        })
+    })
+    test('Returns object with key and values integers from floats', ()=>{
+        expect(reduceFloat({
+            first:{
+                inner:2.2222232,
+                inner2:2.222677
+            },
+            second:2.2223232,
+            third:2.222232323
+        })).toEqual({
+            first:{inner:2.22},
+            second:2.22,
+            third:2.22
+        })
+    })
+})
 
 test('Should return 1.5', () => {
     expect(calcPercent(1, 50)).toBe(1.5);

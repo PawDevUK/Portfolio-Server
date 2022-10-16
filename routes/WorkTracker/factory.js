@@ -13,6 +13,12 @@ function extractDateFromString(str){
     return date
 }
 
+function calcPercent(basic,extraRate){
+    let extra = 0 
+    extra = (basic / 100) * extraRate
+    return basic + extra
+}
+
 function returnDate(dateArg, extractDateFromString, day, startTime){
     let payload = [];
     let dateElement = '';
@@ -61,7 +67,35 @@ function getMonthNumber(name){
 }
 
 function reduceFloat(payload){
-    return parseFloat(payload.toFixed(2))
+    function red(payload){
+        return parseFloat(payload.toFixed(2))
+    }
+    let result = null;
+    if(typeof payload === 'number'){
+        result = red(payload)
+    }else if ( typeof payload === 'object' ){
+            Object.keys(payload).forEach((key)=>{
+                if( typeof payload[key] !== 'object' && typeof payload[key] === 'number'){
+                    if( result === null){
+                        result = {}
+                        result[key] = red(payload[key])
+                    }else if(typeof result === 'object' ){
+                        result[key] = red(payload[key])
+                    }
+                }else if (typeof payload[key] === 'object'){
+                    Object.keys(payload[key]).forEach((innerK)=>{
+                        // console.log(innerK);
+                        // if( result === null){
+                        //     result = {}
+                        //     result[key] = red(payload[key][innerK])
+                        // }else if(typeof result === 'object' ){
+                        //     result[key] = red(payload[key][innerK])
+                        // }
+                    })
+                }
+            })
+    }
+    return result
 }
 
 function checkIN(arr,day,weekDay){
@@ -250,35 +284,42 @@ function getHoursFromStart( getFinishBasic, start_Time ){
 }
 
 //** @function 
-/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 02:15
+/** @name calcEarnedForDay
 */
 function calcEarnedForDay(
     rates,
     getHoursFromStart,
     getFinishBasic,
     calc,
-    reduceFloat,
-    start_Time
+    start_Time,
+    reduceFloat
     ){
         let payload = {
             times: {
                 nightHours:null,
                 dayHours:null,
                 weekendHours:null,
-                overtime:null,
+                Hours:null,
             },
             earned: {
-                nightHours: null,
-                dayHours: null,
-                weekendHours: null,
-                overtime: null,
-                Total: null,
+                nightEarned: null,
+                dayEarned: null,
+                weekendEarned: null,
+                overtimeEarned: null,
+                TotalEarned: null,
             },
         };
 
     const { basic, nights, weekends } = rates;
-    payload.times = getHoursFromStart( getFinishBasic , start_Time)
-    payload.earned = null
+
+    payload.times = getHoursFromStart( getFinishBasic , start_Time);
+   
+    let times = payload.times;
+    
+    payload.earned.nightEarned = times.nightHours ? calc(basic,nights.percent) * times.nightHours : null;
+    payload.earned.dayEarned = times.dayHours ? basic * times.dayHours : null;
+    payload.earned.weekendEarned = times.weekendHours ? calc(basic,weekends.percent) * times.weekendHours : null;
+    payload.earned.overtimeEarned = times.overtimeHours ? calc(basic,weekends.percent) * times.overtimeHours : null;
 
     return payload
 
@@ -327,11 +368,6 @@ function getFinishBasic(start_Time){
     return moment(start_Time).add(9,'hours').add(15,'minutes')
 }
 
-function calcPercent(basic,extraRate){
-    let extra = 0 
-    extra = (basic / 100) * extraRate
-    return basic + extra
-}
 
 function createYearCalendar(rota, getMonthNumber, createMonth){
     let yearCalendar = [ ]
