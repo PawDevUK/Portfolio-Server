@@ -1,4 +1,4 @@
-const {calcPercent, extractDateFromString, returnDate, getHoursFromStart, getFinishBasic} = require('../../../routes/WorkTracker/factory.js');
+const {calcPercent, extractDateFromString, returnDate, getHoursFromStart, getFinishBasic, calcEarnedForDay, reduceFloat} = require('../../../routes/WorkTracker/factory.js');
 const moment =require('moment')
 
 describe(
