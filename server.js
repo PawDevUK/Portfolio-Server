@@ -4,6 +4,7 @@ const Register = require('./routes/RegisterLogin/Register.js')
 const Tictactoe = require('./routes/Tictactoe/Tictactoe.js');
 const ChatBot = require('./routes/ChatBot/ChatBot.js');
 const Covid = require('./routes/Covid/Covid.js');
+const createMonth = require('./routes/WorkTracker/Tracker.js');
 const express = require('express');
 const cors = require('cors');
 
@@ -28,6 +29,7 @@ app.use('/register', Register)
 app.use('/tictactoe', Tictactoe);
 app.use('/visitor', VisitorRoute);
 app.use('/contactForm', ContactFormRoute);
+app.use('/workTracker/createMonth', createMonth)
 
 app.listen(Port, () => {
     console.log(`Example app listening at http://localhost:${Port}`);
