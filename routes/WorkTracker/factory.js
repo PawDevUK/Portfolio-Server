@@ -13,6 +13,12 @@ function extractDateFromString(str){
     return date
 }
 
+function calcPercent(basic,extraRate){
+    let extra = 0 
+    extra = (basic / 100) * extraRate
+    return basic + extra
+}
+
 function returnDate(dateArg, extractDateFromString, day, startTime){
     let payload = [];
     let dateElement = '';
@@ -327,11 +333,6 @@ function getFinishBasic(start_Time){
     return moment(start_Time).add(9,'hours').add(15,'minutes')
 }
 
-function calcPercent(basic,extraRate){
-    let extra = 0 
-    extra = (basic / 100) * extraRate
-    return basic + extra
-}
 
 function createYearCalendar(rota, getMonthNumber, createMonth){
     let yearCalendar = [ ]
