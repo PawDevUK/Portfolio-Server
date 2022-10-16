@@ -284,7 +284,7 @@ function getHoursFromStart( getFinishBasic, start_Time ){
 }
 
 //** @function 
-/** @name calcEarnedForDay at the moment this function calculate earnings for day only between 17:00 and 02:15
+/** @name calcEarnedForDay
 */
 function calcEarnedForDay(
     rates,
