@@ -291,28 +291,35 @@ function calcEarnedForDay(
     getHoursFromStart,
     getFinishBasic,
     calc,
-    reduceFloat,
-    start_Time
+    start_Time,
+    reduceFloat
     ){
         let payload = {
             times: {
                 nightHours:null,
                 dayHours:null,
                 weekendHours:null,
-                overtime:null,
+                Hours:null,
             },
             earned: {
-                nightHours: null,
-                dayHours: null,
-                weekendHours: null,
-                overtime: null,
-                Total: null,
+                nightEarned: null,
+                dayEarned: null,
+                weekendEarned: null,
+                overtimeEarned: null,
+                TotalEarned: null,
             },
         };
 
     const { basic, nights, weekends } = rates;
-    payload.times = getHoursFromStart( getFinishBasic , start_Time)
-    payload.earned = null
+
+    payload.times = getHoursFromStart( getFinishBasic , start_Time);
+   
+    let times = payload.times;
+    
+    payload.earned.nightEarned = times.nightHours ? calc(basic,nights.percent) * times.nightHours : null;
+    payload.earned.dayEarned = times.dayHours ? basic * times.dayHours : null;
+    payload.earned.weekendEarned = times.weekendHours ? calc(basic,weekends.percent) * times.weekendHours : null;
+    payload.earned.overtimeEarned = times.overtimeHours ? calc(basic,weekends.percent) * times.overtimeHours : null;
 
     return payload
 
