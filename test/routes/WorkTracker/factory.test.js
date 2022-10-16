@@ -574,6 +574,50 @@ describe(
         })
     })
 
+describe('Test for function calcEarnedForDay. It should return object with hours and earnings calculated from the hours.', ()=>{
+    const rates = {
+        currency: 'GBP',
+        basic: 16.75,
+        nights: {
+            percent: 25,
+            rate: null,
+        },
+        weekends: {
+            percent: 33,
+            rate: null,
+        },
+        overtime: {
+            percent: 50,
+            rate: null,
+        },
+    };
+    (()=>{
+        let key = 'times'
+        let startTime = moment([2022,09,16,22,30])
+        return test(`It should have key '${key}'`, ()=>{
+            expect(calcEarnedForDay(
+                rates,
+                getHoursFromStart,
+                getFinishBasic,
+                calcPercent,
+                startTime)).toHaveProperty('times')
+        })
+    })();
+
+    (()=>{
+        let key = 'earned'
+        let startTime = moment([2022,09,16,22,30])
+        return test(`It should have key '${key}'`, ()=>{
+            expect(calcEarnedForDay(
+                rates,
+                getHoursFromStart,
+                getFinishBasic,
+                calcPercent,
+                startTime)).toHaveProperty('times')
+        })
+    })()
+})
+
 
 test('Should return 1.5', () => {
     expect(calcPercent(1, 50)).toBe(1.5);
