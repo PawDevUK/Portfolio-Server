@@ -69,35 +69,7 @@ function getMonthNumber(name){
 }
 
 function reduceFloat(payload){
-    function red(payload){
         return parseFloat(payload.toFixed(2))
-    }
-    let result = null;
-    if(typeof payload === 'number'){
-        result = red(payload)
-    }else if ( typeof payload === 'object' ){
-            Object.keys(payload).forEach((key)=>{
-                if( typeof payload[key] !== 'object' && typeof payload[key] === 'number'){
-                    if( result === null){
-                        result = {}
-                        result[key] = red(payload[key])
-                    }else if(typeof result === 'object' ){
-                        result[key] = red(payload[key])
-                    }
-                }else if (typeof payload[key] === 'object'){
-                    Object.keys(payload[key]).forEach((innerK)=>{
-                        // console.log(innerK);
-                        // if( result === null){
-                        //     result = {}
-                        //     result[key] = red(payload[key][innerK])
-                        // }else if(typeof result === 'object' ){
-                        //     result[key] = red(payload[key][innerK])
-                        // }
-                    })
-                }
-            })
-    }
-    return result
 }
 
 function checkIN(arr,day,weekDay){
