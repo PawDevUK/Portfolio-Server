@@ -600,7 +600,8 @@ describe('Test for function calcEarnedForDay. It should return object with hours
                 getHoursFromStart,
                 getFinishBasic,
                 calcPercent,
-                startTime)).toHaveProperty('times')
+                startTime,
+                reduceFloat)).toHaveProperty('times')
         })
     })();
 
@@ -613,7 +614,8 @@ describe('Test for function calcEarnedForDay. It should return object with hours
                 getHoursFromStart,
                 getFinishBasic,
                 calcPercent,
-                startTime)).toHaveProperty('times')
+                startTime,
+                reduceFloat)).toHaveProperty('times')
         })
     })()
 })
