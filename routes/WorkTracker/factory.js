@@ -301,17 +301,14 @@ function calcEarnedForDay(
     const { basic, nights, weekends } = rates;
 
     payload.times = getHoursFromStart( getFinishBasic , start_Time);
-   
     let times = payload.times;
+    payload.earned.nightEarned = payload.times.nightHours ? calculateEarned(basic, nights.percent, times.nightHours, reduceFloat, calc) : null;
+    payload.earned.dayEarned = payload.times.dayHours ? calculateEarned(basic, 0 ,times.dayHours, reduceFloat, calc) : null;
+    payload.earned.weekendEarned = payload.times.weekendHours ? calculateEarned(basic, weekends.percent, times.weekendHours, reduceFloat, calc) : null;
+    payload.earned.overtimeEarned = payload.times.overtimeHours ? calculateEarned(basic, 0, times.overtimeHours, reduceFloat, calc) : null;
     payload.earned.TotalEarned = getTotalEarned(payload.earned,reduceFloat);
-    
-    payload.earned.nightEarned = times.nightHours ? calc(basic,nights.percent) * times.nightHours : null;
-    payload.earned.dayEarned = times.dayHours ? basic * times.dayHours : null;
-    payload.earned.weekendEarned = times.weekendHours ? calc(basic,weekends.percent) * times.weekendHours : null;
-    payload.earned.overtimeEarned = times.overtimeHours ? calc(basic,weekends.percent) * times.overtimeHours : null;
 
-    return payload
-
+    return payload;
 }
 
 function calcEarnedFor_Month(payload, reduceFloat){
