@@ -257,6 +257,20 @@ function getHoursFromStart( getFinishBasic, start_Time ){
     return times
 }
 
+function getTotalEarned(obj,reduceFloat){
+    let i = 0;
+    Object.keys(obj).forEach((key)=> {
+        if(obj[key]){
+            i += obj[key]
+        }
+    })
+    return reduceFloat(i)
+}
+function calculateEarned( basic, percent , time, reduceF, calc){
+    // console.log(basic, percent , time, reduceF, calc);
+    return reduceF(calc(basic,percent) * time )
+}
+
 //** @function 
 /** @name calcEarnedForDay
 */
@@ -289,6 +303,7 @@ function calcEarnedForDay(
     payload.times = getHoursFromStart( getFinishBasic , start_Time);
    
     let times = payload.times;
+    payload.earned.TotalEarned = getTotalEarned(payload.earned,reduceFloat);
     
     payload.earned.nightEarned = times.nightHours ? calc(basic,nights.percent) * times.nightHours : null;
     payload.earned.dayEarned = times.dayHours ? basic * times.dayHours : null;
