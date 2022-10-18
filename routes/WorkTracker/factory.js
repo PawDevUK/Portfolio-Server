@@ -15,7 +15,9 @@ function extractDateFromString(str){
 
 function calcPercent(basic,extraRate){
     let extra = 0 
-    extra = (basic / 100) * extraRate
+    if(extraRate){
+        extra = (basic / 100) * extraRate
+    }
     return basic + extra
 }
 
