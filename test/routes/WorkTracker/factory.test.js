@@ -574,7 +574,7 @@ describe(
         })
     })
 
-describe('Test for function calcEarnedForDay. It should return object with hours and earnings calculated from the hours.', ()=>{
+describe('Test of the function calcEarnedForDay. It should return object with hours and earnings calculated from the hours.', ()=>{
     const rates = {
         currency: 'GBP',
         basic: 16.75,
