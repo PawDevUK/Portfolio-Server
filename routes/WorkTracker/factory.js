@@ -446,19 +446,7 @@ function addId(){
     return uuidv4()
 };
 
-//** @function 
-/** @name writeToResults
-/function whites for better readability in development, full combination of days to 'result.js'
-*/
-function writeToResults(payload){
-    const res = JSON.stringify(payload)
-    fs.writeFile('./results.json', res, err => {
-            if (err) {
-            console.error(err);
-                }
-        }
-    )
-}
+
 
 function checkPercentageFrom(main,fraction){
     let percent;
@@ -485,7 +473,6 @@ module.exports = {
     getNameOfWeekDay,
     calcPercent,
     getCombinations,
-    writeToResults,
     findPayDays,
     findCutOfDays,
     getMonthNumber,
