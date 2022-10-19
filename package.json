@@ -4,6 +4,7 @@
     "description": "Backend for Portfolio",
     "main": "server.js",
     "scripts": {
+        "dev":"jest && node ./routes/WorkTracker/Tracker.js",
         "test": "jest",
         "start": "node server.js",
         "live": "nodemon --ext js server.js",
