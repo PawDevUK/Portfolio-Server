@@ -24,7 +24,7 @@ const {
     reduceFloat
 } = require('./factory'); // calculate earnings
 
-const {writeToResults} = require('./factory'); // development
+const {writeToResults,writeFullYear} = require('./factory/development'); // development
 
 const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store/store.js');
 
