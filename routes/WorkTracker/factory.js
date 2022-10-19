@@ -1,4 +1,4 @@
-const {weekCombinations} = require('./store');
+const {weekCombinations} = require('./store/store');
 const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 const fs = require('fs');

@@ -26,7 +26,7 @@ const {
 
 const {writeToResults} = require('./factory'); // development
 
-const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store');
+const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store/store.js');
 
 
 // date format month/year
