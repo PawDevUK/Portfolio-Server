@@ -28,6 +28,7 @@ const {writeToResults,writeFullYear} = require('./factory/development'); // deve
 
 const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store/store.js');
 
+const moment = require('moment')
 
 // date format month/year
 function createMonth(rota, base_rate, start_Time){
@@ -90,7 +91,7 @@ function createMonth(rota, base_rate, start_Time){
         calendar.calendar.push({
             weekDay,
             day: i,
-            start: date.format('HH:mm'),
+            start: moment(date).format('HH:mm'),
             finishBasic:getFinishBasic(date).format('HH:mm'),
             finishOvertime:null,
             hours: timesEarned.times,
