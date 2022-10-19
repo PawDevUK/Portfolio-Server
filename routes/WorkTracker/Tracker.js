@@ -11,6 +11,7 @@ const {
     getMonthName,
     returnDate,
     createYearCalendar,
+    getMonthNumber,
     getCombinations
 } = require('./factory'); // initializing calendar obj
 
