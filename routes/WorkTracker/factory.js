@@ -314,21 +314,11 @@ function calcEarnedForDay(
 }
 
 function getEarnedFor_Month(payload, reduceFloat){
-    let pay = payload.day_pay
-    
-    const weekDaysTotal = reduceFloat(payload.IN_weekDays * pay.weekDay);
-    const fridaysTotal = reduceFloat(payload.IN_fri * pay.friday);
-    const saturdayTotal = reduceFloat(payload.IN_sat * pay.sat);
-    const sundayTotal = reduceFloat(payload.IN_sun * pay.sun);
-    const Total = reduceFloat(fridaysTotal + sundayTotal + weekDaysTotal + saturdayTotal);
 
-    return {
-        weekDaysTotal,
-        fridaysTotal,
-        saturdayTotal,
-        sundayTotal,
-        Total
-    }
+    return payload.reduce((sum, next)=>{
+        return reduceFloat(sum + next.earnedFromHours.TotalEarned)
+    },0)
+
 }
 
 function calcEarnedFor_Month_Be_Twin_PD(cal, payDays) {
