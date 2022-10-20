@@ -313,7 +313,7 @@ function calcEarnedForDay(
     return payload;
 }
 
-function calcEarnedFor_Month(payload, reduceFloat){
+function getEarnedFor_Month(payload, reduceFloat){
     let pay = payload.day_pay
     
     const weekDaysTotal = reduceFloat(payload.IN_weekDays * pay.weekDay);
