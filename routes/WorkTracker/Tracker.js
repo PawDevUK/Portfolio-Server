@@ -88,7 +88,9 @@ function createMonth(rota, base_rate, start_Time){
             getFinishBasic,
             calcPercent,
             date,
+            reduceFloat,
             inWork
+             );
         calendar.calendar.push({
                 weekDay,
                 day: i,
