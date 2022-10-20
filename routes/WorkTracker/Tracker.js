@@ -90,17 +90,17 @@ function createMonth(rota, base_rate, start_Time){
             date,
             inWork
         calendar.calendar.push({
-            weekDay,
-            day: i,
+                weekDay,
+                day: i,
                 start: inWork ? moment(date).format('HH:mm'):null,
                 finishBasic: inWork ? getFinishBasic(date).format('HH:mm'):null,
-            finishOvertime:null,
-            hours: timesEarned.times,
-            earnedFromHours: timesEarned.earned,
+                finishOvertime:null,
+                hours: timesEarned.times,
+                earnedFromHours: timesEarned.earned,
                 inWork,
-            payDay:addPDandCOD(payDays, DateArg, i),
-            cutOffDay:addPDandCOD(cutOffD, DateArg, i),
-            id:addId(),
+                payDay:addPDandCOD(payDays, DateArg, i),
+                cutOffDay:addPDandCOD(cutOffD, DateArg, i),
+                id:addId(),
         });
     };
 
