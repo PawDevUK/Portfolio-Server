@@ -458,7 +458,7 @@ module.exports = {
     getIn_OffDays,
     countDays,
     calcEarnedForDay,
-    calcEarnedFor_Month,
+    getEarnedFor_Month,
     getNameOfWeekDay,
     calcPercent,
     getCombinations,
