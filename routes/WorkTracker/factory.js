@@ -347,7 +347,7 @@ function getFinishBasic(start_Time){
 }
 
 
-function createYearCalendar(rota, getMonthNumber, createMonth){
+function createYearCalendar(rota, getMonthNumber, createMonth, baseNewRate, start_Time){
     let yearCalendar = [ ]
     const year22 = 2022;
     const year23 = 2023;
@@ -370,11 +370,8 @@ function createYearCalendar(rota, getMonthNumber, createMonth){
         OffDays = rota[prop]
 
         yearCalendar.push(
-            createMonth({
-                date,
-                OffDays
-            })
-        )
+            createMonth({date,OffDays}, baseNewRate, start_Time)
+            )
         }
 
     return yearCalendar
