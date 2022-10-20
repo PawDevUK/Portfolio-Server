@@ -17,7 +17,7 @@ const {
 
 const {
     getHoursFromStart,
-    calcEarnedFor_Month,
+    getEarnedFor_Month,
     calcEarnedForDay,
     calcPercent,
     countDays,
