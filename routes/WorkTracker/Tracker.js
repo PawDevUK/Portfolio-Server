@@ -1,29 +1,29 @@
 const { 
+    extractDateFromString,
+    createYearCalendar,
+    getNameOfWeekDay,
+    getCombinations,
+    getMonthNumber,
+    getMonthName,
+    addPDandCOD,
+    findPayDays,
+    returnDate,
     checkIN,
     addId,
-    getFinishBasic,
-    extractDateFromString,
-    getNameOfWeekDay,
-    getIn_OffDays,
-    findCutOfDays,
-    findPayDays,
-    addPDandCOD,
-    getMonthName,
-    returnDate,
-    createYearCalendar,
-    getMonthNumber,
-    getCombinations
-} = require('./factory'); // initializing calendar obj
+} = require('./factory/createCalendar'); // initializing calendar obj
 
 const {
-    getHoursFromStart,
     getEarnedFor_Month,
+    getHoursFromStart,
     calcEarnedForDay,
+    getFinishBasic,
+    getIn_OffDays,
+    findCutOfDays,
+    reduceFloat,
     calcPercent,
     countDays,
-    reduceFloat,
     calcPayDay
-} = require('./factory'); // calculate earnings
+} = require('./factory/calculate.js'); // calculate earnings
 
 const {writeToResults,writeFullYear} = require('./factory/development'); // development
 
