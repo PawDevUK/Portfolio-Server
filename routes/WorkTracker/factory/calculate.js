@@ -160,7 +160,7 @@ function calcPayDay(cal) {
     let to;
     let earned;
     let year = [];
-    let reducedYear = []
+    let reducedYear = [];
     
     payload = cal.map((ele, i) => {
         
