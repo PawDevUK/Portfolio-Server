@@ -318,23 +318,89 @@ function getEarnedFor_Month(payload, reduceFloat){
     return payload.reduce((sum, next)=>{
         return reduceFloat(sum + next.earnedFromHours.TotalEarned)
     },0)
-
 }
 
-function calcEarnedFor_Month_Be_Twin_PD(cal, payDays) {
-    let calendar = [];
+function calcPayDay(cal) {
 
-    calendar = cal.map((element, i) => {
+    // Question:
+    //  - Do I need every month earnings ?? NO
+    //  - Is earning from pay day till pay day enough ?? YES and there is no point
+    //    for total from first till last day.
+    //  - How should count earnings between pay days.
+    //      counting pay from previous pay day till pay day and adding it to month object. current-1 till current
+    // check first payday
+    // count earnings from start to first payday
+    // add payday obj with income e.g { payday:true, earned:£3432}
+    // loop from pay day till end of the moth
+    let payload;
+    let from;
+    let to;
+    let earned;
+    let year = [];
+    let reducedYear = []
+    
+    payload = cal.map((ele, i) => {
+        
+        // looping over 12 months 
+        
+        let calendar = ele.calendar
+        let PD = 0;
+        let prePD = 0;
+        let postPD = 0;
+        let LD = calendar.length-1;
+        
+        let month = {
+            name:null,
+            calendar:[]
+        };
 
-        return {
-            month:null,
-            from:null,
-            to:null,
-            earned:null,
-        }
+        
+        month.name = ele.name
+        month.calendar.push(calendar.map((day,i)=>{
+
+            // looping over days 
+
+            if(day.payDay){
+                PD = day.day
+            }
+            
+            if(!PD){
+                prePD = reduceFloat(day.earnedFromHours.TotalEarned + prePD)
+            }else if(PD){
+                postPD = reduceFloat(day.earnedFromHours.TotalEarned + postPD)
+            }
+
+            return {
+                weekday:day.day,
+                pay:day.earnedFromHours.TotalEarned,
+                prePD,
+                postPD,
+            }
+        }))
+
+        year.push(month);
+
+
+    //     return {
+    //         month:null,
+    //         from:null,
+    //         to:null,
+    //         earned:null,
+    //     }
     });
 
-    return calendar;
+    reducedYear.push(year.map((month, i) => {
+        console.log(month.calendar);
+        let last = month.calendar[month.calendar.length - 1]
+        let prePD = month.calendar[month.calendar.length - 1].prePD;
+        let postPD = month.calendar[month.calendar.length - 1].postPD;
+        let name = month.name
+        return {name, prePD, postPD};
+    }))
+
+    // console.log(JSON.stringify(year));
+
+    return year
 }
 
 function getNameOfWeekDay(payload,i){
@@ -471,4 +537,5 @@ module.exports = {
     addId,
     getFinishBasic,
     getHoursFromStart,
+    calcPayDay,
 }

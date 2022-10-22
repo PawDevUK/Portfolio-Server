@@ -21,7 +21,8 @@ const {
     calcEarnedForDay,
     calcPercent,
     countDays,
-    reduceFloat
+    reduceFloat,
+    calcPayDay
 } = require('./factory'); // calculate earnings
 
 const {writeToResults,writeFullYear} = require('./factory/development'); // development
@@ -137,10 +138,17 @@ const rota2 = {
     OffDays: ['Monday', 'Tuesday'],
 };
 
+// const startTime = '15:00';
 
-// const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth)
+// const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth, baseNewRate, startTime)
 
-// const month1 = createMonth(rota, baseOldRate, '17:00')
-const month = createMonth(rota, baseNewRate, '17:00')
-// const payDays = findCutOfDays(findPayDays('2022-01-07'))
-writeToResults(month)
+// writeFullYear(yearRota, startTime)
+
+// const month = createMonth(rota, baseNewRate, startTime)
+
+// writeToResults(month)
+
+
+let year = calcPayDay(FY)
+
+writeToResults(year)
