@@ -179,7 +179,7 @@ function calcPayDay(cal) {
 
         
         month.name = ele.name
-        month.calendar.push(calendar.map((day,i)=>{
+        calendar.forEach((day,i)=>{
 
             // looping over days 
 
@@ -193,13 +193,13 @@ function calcPayDay(cal) {
                 postPD = reduceFloat(day.earnedFromHours.TotalEarned + postPD)
             }
 
-            return {
+             month.calendar.push({
                 weekday:day.day,
                 pay:day.earnedFromHours.TotalEarned,
                 prePD,
                 postPD,
-            }
-        }))
+            })
+        })
 
         year.push(month);
 
