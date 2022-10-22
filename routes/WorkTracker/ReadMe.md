@@ -1,6 +1,5 @@
 # ToDo
 
-- [ ] Split factory.js into three separate files createCalendar.js calculate.js development.js
 - [ ] Get earnings from selected pay day to following pay day.
 - [ ] Get overtimes from selected cut off day to following.
 - [ ] Add overtimes to pay day.
@@ -11,6 +10,8 @@
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Split factory.js into three separate files createCalendar.js calculate.js development.js
+- [x] Split factory.test.js into three separate files createCalendar.js calculate.js development.js
 - [x] Create function to check if all year rota is present in the fullYearCalendar.json and if not, save all year calendar to this file. If calendar exists do not rewrite. It is to mimic Data Base.
 - [x] Add store dir with store.js fullYearCalendar.json results.json
 - [x] Create functionality to calculate earnings from hours generated with different start times.
