@@ -181,7 +181,7 @@ function calcPayDay(cal) {
         month.name = ele.name
         calendar.forEach((day,i)=>{
 
-            // looping over days 
+            // loops over days 
 
             if(day.payDay){
                 PD = day.day
