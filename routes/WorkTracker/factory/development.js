@@ -3,10 +3,10 @@ const FY = require('../store/fullYearCalendar.json')
 
 
 
-function writeFullYear(payload) {
-    if (Object.keys(FY).length === 0) {
+function writeFullYear(payload, start_Time) {
+    if (FY.length === 0 || FY[0].calendar[0].start !== payload[0].calendar[0].start_Time) {
         const p = JSON.stringify(payload);
-        fs.writeFile('./fullYearCalendar.json', p, (err) => {
+        fs.writeFile(`${__dirname}/../store/fullYearCalendar.json`, p, (err) => {
             if (err) {
                 console.error(err);
             }
