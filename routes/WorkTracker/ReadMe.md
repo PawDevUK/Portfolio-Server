@@ -1,6 +1,26 @@
-# ToDo
+# Work Tracker
 
-- [ ] Get earnings from selected pay day to following pay day.
+    App to alow record work hours and generate pay. At the moment application:
+    - Gets start time and calculate earnings for the day based on the rate and extra shift allowance.
+    - Gets rota combination and calculate days at work.
+    - Returns object representation of full year  with days at work, of days, earnings.
+
+## Questions
+
+- What should be base calendar object.
+    Base calendar object should has all days off and no pay days. NO
+- How calendar object should be initialized ?
+    User should on the client side choose rota and start time and then send request to the back-end to generate calendar object and then save it in the DB. This calendar object should be assigned to the user.
+- Where should be stored based calendar object.
+    There should be uniq calendar object for every user. It should be initialized for every new user and then updated every single time when user add:
+    - extra time/overtime.
+    - extra days
+    - absence day at work.
+
+
+
+## ToDo
+
 - [ ] Get overtimes from selected cut off day to following.
 - [ ] Add overtimes to pay day.
 - [ ] Add test to check all week, 7 days and 24h for every day in the week to check start time. Test should loop over 24 hours and check if sum of the hours is 9.25.
@@ -10,6 +30,8 @@
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] Get earnings from selected pay day to following pay day.
+- [x] Add earnings for period between previous payday till current pay day to object calendar key payDay.
 - [x] Split factory.js into three separate files createCalendar.js calculate.js development.js
 - [x] Split factory.test.js into three separate files createCalendar.js calculate.js development.js
 - [x] Create function to check if all year rota is present in the fullYearCalendar.json and if not, save all year calendar to this file. If calendar exists do not rewrite. It is to mimic Data Base.
