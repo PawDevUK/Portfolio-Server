@@ -124,10 +124,10 @@ function createMonth(rota, base_rate, start_Time){
     // calendar.day_pay = calcEarnedForDay(calendar.rates, calcPercent, reduceFloat, start_Time);
     calendar.basic_salary = calcEarnedFor_Month(calendar, reduceFloat);
 
-    const rates = calendar.rates
-    rates.nights.rate = reduceFloat(calcPercent(rates.basic, rates.nights.percent))
-    rates.weekends.rate = reduceFloat(calcPercent(rates.basic, rates.weekends.percent))
-    rates.overtime.rate = reduceFloat(calcPercent(rates.basic, rates.overtime.percent))
+    const rates = calendar.rates;
+    rates.nights.rate = reduceFloat(calcPercent(rates.basic, rates.nights.percent));
+    rates.weekends.rate = reduceFloat(calcPercent(rates.basic, rates.weekends.percent));
+    rates.overtime.rate = reduceFloat(calcPercent(rates.basic, rates.overtime.percent));
 
     //returns calendar object with calculated values
     return calendar;
