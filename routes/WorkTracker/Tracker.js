@@ -143,7 +143,26 @@ function createMonth(rota, base_rate, start_Time){
 // if user exist and has calendar, return user calendar.
 
 
-// const startTime = '15:00';
+router.route('/login').post((req,res)=>{
+    const user = req.user;
+    const password = req.password;
+    const email = req.email;
+
+    res.send('user logged!!!')
+})
+
+router.route('/').post((req,res)=>{
+
+    // mongoose get request to check if user exist in the DB 
+    // if user exist and 
+
+
+    const rota = req.rota;
+    const baseRate = req.baseRate;
+    const startTime = req.startTime;
+    const userCalendar = createYearCalendar(rota,getMonthNumber,createMonth,calcPayDay,baseRate,startTime)
+    res.send(userCalendar)
+})
 
 // const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth, baseNewRate, startTime)
 
