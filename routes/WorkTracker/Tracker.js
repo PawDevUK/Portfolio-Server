@@ -1,3 +1,7 @@
+const router = require('express').Router()
+const User = require('./models/user.model.js')
+const mongoose = require('mongoose');
+
 const { 
     extractDateFromString,
     createYearCalendar,
