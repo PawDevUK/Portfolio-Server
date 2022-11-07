@@ -1,14 +1,15 @@
 # Work Tracker
 
-    App to alow record work hours and generate pay. At the moment application:
+    App to record work hours and generate earnings.
+    At the moment application:
     - Gets start time and calculate earnings for the day based on the rate and extra shift allowance.
     - Gets rota combination and calculate days at work.
-    - Returns object representation of full year  with days at work, of days, earnings.
+    - Returns object representation of full year with days at work, of days, earnings.
 
 ## Questions
 
 - What should be base calendar object.
-    Base calendar object should has all days off and no pay days. NO
+    There shouldn't be base calendar object.
 - How calendar object should be initialized ?
     User should on the client side choose rota and start time and then send request to the back-end to generate calendar object and then save it in the DB. This calendar object should be assigned to the user.
 - Where should be stored based calendar object.
@@ -16,6 +17,13 @@
     - extra time/overtime.
     - extra days
     - absence day at work.
+- User should be in the DB with:
+    - username.
+    - email.
+    - password.
+    - uuid.
+    In the case of user ont being in the DB, should be added to the db with the uuid.
+
 
 
 
