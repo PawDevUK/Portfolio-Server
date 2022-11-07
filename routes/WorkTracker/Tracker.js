@@ -133,14 +133,15 @@ function createMonth(rota, base_rate, start_Time){
     return calendar;
 }
 
-const rota = {
-    date: ['09/2022'],
-    OffDays: [3, 6, 7, 13, 14, 20, 21, 27, 28],
-};
-const rota2 = {
-    date: [09, 2022],
-    OffDays: ['Monday', 'Tuesday'],
-};
+// Scenario 1
+// check if user exist in the db.
+// if user exist in the DB, login the user and return all saved in the DB data e.g calendar obj.
+// if user not exist in the DB, add the user with empty calendar.
+// if user not exist in the DB but sends all calendar required data, create user in the DB with full year rota.
+//Scenario 2
+// if user exist and has not calendar, create calendar from the credentials sent by user.
+// if user exist and has calendar, return user calendar.
+
 
 // const startTime = '15:00';
 
