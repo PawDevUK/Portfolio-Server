@@ -136,6 +136,50 @@ function createMonth(rota, base_rate, start_Time){
     return calendar;
 }
 
+mongoose.connect(TESCO_USERS_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log('MongoDB database connection established successfully!!');
+});
+
+function getUsers(){
+    User.find((err,users)=>{
+        
+        const yearEarnings = createYearCalendar(fullYearRota, getMonthNumber, createMonth, calcPayDay, baseNewRate, startTime)
+        const newUser = new User({
+            user:'adasdas2',
+            email:'11226',
+            password:'asQQQQafa1',
+            calendar:yearEarnings
+        });
+        
+        let exist = false
+        users.forEach((user)=>{
+            if(user.user === newUser.user){
+                console.log('User already exist !!');
+                exist = true
+                connection.close()
+            }
+        })
+        
+        if(!exist){
+            newUser
+            .save()
+            console.log('User saved to DB !!');
+        }
+        
+        if(err){
+            console.log(err);
+        }
+    })
+}
+
+getUsers()
+
 // Scenario 1
 // check if user exist in the db.
 // if user exist in the DB, login the user and return all saved in the DB data e.g calendar obj.
