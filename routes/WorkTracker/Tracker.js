@@ -211,15 +211,18 @@ router.route('/').post((req,res)=>{
     res.send(userCalendar)
 })
 
-// const yearRota = createYearCalendar(fullYearRota, getMonthNumber, createMonth, baseNewRate, startTime)
+const startTime = '17:00';
 
-// writeFullYear(yearRota, startTime)
+// console.log(yearEarnings);
 
-// const month = createMonth(rota, baseNewRate, startTime)
+// const month = createMonth(rota, baseNewRate, startTime);
 
 // writeToResults(month)
 
+// const year = calcPayDay(FY)
 
-let year = calcPayDay(FY)
+// const year = addPDEarnings(yearPD,FY)
 
-writeToResults(year)
+// writeFullYear(yearEarnings)
+
+// writeToResults(yearEarnings)
