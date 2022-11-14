@@ -1,6 +1,9 @@
 const router = require('express').Router()
 const User = require('./models/user.model.js')
 const mongoose = require('mongoose');
+require('dotenv').config()
+
+const TESCO_USERS_URI = process.env.TESCO_USERS_URI;
 
 const { 
     extractDateFromString,
