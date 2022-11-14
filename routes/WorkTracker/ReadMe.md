@@ -10,6 +10,7 @@
 
 - What should be base calendar object.
     There shouldn't be base calendar object.
+    Every calendar object should be unique for every user.
 - How calendar object should be initialized ?
     User should on the client side choose rota and start time and then send request to the back-end to generate calendar object and then save it in the DB. This calendar object should be assigned to the user.
 - Where should be stored based calendar object.
@@ -17,27 +18,48 @@
     - extra time/overtime.
     - extra days
     - absence day at work.
-- User should be in the DB with:
+- User should has in the DB:
     - username.
     - email.
     - password.
     - uuid.
-    In the case of user ont being in the DB, should be added to the db with the uuid.
-
-
-
+    In the case of user not being in the DB, they should be added to the db with the uuid.
+- What should be a structure of DB for all app ?
+    App for sure need object with users and assigned to them calendar objects.
+    [
+        {
+            user: topmax12,
+            email:sfsf@fs.com,
+            password:12233,
+            calendar:[]
+        }
+    ]
 
 ## ToDo
 
+- [ ] add login route to WorkTracker.
+- [ ] add register route to WorkTracker.
+- [ ] connect backend to mongo DB.
+- [ ] test connection to DB and schema.
+- [ ] functionality to save new user with calendar.
+- [ ] functionality to get user with calendar object.
+- [ ] add DB to save user obj with calendar obj.
+- [ ] count weekdays, fridays, saturdays, sundays.
+- [ ] add counted days to calendar object.
+- [ ] Change chosen day finish time and calculate earnings for the day and for the month
+- [ ] Create functionality to calculate overtimes.
 - [ ] Get overtimes from selected cut off day to following.
 - [ ] Add overtimes to pay day.
+- [ ] functionality to update user credential.
+- [ ] functionality to update calendar.
 - [ ] Add test to check all week, 7 days and 24h for every day in the week to check start time. Test should loop over 24 hours and check if sum of the hours is 9.25.
 - [ ] Test earnings from selected start time.
-- [ ] Create functionality to calculate overtimes.
 - [ ] Refactor getNameOfWeekDay as it probably can be one liner.
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] create schema for the calendar obj.
+- [x] create schema for the user obj.
 - [x] Get earnings from selected pay day to following pay day.
 - [x] Add earnings for period between previous payday till current pay day to object calendar key payDay.
 - [x] Split factory.js into three separate files createCalendar.js calculate.js development.js
