@@ -127,62 +127,25 @@ function getFinishBasic(start_Time){
     return moment(start_Time).add(9,'hours').add(15,'minutes')
 }
 
-function getEarnedFor_Month(cal) {
-    let calendar = [];
+function calcPayDay(F_Y) {
 
-    calendar = cal.map((element, i) => {
-
-        return {
-            month:null,
-            from:null,
-            to:null,
-            earned:null,
-        }
-    });
-
-    return calendar;
-}
-
-function calcPayDay(cal) {
-
-    // Question:
-    //  - Do I need every month earnings ?? NO
-    //  - Is earning from pay day till pay day enough ?? YES and there is no point
-    //    for total from first till last day.
-    //  - How should count earnings between pay days.
-    //      counting pay from previous pay day till pay day and adding it to month object. current-1 till current
-    // check first payday
-    // count earnings from start to first payday
-    // add payday obj with income e.g { payday:true, earned:£3432}
-    // loop from pay day till end of the moth
-    let payload;
-    let from;
-    let to;
-    let earned;
+    let yearPD = [];
     let year = [];
     let reducedYear = [];
     
-    payload = cal.map((ele, i) => {
-        
+    F_Y.forEach((ele, i) => {
         // looping over 12 months 
-        
         let calendar = ele.calendar
         let PD = 0;
         let prePD = 0;
         let postPD = 0;
-        let LD = calendar.length-1;
-        
         let month = {
             name:null,
             calendar:[]
         };
-
-        
         month.name = ele.name
         calendar.forEach((day,i)=>{
-
             // loops over days 
-
             if(day.payDay){
                 PD = day.day
             }
@@ -192,7 +155,6 @@ function calcPayDay(cal) {
             }else if(PD){
                 postPD = reduceFloat(day.earnedFromHours.TotalEarned + postPD)
             }
-
              month.calendar.push({
                 weekday:day.day,
                 pay:day.earnedFromHours.TotalEarned,
@@ -200,30 +162,47 @@ function calcPayDay(cal) {
                 postPD,
             })
         })
-
         year.push(month);
-
-
-    //     return {
-    //         month:null,
-    //         from:null,
-    //         to:null,
-    //         earned:null,
-    //     }
     });
 
-    reducedYear.push(year.map((month, i) => {
-        console.log(month.calendar);
-        let last = month.calendar[month.calendar.length - 1]
+    year.forEach((month, i) => {
         let prePD = month.calendar[month.calendar.length - 1].prePD;
         let postPD = month.calendar[month.calendar.length - 1].postPD;
-        let name = month.name
-        return {name, prePD, postPD};
-    }))
+        let name = month.name;
+        reducedYear.push({name, prePD, postPD});
+    });
 
-    // console.log(JSON.stringify(year));
+    reducedYear.forEach((m,i)=>{
+        let PD ;
+        let N = m.name;
+        if(reducedYear[i-1]){
+          PD = reduceFloat(reducedYear[i-1].postPD + m.prePD)
+          yearPD.push({
+            N,
+            PD
+        })
+        } else if (!reducedYear[i-1]){
+          PD = m.prePD;
+          yearPD.push({
+            N,
+            PD
+        })
+        }
+    })
 
-    return year
+    F_Y.forEach((month,i)=>{
+        yearPD.forEach((pay_Day,i)=>{
+            let earned = pay_Day.PD
+            if(month.name === pay_Day.N){
+                month.calendar.forEach((day,i)=>{
+                    if(day.payDay){
+                        day.payDay = {earned}
+                    }
+                })
+            }
+        })
+    })
+    return F_Y
 }
 
 function getEarnedFor_Month(payload, reduceFloat){
@@ -368,5 +347,5 @@ module.exports = {
     reduceFloat,
     getFinishBasic,
     getHoursFromStart,
-    calcPayDay
+    calcPayDay,
 }
