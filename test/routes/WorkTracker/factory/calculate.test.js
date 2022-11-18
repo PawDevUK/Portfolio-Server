@@ -1,5 +1,5 @@
 const path = '../../../../routes/WorkTracker/factory/'
-const {calcPercent, getHoursFromStart, getFinishBasic, calcEarnedForDay, reduceFloat} = require(`${path}calculate`);
+const {calcPercent, getHoursFromStart, getDuration, getFinishBasic, calcEarnedForDay, reduceFloat} = require(`${path}calculate`);
 
 const moment = require('moment')
 
@@ -27,6 +27,7 @@ describe('Test of the function calcEarnedForDay. It should return object with ho
             expect(calcEarnedForDay(
                 rates,
                 getHoursFromStart,
+                getDuration,
                 getFinishBasic,
                 calcPercent,
                 startTime,
@@ -41,6 +42,7 @@ describe('Test of the function calcEarnedForDay. It should return object with ho
             expect(calcEarnedForDay(
                 rates,
                 getHoursFromStart,
+                getDuration,
                 getFinishBasic,
                 calcPercent,
                 startTime,
