@@ -1,7 +1,11 @@
 const moment = require('moment');
 
-function getHoursFromStart( getFinishBasic, start_Time ){
+function getDuration(a,b){
+    return a.diff(b,'minutes') / 60
+}
 
+function getHoursFromStart( getFinishBasic, getDuration, start_Time ){
+    
     // moment methods used in this function:
     //  - a.from(b)
     //  - [before].isBefore([after]) true
@@ -12,10 +16,6 @@ function getHoursFromStart( getFinishBasic, start_Time ){
 
     function returnTime(date,h,m){
         return moment(date).hour(h).minute(m);
-    }
-
-    function getDifference(a,b){
-        return a.diff(b,'minutes') / 60
     }
 
     const startTime = moment(start_Time);
@@ -68,32 +68,32 @@ function getHoursFromStart( getFinishBasic, start_Time ){
             times.dayHours = finishBasicTime.diff(start_Time,'minutes') / 60;
         }
         else if (start_Time.isAfter(dayRateTime) && finishBasicTime.isSameOrAfter(nightRateTime) && finishBasicTime.isSameOrBefore(moment(weekendRateTime).add(1,'day'))){
-            times.dayHours = getDifference(nightRateTime,start_Time);
-            times.nightHours = getDifference(finishBasicTime,nightRateTime);
+            times.dayHours = getDuration(nightRateTime,start_Time);
+            times.nightHours = getDuration(finishBasicTime,nightRateTime);
         }else if ( start_Time.isAfter(dayRateTime) && start_Time.isBefore(nightRateTime) && finishBasicTime.isAfter(moment(weekendRateTime).add(1,'day'))){
-            times.dayHours = getDifference(nightRateTime,start_Time);
-            times.nightHours = getDifference(moment(weekendRateTime).add(1,'day'),start_Time) - times.dayHours;
-            times.weekendHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
+            times.dayHours = getDuration(nightRateTime,start_Time);
+            times.nightHours = getDuration(moment(weekendRateTime).add(1,'day'),start_Time) - times.dayHours;
+            times.weekendHours = getDuration(finishBasicTime,moment(weekendRateTime).add(1,'day'))
         }else if ( start_Time.isSameOrAfter(nightRateTime) && finishBasicTime.isAfter(moment(dayRateTime).add(1,'day'))){
-            times.nightHours = getDifference(moment(weekendRateTime).add(1,'day'),start_Time);
-            times.weekendHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
+            times.nightHours = getDuration(moment(weekendRateTime).add(1,'day'),start_Time);
+            times.weekendHours = getDuration(finishBasicTime,moment(weekendRateTime).add(1,'day'))
         }
     }
     function saturday(start_Time){
         if(start_Time.isAfter(weekendRateTime) && start_Time.isBefore(moment(weekendRateTime).add(1,'day'))){
-            times.weekendHours = getDifference(finishBasicTime, start_Time)
+            times.weekendHours = getDuration(finishBasicTime, start_Time)
         }
     }
     function sunday(start_Time){
         if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isSameOrBefore(moment(weekendRateTime).add(1,'day'))){
-            times.weekendHours = getDifference(finishBasicTime,start_Time)
+            times.weekendHours = getDuration(finishBasicTime,start_Time)
         }else if( start_Time.isAfter(weekendRateTime) && finishBasicTime.isAfter(moment(weekendRateTime).add(1,'day'))){
-            times.weekendHours = getDifference(moment(weekendRateTime).add(1,'day'), start_Time);
-            times.nightHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day'))
+            times.weekendHours = getDuration(moment(weekendRateTime).add(1,'day'), start_Time);
+            times.nightHours = getDuration(finishBasicTime,moment(weekendRateTime).add(1,'day'))
         }else if( start_Time.isBefore(moment(weekendRateTime).add(1,'day')) && finishBasicTime.isAfter(moment(dayRateTime).add(1,'day'))){
-            times.weekendHours = getDifference(weekendRateTime, start_Time);
-            times.nightHours = getDifference(finishBasicTime,moment(weekendRateTime).add(1,'day')) /// need to be finished !!!
-            times.dayHours = getDifference(moment(finishBasicTime).add(1,'day'),moment(dayRateTime).add(1,'day'))
+            times.weekendHours = getDuration(weekendRateTime, start_Time);
+            times.nightHours = getDuration(finishBasicTime,moment(weekendRateTime).add(1,'day')) /// need to be finished !!!
+            times.dayHours = getDuration(moment(finishBasicTime).add(1,'day'),moment(dayRateTime).add(1,'day'))
         }
     }
 
@@ -229,6 +229,7 @@ function getEarnedFor_Month(payload, reduceFloat){
 function calcEarnedForDay(
     rates,
     getHoursFromStart,
+    getDuration,
     getFinishBasic,
     calc,
     start_Time,
@@ -252,9 +253,8 @@ function calcEarnedForDay(
         };
 
     const { basic, nights, weekends } = rates;
-
-    if(in_Work){
-        payload.times = getHoursFromStart( getFinishBasic , start_Time);
+        if(in_Work){
+        payload.times = getHoursFromStart( getFinishBasic, getDuration, start_Time);
         let times = payload.times;
         payload.earned.nightEarned = payload.times.nightHours ? calculateEarned(basic, nights.percent, times.nightHours, reduceFloat, calc) : null;
         payload.earned.dayEarned = payload.times.dayHours ? calculateEarned(basic, 0 ,times.dayHours, reduceFloat, calc) : null;
@@ -445,6 +445,7 @@ module.exports = {
     reduceFloat,
     getFinishBasic,
     getHoursFromStart,
+    getDuration,
     calcPayDay,
     addOvertimesToPayDay
 }
