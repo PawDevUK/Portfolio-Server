@@ -456,6 +456,7 @@ module.exports = {
     getHoursFromStart,
     getDuration,
     calcPayDay,
+    addOvertimeToDay,
     getOnlyTime,
     getOnlyDate,
     addOvertimesToPayDay,
