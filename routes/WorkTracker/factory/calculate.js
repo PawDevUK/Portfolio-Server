@@ -272,16 +272,6 @@ function calcEarnedForDay(
         
     return payload;
 }
-function getOvertime(finish_Time){
-    let finishTime = '';
-    let overtimeTotal = '';
-    if(finish_Time){
-        finishTime = moment(finish_Time);
-        overtimeTotal = checkDurationTime(startTime, finish_Time) - returnTime(startTime,9,15) /// initial 
-    }
-}
-
-
 
 function getTotalEarned(obj,reduceFloat){
     let i = 0;
@@ -294,7 +284,6 @@ function getTotalEarned(obj,reduceFloat){
 }
 
 function calculateEarned( basic, percent , time, reduceF, calc){
-    // console.log(basic, percent , time, reduceF, calc);
     return reduceF(calc(basic,percent) * time )
 }
 function countDays(obj){
