@@ -157,13 +157,12 @@ function calcPayDay(F_Y) {
             if(day.payDay){
                 PD = day.day
             }
-            
             if(!PD){
                 prePD = reduceFloat(day.earnedFromHours.TotalEarned + prePD)
             }else if(PD){
                 postPD = reduceFloat(day.earnedFromHours.TotalEarned + postPD)
             }
-             month.calendar.push({
+            month.calendar.push({
                 weekday:day.day,
                 pay:day.earnedFromHours.TotalEarned,
                 prePD,
@@ -293,6 +292,7 @@ function getTotalEarned(obj,reduceFloat){
     })
     return reduceFloat(i)
 }
+
 function calculateEarned( basic, percent , time, reduceF, calc){
     // console.log(basic, percent , time, reduceF, calc);
     return reduceF(calc(basic,percent) * time )
@@ -337,6 +337,7 @@ function getIn_OffDays(calendar){
 function reduceFloat(payload){
     return parseFloat(payload.toFixed(2))
 }
+
 function calcPercent(basic,extraRate){
     let extra = 0 
     if(extraRate){
