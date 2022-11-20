@@ -1,5 +1,13 @@
 const moment = require('moment');
 
+function getOnlyDate(date){
+    return moment(date).format('YYYY-MM-DD');
+}
+
+function getOnlyTime(date){
+    return moment(date).format('HH:mm');
+}
+
 function getDuration(a,b){
     return a.diff(b,'minutes') / 60
 }
@@ -447,5 +455,7 @@ module.exports = {
     getHoursFromStart,
     getDuration,
     calcPayDay,
-    addOvertimesToPayDay
+    getOnlyTime,
+    getOnlyDate,
+    addOvertimesToPayDay,
 }
