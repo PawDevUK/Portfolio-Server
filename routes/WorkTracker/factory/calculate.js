@@ -200,11 +200,11 @@ function calcPayDay(F_Y) {
 
     F_Y.forEach((month,i)=>{
         yearPD.forEach((pay_Day,i)=>{
-            let earned = pay_Day.PD
+            let basic = pay_Day.PD
             if(month.name === pay_Day.N){
                 month.calendar.forEach((day,i)=>{
                     if(day.payDay){
-                        day.payDay = {earned}
+                        day.payDay = {basic}
                     }
                 })
             }
