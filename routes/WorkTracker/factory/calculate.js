@@ -137,9 +137,9 @@ function getFinishBasic(start_Time){
 
 function calcPayDay(F_Y) {
 
+    let reducedYear = [];
     let yearPD = [];
     let year = [];
-    let reducedYear = [];
     
     F_Y.forEach((ele, i) => {
         // looping over 12 months 
