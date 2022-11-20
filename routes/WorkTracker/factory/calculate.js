@@ -337,6 +337,104 @@ function calcPercent(basic,extraRate){
     return basic + extra
 }
 
+function addOvertimeToDay(cal, finish_Overtime, getOnlyDate, getOnlyTime, getDuration, calc, rates){
+    const OV_date = getOnlyDate(finish_Overtime);
+    const OV_time = getOnlyTime(finish_Overtime);
+
+    cal.forEach((M)=>{
+        M.calendar.forEach((D)=>{
+            if(getOnlyDate(D.date) === OV_date){
+                const overtimeDuration = getDuration(moment(finish_Overtime).add(1,'day'), D.date) - 9.25
+                D.finishOvertime = OV_time === D.finishBasic ? null : OV_time;
+                D.hours.overtime = overtimeDuration >= 0.25 ? overtimeDuration : null;
+                D.earnedFromHours.overtimeEarned = reduceFloat(D.hours.overtime  * calc(rates.base, rates.overtime))
+                D.earnedFromHours.TotalEarned = reduceFloat( D.earnedFromHours.TotalEarned + D.earnedFromHours.overtimeEarned )
+            }
+        })
+    });
+
+    return cal;
+}
+
+function addOvertimesToPayDay(cal){
+
+        let reducedYear = [];
+        let yearCOD = [];
+        let year = [];
+        
+        cal.forEach((ele, i) => {
+            // looping over 12 months 
+            let calendar = ele.calendar
+            let COD = 0;
+            let preCOD = 0;
+            let postCOD = 0;
+            let month = {
+                name:null,
+                calendar:[]
+            };
+            month.name = ele.name
+            calendar.forEach((day,i)=>{
+                // loops over days 
+                if(day.cutOffDay){
+                    COD = day.day
+                }
+                if(!COD){
+                    preCOD = reduceFloat(day.earnedFromHours.overtimeEarned + preCOD)
+                }else if(COD){
+                    postCOD = reduceFloat(day.earnedFromHours.overtimeEarned + postCOD)
+                }
+                month.calendar.push({
+                    weekday:day.day,
+                    pay:day.earnedFromHours.overtimeEarned,
+                    preCOD,
+                    postCOD,
+                })
+            })
+            year.push(month);
+        });
+    
+        year.forEach((month, i) => {
+            let preCOD = month.calendar[month.calendar.length - 1].preCOD;
+            let postCOD = month.calendar[month.calendar.length - 1].postCOD;
+            let name = month.name;
+            reducedYear.push({name, preCOD, postCOD});
+        });
+    
+        reducedYear.forEach((m,i)=>{
+            let COD ;
+            let N = m.name;
+            if(reducedYear[i-1]){
+              COD = reduceFloat(reducedYear[i-1].postCOD + m.preCOD)
+              yearCOD.push({
+                N,
+                COD
+            })
+            } else if (!reducedYear[i-1]){
+              COD = m.preCOD;
+              yearCOD.push({
+                N,
+                COD
+            })
+            }
+        })
+    
+        cal.forEach((month,i)=>{
+            yearCOD.forEach((pay_Day,i)=>{
+                let overtime = pay_Day.COD
+
+                if(month.name === pay_Day.N){
+                    month.calendar.forEach((day,i)=>{
+                        let total = day.payDay.basic + overtime 
+                        if(day.payDay){
+                            day.payDay = {...day.payDay, overtime, total}
+                        }
+                    })
+                }
+            })
+        })
+    return cal;
+}
+
 module.exports = {
     getIn_OffDays,
     countDays,
@@ -348,4 +446,5 @@ module.exports = {
     getFinishBasic,
     getHoursFromStart,
     calcPayDay,
+    addOvertimesToPayDay
 }
