@@ -335,7 +335,7 @@ function calcPercent(basic,extraRate){
     return basic + extra
 }
 
-function addOvertimeToDay(cal, finish_Overtime, getOnlyDate, getOnlyTime, getDuration, calc, rates){
+function addOvertimeToDay(cal, finish_Overtime, getOnlyDate, getOnlyTime, getDuration, calc, rates, addOvertimesToPayDay){
     const OV_date = getOnlyDate(finish_Overtime);
     const OV_time = getOnlyTime(finish_Overtime);
 
@@ -350,8 +350,13 @@ function addOvertimeToDay(cal, finish_Overtime, getOnlyDate, getOnlyTime, getDur
             }
         })
     });
-
-    return cal;
+    // Is it good idea to update pay day as overtime is added ?
+    //  YES
+    // Will do test fail ?
+    //  NO, as test for addOvertimeToDay check if overtime is added to specific day and doesn't change anything previously set up.
+    // What Can I do ??
+    //  I can update tests. 
+    return addOvertimesToPayDay(cal);
 }
 
 function addOvertimesToPayDay(cal){
