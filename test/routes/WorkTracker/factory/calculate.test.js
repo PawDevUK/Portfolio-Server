@@ -1,6 +1,6 @@
 const factory = '../../../../routes/WorkTracker/factory/'
 const store = '../../../../routes/WorkTracker/store/'
-const {calcPercent, getHoursFromStart, getDuration, getFinishBasic, calcEarnedForDay, reduceFloat, addOvertimeToDay, getOnlyDate, getOnlyTime} = require(`${factory}calculate`);
+const {calcPercent, getHoursFromStart, getDuration, getFinishBasic, calcEarnedForDay, reduceFloat, addOvertimeToDay, getOnlyDate, getOnlyTime, addOvertimesToPayDay} = require(`${factory}calculate`);
 const { rates } = require(`${store}/store`)
 const calendar = require(`${store}/fullYearCalendar`);
 const moment = require('moment')
@@ -80,7 +80,7 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             const date = getOnlyDate(finishTime);
             const time = getOnlyTime(finishTime);
             return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
-              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates);
+              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
               updated.forEach((M)=>{
                 M.calendar.forEach((D)=>{
                     if(date === getOnlyDate(D.date)){
@@ -98,7 +98,7 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             const date = getOnlyDate(finishTime);
             const time = getOnlyTime(finishTime);
             return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
-              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates);
+              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
               updated.forEach((M)=>{
                 M.calendar.forEach((D)=>{
                     if(date === getOnlyDate(D.date)){
@@ -116,7 +116,7 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             const date = getOnlyDate(finishTime);
             const time = getOnlyTime(finishTime);
             return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
-              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates);
+              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
               updated.forEach((M)=>{
                 M.calendar.forEach((D)=>{
                     if(date === getOnlyDate(D.date)){
@@ -134,7 +134,7 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             const date = getOnlyDate(finishTime);
             const time = getOnlyTime(finishTime);
             return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
-              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates);
+              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
               updated.forEach((M)=>{
                 M.calendar.forEach((D)=>{
                     if(date === getOnlyDate(D.date)){
@@ -152,7 +152,7 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             const date = getOnlyDate(finishTime);
             const time = getOnlyTime(finishTime);
             return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
-              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates);
+              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
               updated.forEach((M)=>{
                 M.calendar.forEach((D)=>{
                     if(date === getOnlyDate(D.date)){
@@ -170,7 +170,7 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             const date = getOnlyDate(finishTime);
             const time = getOnlyTime(finishTime);
             return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
-              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates);
+              const updated = addOvertimeToDay(calendar, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
               updated.forEach((M)=>{
                 M.calendar.forEach((D)=>{
                     if(date === getOnlyDate(D.date)){
@@ -182,3 +182,9 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
             })
     })()
 })
+
+// describe('Check if function addOvertimesToPayDay adds overtime earnings to payDay in the calendar object. Function should check cut off dates and add earnings to correct month.',()=>{
+// (()=>{
+//     addOvertimesToPayDay(calendar)
+// })();
+// })
