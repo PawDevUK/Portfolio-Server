@@ -226,3 +226,4 @@ const startTime = '17:00';
 // writeFullYear(yearEarnings)
 
 // writeToResults(yearEarnings)
+module.exports = router
