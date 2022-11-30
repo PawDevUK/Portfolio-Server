@@ -7,16 +7,16 @@ require('dotenv').config();
 
 const VISITORS_URI = process.env.VISITORS_URI;
 
-mongoose.connect(VISITORS_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// mongoose.connect(VISITORS_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('MongoDB database connection established successfully!!');
-});
-// <- mongoose
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//     console.log('MongoDB database connection established successfully!!');
+// });
+// // <- mongoose
 
 router.route('/').get((req, res) => {
     Visitor.find()
