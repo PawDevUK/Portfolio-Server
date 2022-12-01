@@ -97,6 +97,7 @@ function createMonth(rota, base_rate, start_Time){
         let timesEarned = calcEarnedForDay( 
             calendar.rates,
             getHoursFromStart,
+            getDuration,
             getFinishBasic,
             calcPercent,
             date,
