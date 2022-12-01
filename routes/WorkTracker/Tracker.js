@@ -92,7 +92,7 @@ function createMonth(rota, base_rate, start_Time){
 
     for (let i = 1; i <= days; i++) {
         let weekDay = getNameOfWeekDay(DateArg, i);
-        let  date = returnDate(DateArg, extractDateFromString, i, start_Time);
+        let date = returnDate(DateArg, extractDateFromString, i, start_Time);
         let inWork = checkIN(OffDays, i, weekDay);
         let timesEarned = calcEarnedForDay( 
             calendar.rates,
@@ -104,6 +104,7 @@ function createMonth(rota, base_rate, start_Time){
             inWork
              );
         calendar.calendar.push({
+                date,
                 weekDay,
                 day: i,
                 start: inWork ? moment(date).format('HH:mm'):null,
