@@ -1,6 +1,6 @@
 const User = require('./models/user.model.js')
 const router = require('express').Router()
-require('dotenv').config()
+require('dotenv').config();
 
 const register = require('./routes/register');
 const login = require('./routes/login');
