@@ -23,7 +23,26 @@ function writeToResults(payload){
     )
 }
 
+function checkIfOvertime(cal){
+    let overtime = false;
+    let listOfOvertimes = []
+    cal.forEach(element => {
+        element.calendar.forEach((day)=>{
+           if(day.hours.overtime){
+            overtime = true;
+            listOfOvertimes.push(day)
+           }
+        })
+    });
+    if(overtime){
+        return {overtime,listOfOvertimes}
+    }else {
+        return overtime
+    }
+}
+
 module.exports = {
     writeToResults,
     writeFullYear,
+    checkIfOvertime,
 }
