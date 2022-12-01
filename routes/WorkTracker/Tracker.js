@@ -1,9 +1,9 @@
-const router = require('express').Router()
 const User = require('./models/user.model.js')
-const mongoose = require('mongoose');
+const router = require('express').Router()
 require('dotenv').config()
 
-const TESCO_USERS_URI = process.env.TESCO_USERS_URI;
+const register = require('./routes/register');
+const login = require('./routes/login');
 
 const { 
     extractDateFromString,
@@ -168,38 +168,35 @@ function getUsers(){
     })
 }
 
-getUsers()
-
-// Scenario 1
-// check if user exist in the db.
-// if user exist in the DB, login the user and return all saved in the DB data e.g calendar obj.
-// if user not exist in the DB, add the user with empty calendar.
-// if user not exist in the DB but sends all calendar required data, create user in the DB with full year rota.
-//Scenario 2
-// if user exist and has not calendar, create calendar from the credentials sent by user.
-// if user exist and has calendar, return user calendar.
+router.use('/register', register);
+router.use('/login', login);
 
 
-router.route('/login').post((req,res)=>{
-    const user = req.user;
-    const password = req.password;
-    const email = req.email;
 
-    res.send('user logged!!!')
-})
+const startTime = '17:00';
+const overtime = moment([2022,09,11,04,15])
+let overtime1 = moment([2022,09,12,04,15])
 
-router.route('/').post((req,res)=>{
+// console.log(overtime);
 
-    // mongoose get request to check if user exist in the DB 
-    // if user exist and 
+const yearEarnings = createYearCalendar(fullYearRota, getMonthNumber, createMonth, calcPayDay, baseNewRate, startTime);
 
+let overtimes = checkIfOvertime(yearEarnings);
+const editedCalc = addOvertimeToDay(yearEarnings, overtime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
+let editedCalc1 = addOvertimeToDay(editedCalc, overtime1, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
 
-    const rota = req.rota;
-    const baseRate = req.baseRate;
-    const startTime = req.startTime;
-    const userCalendar = createYearCalendar(rota,getMonthNumber,createMonth,calcPayDay,baseRate,startTime)
-    res.send(userCalendar)
-})
+// console.log('yearEarnings overtimes', overtimes);
+// overtimes = checkIfOvertime(editedCalc);
+// console.log('editedCalc overtimes', overtimes);
+// overtime1 = moment([2022,09,12,02,15])
+// editedCalc1 = addOvertimeToDay(editedCalc, overtime1, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
+
+// overtimes = checkIfOvertime(editedCalc1)
+
+// console.log(overtimes);
+
+// overtime1 = moment([2022,10,25,05,00])
+// editedCalc1 = addOvertimeToDay(editedCalc, overtime1, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
 
 const startTime = '17:00';
 
