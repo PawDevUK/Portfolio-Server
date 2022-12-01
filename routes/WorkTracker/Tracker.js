@@ -136,16 +136,6 @@ function createMonth(rota, base_rate, start_Time){
     return calendar;
 }
 
-mongoose.connect(TESCO_USERS_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('MongoDB database connection established successfully!!');
-});
-
 function getUsers(){
     User.find((err,users)=>{
         
