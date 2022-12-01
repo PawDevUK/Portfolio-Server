@@ -43,7 +43,6 @@ const { fullYearRota, baseOldRate, baseNewRate, weekCombinations, rates } = requ
 const FY = require('./store/fullYearCalendar.json')
 const moment = require('moment')
 
-// date format month/year
 function createMonth(rota, base_rate, start_Time){
 
     const {OffDays,date} = rota;
@@ -176,13 +175,9 @@ function getUsers(){
 router.use('/register', register);
 router.use('/login', login);
 
-
-
 const startTime = '17:00';
 const overtime = moment([2022,09,11,04,15])
 let overtime1 = moment([2022,09,12,04,15])
-
-// console.log(overtime);
 
 const yearEarnings = createYearCalendar(fullYearRota, getMonthNumber, createMonth, calcPayDay, baseNewRate, startTime);
 
@@ -190,32 +185,4 @@ let overtimes = checkIfOvertime(yearEarnings);
 const editedCalc = addOvertimeToDay(yearEarnings, overtime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
 let editedCalc1 = addOvertimeToDay(editedCalc, overtime1, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
 
-// console.log('yearEarnings overtimes', overtimes);
-// overtimes = checkIfOvertime(editedCalc);
-// console.log('editedCalc overtimes', overtimes);
-// overtime1 = moment([2022,09,12,02,15])
-// editedCalc1 = addOvertimeToDay(editedCalc, overtime1, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
-
-// overtimes = checkIfOvertime(editedCalc1)
-
-// console.log(overtimes);
-
-// overtime1 = moment([2022,10,25,05,00])
-// editedCalc1 = addOvertimeToDay(editedCalc, overtime1, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
-
-const startTime = '17:00';
-
-// console.log(yearEarnings);
-
-// const month = createMonth(rota, baseNewRate, startTime);
-
-// writeToResults(month)
-
-// const year = calcPayDay(FY)
-
-// const year = addPDEarnings(yearPD,FY)
-
-// writeFullYear(yearEarnings)
-
-// writeToResults(yearEarnings)
 module.exports = router
