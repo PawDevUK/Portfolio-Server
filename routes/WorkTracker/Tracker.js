@@ -22,6 +22,7 @@ const {
 const {
     getEarnedFor_Month,
     getHoursFromStart,
+    getDuration,
     calcEarnedForDay,
     getFinishBasic,
     getIn_OffDays,
@@ -29,7 +30,11 @@ const {
     reduceFloat,
     calcPercent,
     countDays,
-    calcPayDay
+    calcPayDay,
+    addOvertimeToDay,
+    getOnlyTime,
+    getOnlyDate,
+    addOvertimesToPayDay,
 } = require('./factory/calculate.js'); // calculate earnings
 
 const {writeToResults,writeFullYear} = require('./factory/development'); // development
