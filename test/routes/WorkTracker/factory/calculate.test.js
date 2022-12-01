@@ -1,3 +1,4 @@
+const initialYear = require('../../../../routes/WorkTracker/store/initialYear.json')
 const factory = '../../../../routes/WorkTracker/factory/'
 const store = '../../../../routes/WorkTracker/store/'
 const {calcPercent, getHoursFromStart, getDuration, getFinishBasic, calcEarnedForDay, reduceFloat, addOvertimeToDay, getOnlyDate, getOnlyTime, addOvertimesToPayDay} = require(`${factory}calculate`);
@@ -183,8 +184,50 @@ describe('Check if function addOvertimeToDay adds finish time for overtime and c
     })()
 })
 
-// describe('Check if function addOvertimesToPayDay adds overtime earnings to payDay in the calendar object. Function should check cut off dates and add earnings to correct month.',()=>{
-// (()=>{
-//     addOvertimesToPayDay(calendar)
-// })();
-// })
+describe('Check if function addOvertimesToPayDay adds overtime earnings to payDay in the calendar object. Function should check cut off dates and add earnings to correct month.',()=>{
+(()=>{
+
+    // check cutoff day
+    // check to which payDay overtime should be added 
+    // compare expectation with calendar object
+    const overtime = null
+    const finishTime = moment([2022,09,05,03,45])
+    const earned = overtime * calcPercent(rates.base, rates.overtime)
+    const date = getOnlyDate(finishTime);
+    return test(`Should add ${overtime} to overtime and calculate ${earned}`, ()=>{
+    const updatedCalendar = addOvertimeToDay(initialYear, finishTime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
+    
+    function loopOverCalendar(cal){
+        let result;
+        cal.forEach((M)=>{
+            let cutoff = false
+            M.calendar.forEach((D,i)=>{
+                if(D.cutOffDay){
+                    cutoff = true;
+                }
+                if(!cutoff && date === getOnlyDate(D.date)){
+                   M.calendar.forEach((D2,i)=>{
+                    if(D2.payDay){
+                        result = {day:D.day,pay:D.payDay.total}
+                    }
+                   })
+                }
+                // else if( cutoff && (date === getOnlyDate(D.date))){
+                //     cal[i+1].calendar.forEach((D2,i)=>{
+                //         if(D2.payDay){
+                //             result = D2.payDay.total
+                //         }
+                //     })
+                // }
+            })
+        })
+        return result
+    }
+    
+    const initial = loopOverCalendar(initialYear);
+    console.log(initial);
+    const updated = loopOverCalendar(updatedCalendar);
+    console.log(updated);
+    })
+})();
+})
