@@ -37,7 +37,7 @@ const {
     addOvertimesToPayDay,
 } = require('./factory/calculate.js'); // calculate earnings
 
-const {writeToResults,writeFullYear} = require('./factory/development'); // development
+const {writeToResults,writeFullYear, checkIfOvertime} = require('./factory/development'); // development
 
 const { fullYearRota, baseOldRate, baseNewRate, weekCombinations, rates } = require('./store/store.js');
 const FY = require('./store/fullYearCalendar.json')
