@@ -8,7 +8,6 @@ function writeFullYear(payload) {
                 console.error(err);
             }
         });
-    }
 }
 //** @function 
 /** @name writeToResults
