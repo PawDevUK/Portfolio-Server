@@ -39,7 +39,7 @@ const {
 
 const {writeToResults,writeFullYear} = require('./factory/development'); // development
 
-const { fullYearRota, baseOldRate, baseNewRate, weekCombinations } = require('./store/store.js');
+const { fullYearRota, baseOldRate, baseNewRate, weekCombinations, rates } = require('./store/store.js');
 const FY = require('./store/fullYearCalendar.json')
 const moment = require('moment')
 
