@@ -118,7 +118,7 @@ function getCombinations(weekCombinations, createMonth){
         }
        result.push(createMonth(rota))
     })
-    return result
+    return result;
 };
 
 function createYearCalendar(rota, getMonthNumber, createMonth){
