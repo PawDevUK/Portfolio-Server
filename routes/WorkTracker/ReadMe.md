@@ -56,6 +56,7 @@
 - [ ] Refactor calcPercent and add to this function "reduceFloat" to avoid repeating use of "reduceFloat".
 - [ ] Add functionality to extractDateFromString to extract year/month (at the moment extracts month/year) and return in correct form for moment js. Functionality need detect where year is passed, as a first or as a second argument.
 - [ ] Reduce getNameOfWeekDay by moving this function below returnDate and pass only date argument which has correct day and time.
+- [x] fixed issue with multiple connection to mongo DB collections.
 - [x] Get overtimes from selected cut off day to following.
 - [x] Create functionality to calculate overtimes.
 - [x] functionality to update calendar.
