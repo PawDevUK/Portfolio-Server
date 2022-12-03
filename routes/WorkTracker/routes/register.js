@@ -1,11 +1,5 @@
-const TESCO_USERS_URI = process.env.TESCO_USERS_URI;
 const User = require('../models/user.model.js')
 const router = require('express').Router()
-const DB = require('../../../DB')
-require('dotenv').config();
-
-
-DB(TESCO_USERS_URI)
 
 router.route('/').post((req,res)=>{
     const {user, password, email} = req.body;

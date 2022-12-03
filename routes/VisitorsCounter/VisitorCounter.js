@@ -4,11 +4,7 @@ const email = require('./visitors_email');
 const mongoose = require('mongoose');
 const sendEmail = email.sendEmail;
 require('dotenv').config();
-const DB = require('../../DB')
 
-const VISITORS_URI = process.env.VISITORS_URI;
-
-DB(VISITORS_URI)
 // // <- mongoose
 
 router.route('/').get((req, res) => {

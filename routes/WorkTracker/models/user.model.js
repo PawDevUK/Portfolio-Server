@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const DB = require('../../../DB')
+require('dotenv').config();
+
+const TESCO_USERS_URI = process.env.TESCO_USERS_URI;
+let varName = Object.keys({TESCO_USERS_URI})[0]
 
 const userSchema = new Schema({
     user:{
@@ -26,6 +31,6 @@ const userSchema = new Schema({
     }
 })
 
-const User = mongoose.model('User', userSchema);
+const User = DB(TESCO_USERS_URI,varName).model('User', userSchema);
 
 module.exports = User

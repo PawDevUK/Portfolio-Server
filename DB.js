@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
-function DB(url){
-    mongoose.connect(url, {
-        // removes deprecation 
+function DB(url, var_name){
+    const connection =  mongoose.createConnection(url, {
         // (node:9612) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+        // removes deprecation 
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify:false,
         useCreateIndex:true
     });
-    
-    
-    const connection = mongoose.connection;
+
     connection.once('open', () => {
-        console.log('MongoDB database connection established successfully!!');
+        console.log(`----MongoDB database connection to ${var_name} established successfully!!`);
     });
+
+    return connection
 }
 
 module.exports = DB
