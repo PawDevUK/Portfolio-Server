@@ -7,6 +7,7 @@ const Covid = require('./routes/Covid/Covid.js');
 const Tracker = require('./routes/WorkTracker/Tracker.js');
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 require('dotenv').config();
 
