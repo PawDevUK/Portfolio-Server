@@ -142,38 +142,6 @@ function createMonth(rota, base_rate, start_Time){
     return calendar;
 }
 
-function getUsers(){
-    User.find((err,users)=>{
-        
-        const yearEarnings = createYearCalendar(fullYearRota, getMonthNumber, createMonth, calcPayDay, baseNewRate, startTime)
-        const newUser = new User({
-            user:'adasdas2',
-            email:'11226',
-            password:'asQQQQafa1',
-            calendar:yearEarnings
-        });
-        
-        let exist = false
-        users.forEach((user)=>{
-            if(user.user === newUser.user){
-                console.log('User already exist !!');
-                exist = true
-                connection.close()
-            }
-        })
-        
-        if(!exist){
-            newUser
-            .save()
-            console.log('User saved to DB !!');
-        }
-        
-        if(err){
-            console.log(err);
-        }
-    })
-}
-
 router.use('/register', register);
 router.use('/login', login);
 
