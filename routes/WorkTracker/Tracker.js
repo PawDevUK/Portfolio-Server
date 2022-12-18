@@ -1,5 +1,5 @@
-const User = require('./models/user.model.js')
-const router = require('express').Router()
+const User = require('./models/user.model.js');
+const router = require('express').Router();
 require('dotenv').config();
 
 const register = require('./routes/register');
@@ -40,8 +40,8 @@ const {
 const {writeToResults,writeFullYear, checkIfOvertime} = require('./factory/development'); // development
 
 const { fullYearRota, baseOldRate, baseNewRate, weekCombinations, rates } = require('./store/store.js');
-const FY = require('./store/fullYearCalendar.json')
-const moment = require('moment')
+const FY = require('./store/fullYearCalendar.json');
+const moment = require('moment');
 
 function createMonth(rota, base_rate, start_Time){
 
