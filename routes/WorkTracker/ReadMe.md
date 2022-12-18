@@ -43,7 +43,6 @@
 - [ ] connect backend to mongo DB.
 - [ ] test connection to DB and schema.
 - [ ] functionality to save new user without calendar.
-- [ ] functionality to save new user with calendar.
 - [ ] functionality to get user with calendar object.
 - [ ] functionality to check if user exist.
 - [ ] add DB to save user obj with calendar obj.
