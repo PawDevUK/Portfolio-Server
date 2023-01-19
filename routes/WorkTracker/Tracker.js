@@ -142,6 +142,10 @@ function createMonth(rota, base_rate, start_Time){
     return calendar;
 }
 
+router.get('/', (req, res) => {
+    res.send('Tracker router');
+});
+
 router.use('/register', register);
 router.use('/login', login);
 
