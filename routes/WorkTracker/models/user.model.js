@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const DB = require('../../../DB')
+const DB = require('../../../DB');
 require('dotenv').config();
 
 const TESCO_USERS_URI = process.env.TESCO_USERS_URI;
-let varName = Object.keys({TESCO_USERS_URI})[0]
+let varName = Object.keys({TESCO_USERS_URI})[0]; // It is to pass name of the variable.
 
 const userSchema = new Schema({
     user:{
