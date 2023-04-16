@@ -1,9 +1,9 @@
 const fs = require('fs');
 // const FY = require('../store/fullYearCalendar.json');
 
-function writeFullYear(payload) {
+function writeFullYear(payload,fileName) {
         const p = JSON.stringify(payload);
-        fs.writeFile(`${__dirname}/../store/fullYearCalendar.json`, p, (err) => {
+        fs.writeFile(`${__dirname}/../store/${fileName}`, p, (err) => {
             if (err) {
                 console.error(err);
             }
