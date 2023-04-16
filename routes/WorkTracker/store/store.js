@@ -8,7 +8,7 @@ const rates = {
     overtime:50
 }
 
-const fullYearRota = {
+const Rota22_23 = {
     April: [null],
     May: [1,4,10,11,15,21,22,23,29,30],
     Jun: [5,11,12,18,19,25,28,29],
