@@ -64,7 +64,8 @@ const weekCombinations = [
 
 module.exports = {
     weekCombinations,
-    fullYearRota,
+    Rota22_23,
+    Rota23_24,
     baseOldRate,
     baseNewRate,
     rates
