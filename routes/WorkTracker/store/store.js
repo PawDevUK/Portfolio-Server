@@ -1,8 +1,9 @@
 const baseOldRate = 14.98
 const baseNewRate = 16.75
+const baseCurrentRate = 18.02
 
 const rates = {
-    base:16.75,
+    base:18.02,
     night:25,
     weekend:30,
     overtime:50
@@ -68,5 +69,6 @@ module.exports = {
     Rota23_24,
     baseOldRate,
     baseNewRate,
+    baseCurrentRate,
     rates
 }
