@@ -25,7 +25,7 @@ const {
     getDuration,
     calcEarnedForDay,
     getFinishBasic,
-    getIn_OffDays,
+    countWorkedAndOffDays,
     findCutOfDays,
     reduceFloat,
     calcPercent,
@@ -120,7 +120,7 @@ function createMonth(rota, base_rate, start_Time){
         });
     };
 
-    const d = getIn_OffDays(calendar);
+    const d = countWorkedAndOffDays(calendar);
     calendar.OFF_Days = d.off;
     calendar.IN_Days = d.in;
 

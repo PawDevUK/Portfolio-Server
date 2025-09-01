@@ -308,7 +308,7 @@ function countDays(obj){
 
     return counter
 }
-function getIn_OffDays(calendar){
+function countWorkedAndOffDays(calendar){
     let num = {
         in:0,
         off:0
@@ -439,7 +439,6 @@ function addOvertimesToPayDay(cal){
 }
 
 module.exports = {
-    getIn_OffDays,
     countDays,
     calcEarnedForDay,
     getEarnedFor_Month,
@@ -454,4 +453,5 @@ module.exports = {
     getOnlyTime,
     getOnlyDate,
     addOvertimesToPayDay,
+    countWorkedAndOffDays,
 }
