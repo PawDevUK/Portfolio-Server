@@ -149,14 +149,14 @@ router.get('/', (req, res) => {
 router.use('/register', register);
 router.use('/login', login);
 
-const startTime = '17:00';
-const overtime = moment([2024,7,30,4,15,'DD,MM,YY,HH,MM'])
+const startTime = '16:00';
+// const overtime = moment([2024,7,30,4,15,'DD,MM,YY,HH,MM'])
 
-const yearEarnings = createYearCalendar(Rota24_25, getMonthNumber, createMonth, calcPayDay, baseCurrentRate, startTime,2024);
+const yearEarnings = createYearCalendar(Rota24_25.calendar, getMonthNumber, createMonth, calcPayDay, baseCurrentRate, startTime, Rota24_25.year);
 writeFullYear(yearEarnings,'fullYear24_25.json')
 
-const editedCalc = addOvertimeToDay(yearEarnings, overtime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
-let overtimes = checkIfOvertime(yearEarnings);
-console.log(overtimes);
-writeFullYear(editedCalc,'fullYear24_25.json')
+// const editedCalc = addOvertimeToDay(yearEarnings, overtime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
+// let overtimes = checkIfOvertime(yearEarnings);
+// console.log(overtimes);
+// writeFullYear(editedCalc,'fullYear24_25.json')
 module.exports = router

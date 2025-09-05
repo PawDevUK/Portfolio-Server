@@ -129,6 +129,7 @@ function createYearCalendar(rota, getMonthNumber, createMonth, calcPayDay, baseN
     for( const prop in rota){
         let monthN = getMonthNumber(prop);
         
+        /**Checks if month in the rota is in the correct year as a calendar runs from April till March */
         if(monthN <= 3 ){
             date.pop();
             date.push(yearPlus);
