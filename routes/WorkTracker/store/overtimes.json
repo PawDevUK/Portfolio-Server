@@ -1,0 +1,19 @@
+{
+	"overtime": true,
+	"listOfOvertimes": [
+		{
+			"date": "2024-08-30T16:00:00.000Z",
+			"weekDay": "Friday",
+			"day": 30,
+			"start": "17:00",
+			"finishBasic": "02:15",
+			"finishOvertime": "04:15",
+			"hours": { "nightHours": 2, "dayHours": 5, "weekendHours": 2.25, "overtime": 2 },
+			"earnedFromHours": { "nightEarned": 45.05, "dayEarned": 90.1, "weekendEarned": 53.92, "overtimeEarned": 54.06, "TotalEarned": 243.13 },
+			"inWork": true,
+			"payDay": false,
+			"cutOffDay": false,
+			"id": "4b64e1f5-2071-4ea9-a16f-c621c8690277"
+		}
+	]
+}

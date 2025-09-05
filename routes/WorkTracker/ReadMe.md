@@ -6,6 +6,80 @@
     - Gets rota combination and calculate days at work.
     - Returns object representation of full year with days at work, of days, earnings.
 
+## Application Overview
+
+**A full-stack work hours tracking and payroll calculation system built with Node.js/Express.js backend and React frontend.**
+
+### Core Functionality
+
+This application is designed to track work hours and automatically calculate earnings for employees working irregular shift patterns. The system handles complex payroll calculations with multiple rate structures and generates comprehensive monthly and yearly earnings reports.
+
+### Key Features
+
+**📅 Flexible Work Scheduling**
+- Supports irregular weekly work rotas (e.g., Mon-Tue-Fri-Sat-Sun combinations)
+- Handles multiple yearly rotation schedules (2022-23, 2023-24, 2024-25)
+- Tracks off-days and working days with customizable patterns
+
+**💰 Advanced Payroll Calculations**
+- **Base Rate**: £18.02/hour (current rate, with historical rates tracked)
+- **Night Shift Premium**: +25% (£22.52/hour)
+- **Weekend Premium**: +30% (£23.97/hour) 
+- **Overtime Premium**: +50% (£27.03/hour)
+- Automatic calculation of earnings based on shift start times and duration
+
+**⏰ Intelligent Time Management**
+- Uses Moment.js for precise date/time calculations
+- Calculates shift hours across different rate periods (day/night/weekend)
+- Handles shifts that span multiple days and rate zones
+- Tracks paydays and cut-off dates for payroll periods
+
+**📊 Comprehensive Reporting**
+- Generates full yearly calendars with detailed daily breakdowns
+- Monthly earnings summaries with rate-specific calculations
+- Pay period calculations between paydays
+- Overtime tracking and integration into payroll
+
+### Technical Architecture
+
+**Backend (Node.js/Express.js) - ~90% Complete**
+- RESTful API with Express.js routing
+- MongoDB integration (schema defined, currently commented out)
+- User authentication system (login/register routes)
+- Modular architecture with separate calculation, calendar, and development utilities
+- JSON data persistence for work rotas and earnings calculations
+
+**Frontend (React.js) - ~20% Complete**
+- Located in separate `portfolio-react` directory
+- User interface for work schedule management
+- Earnings visualization and reporting interface
+
+**Data Management**
+- Historical work rotation data (2022-2025)
+- Rate progression tracking (£14.98 → £16.75 → £18.02)
+- Pre-calculated yearly calendars with earnings data
+- User profile management with calendar assignments
+
+### Use Cases
+
+- **Employee Self-Service**: Track personal work hours and view earnings
+- **Payroll Processing**: Automated calculation of complex shift-based pay
+- **Schedule Management**: Handle irregular work patterns and rotations  
+- **Financial Planning**: Yearly and monthly earnings projections
+- **Overtime Management**: Track and calculate overtime premiums
+
+### Current Development Status
+
+The backend logic is highly mature with sophisticated algorithms for:
+- Multi-rate hour calculations across day/night/weekend boundaries
+- Payroll period management and cut-off date handling
+- Calendar generation with earnings integration
+- Database schema design for user and calendar data
+
+The frontend is in early development stages, with the backend API ready to support full-featured React components for schedule management and earnings visualization.
+
+This application demonstrates advanced payroll calculation logic suitable for businesses with complex shift patterns, multiple pay rates, and irregular work schedules.
+
 ## Questions
 
 - What should be base calendar object.

@@ -29,9 +29,15 @@ function getHoursFromStart( getFinishBasic, getDuration, start_Time ){
     const startTime = moment(start_Time);
     let finishBasicTime = getFinishBasic(start_Time);
 
+<<<<<<< HEAD
     const dayRateTime = returnTime(startTime,0o06,0o00);
     const nightRateTime = returnTime(startTime,22,0o00);
     const weekendRateTime = returnTime(startTime,0o00,0o00);
+=======
+    const dayRateTime = returnTime(startTime,0o6,0o0);
+    const nightRateTime = returnTime(startTime,22,0o0);
+    const weekendRateTime = returnTime(startTime,0o0,0o0);
+>>>>>>> WorkTracker
 
     const times = {
         nightHours:null,
@@ -42,7 +48,11 @@ function getHoursFromStart( getFinishBasic, getDuration, start_Time ){
 
     function weekDay(start_Time){
         
+<<<<<<< HEAD
         if ( start_Time.isSameOrAfter(returnTime(start_Time,0o00,0o00)) && start_Time.isBefore(dayRateTime) ){
+=======
+        if ( start_Time.isSameOrAfter(returnTime(start_Time,0o0,0o0)) && start_Time.isBefore(dayRateTime) ){
+>>>>>>> WorkTracker
             times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
             times.dayHours = finishBasicTime.diff(dayRateTime,'minutes') / 60;
         }
@@ -68,7 +78,11 @@ function getHoursFromStart( getFinishBasic, getDuration, start_Time ){
     }
     
     function friday(start_Time){
+<<<<<<< HEAD
         if ( start_Time.isSameOrAfter(returnTime(start_Time,0o00,0o00)) && start_Time.isBefore(dayRateTime) ){
+=======
+        if ( start_Time.isSameOrAfter(returnTime(start_Time,0o0,0o0)) && start_Time.isBefore(dayRateTime) ){
+>>>>>>> WorkTracker
             times.nightHours = dayRateTime.diff(start_Time,'minutes') / 60;
             times.dayHours = finishBasicTime.diff(dayRateTime,'minutes') / 60;
         }
@@ -308,7 +322,7 @@ function countDays(obj){
 
     return counter
 }
-function getIn_OffDays(calendar){
+function countWorkedAndOffDays(calendar){
     let num = {
         in:0,
         off:0
@@ -439,7 +453,6 @@ function addOvertimesToPayDay(cal){
 }
 
 module.exports = {
-    getIn_OffDays,
     countDays,
     calcEarnedForDay,
     getEarnedFor_Month,
@@ -454,4 +467,5 @@ module.exports = {
     getOnlyTime,
     getOnlyDate,
     addOvertimesToPayDay,
+    countWorkedAndOffDays,
 }

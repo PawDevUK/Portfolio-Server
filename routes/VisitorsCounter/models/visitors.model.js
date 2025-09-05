@@ -18,4 +18,8 @@ require('dotenv').config();
 
 // const visitor = DB(PORTFOLIO_URI, varName).model('Visitor', visitorsSchema);
 
+<<<<<<< HEAD
 // module.exports = visitor
+=======
+// module.exports = visitor;
+>>>>>>> WorkTracker

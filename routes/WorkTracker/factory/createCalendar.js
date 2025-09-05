@@ -134,6 +134,7 @@ function getCombinations(weekCombinations, createMonth){
     return result;
 };
 
+<<<<<<< HEAD
 
 function createMonth(rota, base_rate, start_Time) {
     const { OffDays, date } = rota;
@@ -239,11 +240,21 @@ function createYearCalendar(data, getMonthNumber, createMonth, calcPayDay, baseN
     let yearCalendar = [ ];
     let year = data.year;
     let rota = data.months;
+=======
+function createYearCalendar(rota, getMonthNumber, createMonth, calcPayDay, baseNewRate, start_Time, year){
+    let yearCalendar = [ ]
+>>>>>>> WorkTracker
     const yearPlus = year + 1;
     let date = [year];
     let OffDays = [];
     for( const prop in rota){
+<<<<<<< HEAD
         let monthN = getMonthNumber(prop)
+=======
+        let monthN = getMonthNumber(prop);
+        
+        /**Checks if month in the rota is in the correct year as a calendar runs from April till March */
+>>>>>>> WorkTracker
         if(monthN <= 3 ){
             date.pop();
             date.push(yearPlus);
