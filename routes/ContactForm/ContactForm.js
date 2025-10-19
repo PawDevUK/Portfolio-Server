@@ -4,7 +4,11 @@ const MY_AutoReply_DATA = data.MY_AutoReply_DATA
 const AutoReply_DATA = data.AutoReply_DATA
 const router = require('express').Router()
 const sendEmail = email.sendEmail
-router.route('/').post((req, res) => {
+
+router.route('/').get((req, res) => {
+    res.send('Contact Form Route').status(200);
+})
+router.route('/email').post((req, res) => {
     res.send(
         !req.body.Email ? `No email specified` : `Data received to a server.`
     )

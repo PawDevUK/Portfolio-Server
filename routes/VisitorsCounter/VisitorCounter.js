@@ -8,10 +8,13 @@ require('dotenv').config();
 // // <- mongoose
 
 router.route('/').get((req, res) => {
-    Visitor.find()
-        .then((users) => res.json(users))
-        .catch((err) => res.status(400).json('Error:' + err));
+    res.send('Visitor.').status(200);
 });
+// router.route('/').get((req, res) => {
+//     Visitor.find()
+//         .then((users) => res.json(users))
+//         .catch((err) => res.status(400).json('Error:' + err));
+// });
 
 router.route('/recordVisit').post((req, res) => {
     let date = req.body.date;

@@ -1,7 +1,11 @@
 const User = require('../models/user.model.js')
 const router = require('express').Router()
 
-router.route('/').post((req, res) => {
+router.route('/').get((req, res) => {
+  res.send('Register route').status(200)
+})
+
+router.route('/login').post((req, res) => {
   const { user, password, email } = req.body;
 
   User.findOne({ user: user }, (err, name) => {
@@ -27,7 +31,7 @@ router.route('/').post((req, res) => {
       email,
       calendar: [],
     });
-    
+
     newUser.save((error) => {
       if (error) {
         return res.send({
