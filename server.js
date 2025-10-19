@@ -15,8 +15,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const Port = process.env.PORT || 8080;
-
 // routes
 app.get('/', (req, res) => {
     res.send('Hi there, this is base URL');
@@ -30,6 +28,13 @@ app.get('/', (req, res) => {
 // app.use('/contactForm', ContactFormRoute);
 app.use('/workTracker', Tracker);
 
-app.listen(Port, () => {
-    console.log(`Example app listening at http://localhost:${Port}`);
-});
+// Export the Express app for Vercel
+module.exports = app;
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+    const Port = process.env.PORT || 8080;
+    app.listen(Port, () => {
+        console.log(`Example app listening at http://localhost:${Port}`);
+    });
+}
