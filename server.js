@@ -32,7 +32,7 @@ app.use('/workTracker', Tracker);
 module.exports = app;
 
 // For local development
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'production') {
     const Port = process.env.PORT || 8080;
     app.listen(Port, () => {
         console.log(`Example app listening at http://localhost:${Port}`);
