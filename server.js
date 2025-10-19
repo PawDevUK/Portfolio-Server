@@ -20,12 +20,12 @@ app.get('/', (req, res) => {
     res.send('Hi there, this is base URL');
 });
 
-// app.use('/covid', Covid);
-// app.use('/chatBot', ChatBot);
-// app.use('/register', Register)
-// app.use('/tictactoe', Tictactoe);
-// app.use('/visitor', VisitorRoute);
-// app.use('/contactForm', ContactFormRoute);
+app.use('/covid', Covid);
+app.use('/chatBot', ChatBot);
+app.use('/register', Register)
+app.use('/tictactoe', Tictactoe);
+app.use('/visitor', VisitorRoute);
+app.use('/contactForm', ContactFormRoute);
 app.use('/workTracker', Tracker);
 
 // Export the Express app for Vercel
