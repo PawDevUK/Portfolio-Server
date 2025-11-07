@@ -56,7 +56,6 @@ function createMonth(rota, base_rate, start_Time) {
     const payDays = findPayDays(FirstPayDay);
     const cutOffD = findCutOfDays(payDays);
 
-
     let calendar = {
         name: monthName,
         fixedWorkingDays: null, // it is used only if working rota has same days in the week e.g 'Wednesday','Saturday'
@@ -142,21 +141,21 @@ function createMonth(rota, base_rate, start_Time) {
     return calendar;
 }
 
-router.get('/', (req, res) => {
-    res.send('Tracker router');
-});
-
 // router.use('/register', register);
 // router.use('/login', login);
 
 // Development/testing code - commented out to prevent execution at module level
-// const startTime = '16:00';
+const startTime = '16:00';
 // const overtime = moment([2024,7,30,4,15,'DD,MM,YY,HH,MM'])
-// const yearEarnings = createYearCalendar(Rota24_25.calendar, getMonthNumber, createMonth, calcPayDay, baseCurrentRate, startTime, Rota24_25.year);
+const yearEarnings = createYearCalendar(Rota24_25.calendar, getMonthNumber, createMonth, calcPayDay, baseCurrentRate, startTime, Rota24_25.year);
 // writeToFile(yearEarnings,'fullYear24_25.json')
 // const editedCalc = addOvertimeToDay(yearEarnings, overtime, getOnlyDate, getOnlyTime, getDuration, calcPercent, rates, addOvertimesToPayDay);
 // let overtimes = checkIfOvertime(yearEarnings);
 // console.log(overtimes);
 // writeToFile(editedCalc,'fullYear24_25.json')
+
+router.get('/', (req, res) => {
+    res.send(yearEarnings);
+});
 
 module.exports = router
