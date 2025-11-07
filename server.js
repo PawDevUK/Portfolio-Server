@@ -5,6 +5,7 @@ const Tictactoe = require('./routes/Tictactoe/Tictactoe.js');
 const ChatBot = require('./routes/ChatBot/ChatBot.js');
 const Covid = require('./routes/Covid/Covid.js');
 const Tracker = require('./routes/WorkTracker/Tracker.js');
+const Timeline = require('./routes/Timeline/Timeline.js');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -27,6 +28,7 @@ app.use('/tictactoe', Tictactoe);
 app.use('/visitor', VisitorRoute);
 app.use('/contactForm', ContactFormRoute);
 app.use('/workTracker', Tracker);
+app.use('/timeline', Timeline);
 
 // Export the Express app for Vercel
 module.exports = app;
