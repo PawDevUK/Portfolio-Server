@@ -1,0 +1,28 @@
+{
+    "articles": [
+        {
+            "title": "Portfolio Server",
+            "date": "19/10/25",
+            "updates": [
+                {
+                    "period": null,
+                    "description": "Converted Express app to serverless architecture and successfully deployed to Vercel. Added vercel.json configuration file and updated package.json scripts for Vercel compatibility. Modified server.js to export app for serverless functions and conditionally start server only in non-production/non-test environments. Fixed \"writeFullYear is not a function\" error in Tracker.js by correcting function imports. Resolved git merge conflicts in createCalendar.js and Tracker.js files, removing all conflict markers and fixing syntax issues. Cleaned up development.js by renaming variables and commenting out unused code. Added empty rota to store.js. Formatted createCalendar.js for better readability. Created TimeLine.md to track project development progress. Updated README.md with project overview and deployment information. Added skills-tools.md documenting technologies used. Added development configuration files (launch.json, nodemon.json) for improved debugging. Updated .gitignore to exclude Vercel and dev files. Created test/server.test.ts with endpoint tests for all routes (/, /covid, /chatBot, /register, /tictactoe, /visitor, /contactForm, /workTracker) using Jest and Supertest. Simplified register.test.js to test only GET /register endpoint returning status 200. Fixed module import issues by converting ES6 imports to CommonJS require statements. Commented out console.log statements in calculate.test.js for cleaner test output. Updated server.js to prevent server startup during Jest tests (NODE_ENV !== 'test'). Updated base routes in ContactForm.js, VisitorCounter.js, and WorkTracker/routes/register.js. Uncommented endpoint routes in server.js to enable all API endpoints."
+                }
+            ]
+        },
+        {
+            "title": "Portfolio Frontend",
+            "date": "07/11/25",
+            "updates": [
+                {
+                    "period": "Afternoon (13:00)",
+                    "description": "Restructured timeline component for better data organization and display. Refactored articles.js data structure from flat list with date-period strings to nested structure with separate date and updates array, where each update contains period and description fields. Updated TimeLine.jsx to render one section per day with single date header, displaying multiple time-period updates under the same marker when multiple updates exist for the same day (e.g., 06/11/25 shows Morning, Afternoon, and Evening updates together). Removed complex date-parsing and grouping logic from component in favor of simpler data-driven approach. Updated README.md TODO list marking timeline restructuring task as completed and adding new task for multi-repository timeline aggregation system. Made 3 commits, modified 3 files. Successfully simplified timeline architecture and improved visual hierarchy with better date grouping."
+                },
+                {
+                    "period": "Morning (11:39)",
+                    "description": "Updated portfolio content and refined CV skills section. Enhanced topIntro.config.js with improved English descriptions making them more professional and detailed (e.g., \"modern, scalable web applications\", \"robust state management\", \"continuous learning\"). Added comprehensive Filament AI employment section describing chat widget customization for major clients (Rentokil, Versus Arthritis, Tesco), Google Cloud Functions extensions, EBM chatbot dialog flow configuration, and Filament UI enhancements. Updated Polish translations to match enhanced English content with proper technical terminology and professional tone. Removed Python from skills in cv.jsx and stack.config.js as not currently fluent enough for professional showcase. Improved project card layout in card.jsx by moving StImg component to top position before HeaderWrapper and adjusting element spacing for better visual hierarchy. Updated README.md TODO list. Made 5 commits, modified 4 files with 62 insertions and 37 deletions (net +25 lines). Successfully refined professional presentation and ensured accuracy in skills representation."
+                }
+            ]
+        }
+    ]
+}
