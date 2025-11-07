@@ -4,10 +4,10 @@
 	"description": "Backend for Portfolio",
 	"main": "server.js",
 	"scripts": {
-		"dev": "NODE_ENV=development node server.js",
+		"dev": "cross-env NODE_ENV=development node server.js",
 		"test": "jest",
 		"start": "node server.js",
-		"live": "NODE_ENV=development nodemon --watch routes --ext js,json --ignore node_modules --ignore logs --ignore routes/WorkTracker/store/overtimes.json --ignore routes/WorkTracker/store/fullYear24_25.json --verbose --exec node server.js",
+		"live": "cross-env NODE_ENV=development nodemon --watch routes --ext js,json --ignore node_modules --ignore logs --ignore routes/WorkTracker/store/overtimes.json --ignore routes/WorkTracker/store/fullYear24_25.json --verbose --exec node server.js",
 		"vercel-dev": "vercel dev --listen 8080",
 		"function": "npx @google-cloud/functions-framework --target=getVisitors --source=Functions/index.js"
 	},
@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@types/jest": "^29.0.3",
+		"cross-env": "^10.1.0",
 		"jest": "^29.0.3",
 		"ts-jest": "^29.0.1",
 		"typescript": "^4.8.3"
