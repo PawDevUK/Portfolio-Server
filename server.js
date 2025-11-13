@@ -21,10 +21,9 @@ app.use(cors({
         const allowedOrigins = [
             'http://localhost:3000',
             'https://pawelsiwek.co.uk',
-            'portfolio-react-2ptvy5e1p-pawdevs-projects-c1e9b938.vercel.app'
         ];
-        // Allow Vercel preview and production deployments
-        if (!origin || allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.vercel.app')) {
+        // Allow Vercel preview and production deployments dynamically
+        if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
