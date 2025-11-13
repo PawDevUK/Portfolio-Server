@@ -21,6 +21,14 @@ app.use(cors({
     credentials: true
 }));
 
+// Error handling for malformed JSON
+app.use((err, req, res, next) => {
+    if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+        return res.status(400).json({ error: 'Invalid JSON format in request body' });
+    }
+    next();
+});
+
 // routes
 app.get('/', (req, res) => {
     res.send('Hi there, this is base URL');
