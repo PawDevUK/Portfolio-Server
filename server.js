@@ -16,21 +16,14 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: function (origin, callback) {
-        const allowedOrigins = [
-            'http://localhost:3000',
-            'https://pawelsiwek.co.uk',
-        ];
-        // Allow Vercel preview and production deployments dynamically
-        if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
-}));
+
+const corsOptions = {
+    origin: 'https://pawelsiwek.co.uk', // Frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true // Allow cookies and credentials
+};
+
+app.use(cors(corsOptions));
 
 // Error handling for malformed JSON
 app.use((err, req, res, next) => {
