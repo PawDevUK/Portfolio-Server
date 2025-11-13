@@ -14,7 +14,10 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://portfolio-server-104qu2sac-pawdevs-projects-c1e9b938.vercel.app'],
+    credentials: true
+}));
 
 // routes
 app.get('/', (req, res) => {
