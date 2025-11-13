@@ -11,11 +11,20 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
     const username = req.body.username;
+
+    if (!username) {
+        return res.status(400).json({ error: 'Username is required' });
+    }
+
+    if (username.length < 3) {
+        return res.status(400).json({ error: 'Username must be at least 3 characters long' });
+    }
+
     const newUser = new User({ username });
 
     newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('error:' + err))
+        .then(() => res.json({ message: 'User added!', username }))
+        .catch(err => res.status(400).json({ error: err.message }))
 });
 
 router.route('/:id').get((req, res) => {
