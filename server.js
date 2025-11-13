@@ -6,8 +6,8 @@ const ChatBot = require('./routes/ChatBot/ChatBot.js');
 const Covid = require('./routes/Covid/Covid.js');
 const Tracker = require('./routes/WorkTracker/Tracker.js');
 const Timeline = require('./routes/Timeline/Timeline.js');
-const exercisesRouter = require('./routes/FitnessApp/routes/exercises');
-const userRouter = require('./routes/FitnessApp/routes/users');
+const fitnessAppRoute = require('./routes/FitnessApp');
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -34,8 +34,7 @@ app.use('/visitor', VisitorRoute);
 app.use('/contactForm', ContactFormRoute);
 app.use('/workTracker', Tracker);
 app.use('/timeline', Timeline);
-app.use('/fitnessapp/exercises', exercisesRouter);
-app.use('/fitnessapp/users', userRouter);
+app.use('/fitnessapp', fitnessAppRoute);
 
 // Export the Express app for Vercel
 module.exports = app;
