@@ -33,6 +33,28 @@
 					"description": "Timeline Route Logic: Created `Timeline.js` to handle `/timeline` and `/timeline/raw` routes. Integrated `timeline.json` to serve structured data for the timeline endpoint. Development Settings: Updated `package.json` to include `cross-env` for setting environment variables. Modified the `vercel-dev` script to listen on port 8080. Work Tracker Updates: Adjusted formatting in `fullYear24_25.json` and `store.js` for better readability and consistency. Server Configuration: Updated `server.js` to include the new `Timeline` route. Temporary Data Storage: Created `timeline.json` to store timeline data for testing and logic validation."
 				}
 			]
+		},
+		{
+			"title": "Portfolio Server",
+			"date": "13/11/25",
+			"updates": [
+				{
+					"period": "Morning",
+					"description": "FitnessApp Integration: Added new FitnessApp route with MongoDB integration for exercise and user management. Created Mongoose models for users (username field with unique constraint, timestamps) and exercises. Established routes for user and exercise CRUD operations. Added API documentation in api_routes.md. Configured MongoDB connection with proper error handling and automatic index management (drops old indexes on startup to prevent conflicts)."
+				},
+				{
+					"period": "Afternoon",
+					"description": "FitnessApp Refactoring: Consolidated FitnessApp routes into a single index file structure, removing separate server.js. Refactored route handlers to use consolidated approach. Added CORS configuration updates to allow localhost:3000 and Vercel server access. Fixed MongoDB connection URI encoding issues and improved error handling for malformed JSON requests. Added username validation in user creation route to ensure data integrity."
+				},
+				{
+					"period": "Evening",
+					"description": "CORS Configuration Updates: Iteratively refined CORS configuration in server.js to dynamically allow Vercel preview and production deployments. Updated allowed origins to include multiple frontend domains. Changed from indexOf to includes method for cleaner code. Added logic to allow all .vercel.app subdomains dynamically. Resolved 'Access-Control-Allow-Origin' header issues preventing frontend-backend communication across different Vercel deployment URLs."
+				},
+				{
+					"period": "Night",
+					"description": "Debugging and Testing: Diagnosed MongoDB connection timeout issues on Vercel (10-second buffering timeout). Verified local endpoints returning 200 responses with proper JSON data. Tested API with Insomnia confirming server-side functionality. Identified CORS as root cause of frontend errors when origin didn't match allowed list. Updated timeline.json with comprehensive session documentation. Confirmed successful local development with FitnessApp returning user data from MongoDB Atlas."
+				}
+			]
 		}
 	]
 }
