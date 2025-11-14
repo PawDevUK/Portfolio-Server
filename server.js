@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: ['https://pawelsiwek.co.uk', 'https://portfolio-react-f0jbhhayo-pawdevs-projects-c1e9b938.vercel.app'], // Frontend URL
+    origin: ['https://pawelsiwek.co.uk', 'https://portfolio-react-f0jbhhayo-pawdevs-projects-c1e9b938.vercel.app', 'portfolio-react-eight-neon.vercel.app'], // Frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
     credentials: true // Allow cookies and credentials
 };
